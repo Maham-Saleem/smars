@@ -84,7 +84,7 @@ export default function EditorialLimited() {
               <div className="col-span-2 space-y-4 pt-12">
                 <div className="aspect-square rounded-[2rem] overflow-hidden">
                   <img
-                    src="/images/lifestyle.jpg"
+                    src="https://images.pexels.com/photos/32817141/pexels-photo-32817141.jpeg?auto=compress&cs=tinysrgb&w=800"
                     alt=""
                     className="w-full h-full object-cover"
                   />

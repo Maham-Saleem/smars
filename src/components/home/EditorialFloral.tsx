@@ -86,7 +86,7 @@ export default function EditorialFloral() {
               <div className="pt-12">
                 <div className="aspect-[3/4] rounded-[2rem] overflow-hidden">
                   <img
-                    src="/images/blissful.jpg"
+                    src="https://images.pexels.com/photos/8624586/pexels-photo-8624586.jpeg?auto=compress&cs=tinysrgb&w=800"
                     alt=""
                     className="w-full h-full object-cover"
                   />

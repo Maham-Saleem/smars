@@ -18,7 +18,7 @@ export default function SceneCraftsmanship() {
         className="absolute inset-0"
       >
         <img
-          src="/images/lifestyle.jpg"
+          src="https://images.pexels.com/photos/32817141/pexels-photo-32817141.jpeg?auto=compress&cs=tinysrgb&w=800"
           alt="The Atelier"
           className="w-full h-full object-cover"
         />

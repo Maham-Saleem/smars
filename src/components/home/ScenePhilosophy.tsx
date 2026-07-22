@@ -86,7 +86,7 @@ export default function ScenePhilosophy() {
             >
               <div className="absolute inset-0 lg:inset-y-0 lg:left-0 lg:right-12">
                 <img
-                  src="/images/lifestyle.jpg"
+                  src="https://images.pexels.com/photos/32817141/pexels-photo-32817141.jpeg?auto=compress&cs=tinysrgb&w=800"
                   alt="Perfume craftsmanship"
                   className="w-full h-full object-cover"
                 />
@@ -104,7 +104,7 @@ export default function ScenePhilosophy() {
               style={{ border: '1px solid rgba(199, 163, 107, 0.2)' }}
             >
               <img
-                src="/images/shaheer.jpg"
+                src="https://images.pexels.com/photos/13284500/pexels-photo-13284500.jpeg?auto=compress&cs=tinysrgb&w=800"
                 alt="Signature bottle"
                 className="w-full h-full object-cover"
               />

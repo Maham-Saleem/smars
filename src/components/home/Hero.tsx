@@ -6,7 +6,7 @@ export default function Hero() {
     <section className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0">
         <img
-          src="/images/lifestyle.jpg"
+          src="https://images.pexels.com/photos/32817141/pexels-photo-32817141.jpeg?auto=compress&cs=tinysrgb&w=800"
           alt="Luxury Perfume"
           className="w-full h-full object-cover"
         />

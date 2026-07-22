@@ -57,7 +57,7 @@ export default function SceneBottle() {
             {/* Bottle image */}
             <div className="relative w-[280px] h-[400px] sm:w-[320px] sm:h-[460px] lg:w-[400px] lg:h-[560px]">
               <img
-                src="/images/notorious.jpg"
+                src="https://images.pexels.com/photos/7702669/pexels-photo-7702669.jpeg?auto=compress&cs=tinysrgb&w=800"
                 alt="SMAR'S Signature Fragrance"
                 className="w-full h-full object-cover"
                 style={{

@@ -7,28 +7,28 @@ const ingredients = [
     origin: 'Calabria, Italy',
     description: 'Hand-peeled at dawn when the essential oils reach their peak concentration. Our bergamot adds a luminous citrus top note.',
     image: 'https://images.unsplash.com/photo-1590502593747-42a996133562?w=800&q=85',
-    accent: '/images/shaheer.jpg',
+    accent: 'https://images.pexels.com/photos/13284500/pexels-photo-13284500.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
   {
     name: 'Oud',
     origin: 'Cambodia',
     description: 'Aged for fifteen years in the forests of Pursat. This rare agarwood yields a smoky, animalic depth that defines our darker compositions.',
-    image: '/images/oud.jpg',
-    accent: '/images/amber.jpg',
+    image: 'https://images.pexels.com/photos/7850600/pexels-photo-7850600.jpeg?auto=compress&cs=tinysrgb&w=800',
+    accent: 'https://images.pexels.com/photos/36389336/pexels-photo-36389336.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
   {
     name: 'Rose',
     origin: 'Grasse, France',
     description: 'May roses, harvested by hand in the fields of Grasse. It takes 60,000 flowers to produce a single gram of absolute.',
     image: 'https://images.unsplash.com/photo-1496062031456-07b8f162a322?w=800&q=85',
-    accent: '/images/rose.jpg',
+    accent: 'https://images.pexels.com/photos/31188628/pexels-photo-31188628.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
   {
     name: 'Vanilla',
     origin: 'Madagascar',
     description: 'Bourbon vanilla from the SAVA region, cured for nine months. Its warm, gourmand sweetness forms the heart of our most sensual creations.',
     image: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&q=85',
-    accent: '/images/bless.jpg',
+    accent: 'https://images.pexels.com/photos/15097440/pexels-photo-15097440.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
 ];
 

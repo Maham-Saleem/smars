@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 import { collections } from '../../data/products';
 
 const familyImages: Record<string, string> = {
-  Signature: '/images/lifestyle.jpg',
-  Floral: '/images/rose.jpg',
-  Oud: '/images/oud.jpg',
-  'Limited Edition': '/images/notorious.jpg',
+  Signature: 'https://images.pexels.com/photos/32817141/pexels-photo-32817141.jpeg?auto=compress&cs=tinysrgb&w=800',
+  Floral: 'https://images.pexels.com/photos/31188628/pexels-photo-31188628.jpeg?auto=compress&cs=tinysrgb&w=800',
+  Oud: 'https://images.pexels.com/photos/7850600/pexels-photo-7850600.jpeg?auto=compress&cs=tinysrgb&w=800',
+  'Limited Edition': 'https://images.pexels.com/photos/7702669/pexels-photo-7702669.jpeg?auto=compress&cs=tinysrgb&w=800',
 };
 
 const familyNotes: Record<string, string[]> = {

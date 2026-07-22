@@ -14,7 +14,7 @@ export default function BrandStory() {
           >
             <div className="aspect-[4/5] rounded-2xl overflow-hidden">
               <img
-                src="/images/lifestyle.jpg"
+                src="https://images.pexels.com/photos/32817141/pexels-photo-32817141.jpeg?auto=compress&cs=tinysrgb&w=800"
                 alt="SMAR'S Craftsmanship"
                 className="w-full h-full object-cover"
               />
