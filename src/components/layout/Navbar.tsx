@@ -20,7 +20,7 @@ export default function Navbar() {
   const { openCart, openSearch, isMobileMenuOpen, toggleMobileMenu, closeMobileMenu } = useUIStore();
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
+    const handleScroll = () => setScrolled(window.scrollY > 80);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -29,112 +29,166 @@ export default function Navbar() {
     closeMobileMenu();
   }, [location, closeMobileMenu]);
 
+  const isHome = location.pathname === '/';
+  const showLight = isHome && !scrolled;
+
   return (
     <>
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        transition={{ duration: 0.6, ease: 'easeOut' }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        transition={{ duration: 0.8, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
           scrolled
-            ? 'bg-deep-coffee/95 backdrop-blur-md shadow-lg'
+            ? 'bg-ivory/90 backdrop-blur-md shadow-[0_1px_0_rgba(212,197,178,0.3)]'
             : 'bg-transparent'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20 lg:h-24">
-            <Link to="/" className="flex items-center gap-2 group" onClick={closeMobileMenu}>
+        <div className="max-w-[1600px] mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="flex items-center justify-between h-16 sm:h-20 lg:h-24">
+            {/* Logo */}
+            <Link to="/" onClick={closeMobileMenu} className="relative z-10">
               <img
-                src={scrolled ? "/logo.svg" : "/logo-light.svg"}
-                alt="SMAR'S Fragrance"
-                className="h-14 lg:h-16 transition-all duration-500"
+                src={showLight ? '/logo-light.svg' : '/logo.svg'}
+                alt="SMAR'S"
+                className="h-10 sm:h-12 lg:h-14 transition-all duration-700"
               />
             </Link>
 
-            <div className="hidden lg:flex items-center gap-8">
+            {/* Nav links — desktop */}
+            <div className="hidden lg:flex items-center gap-10">
               {navLinks.map((link) => (
                 <Link
                   key={link.name}
                   to={link.path}
-                  className={`text-sm tracking-widest uppercase font-body font-medium transition-colors relative group ${
-                    scrolled ? 'text-cream/80 hover:text-champagne-gold' : 'text-white/80 hover:text-white'
+                  className={`text-[11px] tracking-editorial uppercase font-body transition-colors duration-500 relative group ${
+                    showLight
+                      ? 'text-cream/60 hover:text-cream'
+                      : 'text-espresso/40 hover:text-espresso'
                   }`}
                 >
                   {link.name}
-                  <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-champagne-gold transition-all duration-300 group-hover:w-full" />
+                  <span className={`absolute -bottom-1 left-0 w-0 h-[1px] transition-all duration-500 group-hover:w-full ${
+                    showLight ? 'bg-champagne/60' : 'bg-bronze/60'
+                  }`} />
                 </Link>
               ))}
             </div>
 
-            <div className="flex items-center gap-4 lg:gap-6">
-              <button onClick={openSearch} className={`transition-colors ${scrolled ? 'text-cream/80 hover:text-champagne-gold' : 'text-white/80 hover:text-white'}`}>
-                <HiOutlineSearch size={22} />
+            {/* Right icons */}
+            <div className="flex items-center gap-3 sm:gap-4 lg:gap-5 relative z-10">
+              <button
+                onClick={openSearch}
+                className={`transition-colors duration-500 ${
+                  showLight ? 'text-cream/60 hover:text-cream' : 'text-espresso/40 hover:text-espresso'
+                }`}
+              >
+                <HiOutlineSearch size={20} />
               </button>
-              <Link to="/account" className={`hidden sm:block transition-colors ${scrolled ? 'text-cream/80 hover:text-champagne-gold' : 'text-white/80 hover:text-white'}`}>
-                <HiOutlineUser size={22} />
+              <Link
+                to="/account"
+                className={`hidden sm:block transition-colors duration-500 ${
+                  showLight ? 'text-cream/60 hover:text-cream' : 'text-espresso/40 hover:text-espresso'
+                }`}
+              >
+                <HiOutlineUser size={20} />
               </Link>
-              <Link to="/account" className={`transition-colors relative ${scrolled ? 'text-cream/80 hover:text-champagne-gold' : 'text-white/80 hover:text-white'}`}>
-                <HiOutlineHeart size={22} />
+              <Link
+                to="/account"
+                className={`transition-colors duration-500 relative ${
+                  showLight ? 'text-cream/60 hover:text-cream' : 'text-espresso/40 hover:text-espresso'
+                }`}
+              >
+                <HiOutlineHeart size={20} />
               </Link>
-              <button onClick={openCart} className={`transition-colors relative ${scrolled ? 'text-cream/80 hover:text-champagne-gold' : 'text-white/80 hover:text-white'}`}>
-                <HiOutlineShoppingBag size={22} />
+              <button
+                onClick={openCart}
+                className={`transition-colors duration-500 relative ${
+                  showLight ? 'text-cream/60 hover:text-cream' : 'text-espresso/40 hover:text-espresso'
+                }`}
+              >
+                <HiOutlineShoppingBag size={20} />
                 {totalItems() > 0 && (
-                  <span className="absolute -top-2 -right-2 bg-champagne-gold text-deep-coffee text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center">
+                  <span className="absolute -top-1.5 -right-1.5 bg-bronze text-cream text-[9px] font-body w-4 h-4 rounded-full flex items-center justify-center">
                     {totalItems()}
                   </span>
                 )}
               </button>
-              <button onClick={toggleMobileMenu} className={`lg:hidden transition-colors ${scrolled ? 'text-cream' : 'text-white'}`}>
-                {isMobileMenuOpen ? <HiX size={26} /> : <HiMenu size={26} />}
+              <button
+                onClick={toggleMobileMenu}
+                className={`lg:hidden transition-colors duration-500 ml-1 ${
+                  showLight ? 'text-cream/60 hover:text-cream' : 'text-espresso/40 hover:text-espresso'
+                }`}
+              >
+                {isMobileMenuOpen ? <HiX size={24} /> : <HiMenu size={24} />}
               </button>
             </div>
           </div>
         </div>
       </motion.nav>
 
+      {/* Mobile menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, x: '100%' }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: '100%' }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-deep-coffee lg:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.4 }}
+            className="fixed inset-0 z-40 lg:hidden"
           >
-            <div className="flex flex-col items-center justify-center h-full gap-8">
-              <img src="/logo-light.svg" alt="SMAR'S Fragrance" className="h-20 mb-8" />
-              {navLinks.map((link, i) => (
-                <motion.div
-                  key={link.name}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.1 }}
+            <div className="absolute inset-0 bg-espresso/40 backdrop-blur-sm" onClick={closeMobileMenu} />
+            <motion.div
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              className="absolute top-0 right-0 bottom-0 w-[75%] max-w-sm bg-ivory shadow-2xl"
+            >
+              <div className="flex flex-col h-full px-8 py-20">
+                <button
+                  onClick={closeMobileMenu}
+                  className="absolute top-6 right-6 text-espresso/40 hover:text-espresso transition-colors"
                 >
-                  <Link
-                    to={link.path}
-                    onClick={closeMobileMenu}
-                    className="text-cream text-2xl font-heading tracking-wider hover:text-champagne-gold transition-colors"
+                  <HiX size={24} />
+                </button>
+
+                <div className="flex-1 flex flex-col justify-center gap-8">
+                  {navLinks.map((link, i) => (
+                    <motion.div
+                      key={link.name}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.1 + i * 0.08 }}
+                    >
+                      <Link
+                        to={link.path}
+                        onClick={closeMobileMenu}
+                        className="font-display text-2xl text-espresso hover:text-bronze transition-colors duration-500"
+                      >
+                        {link.name}
+                      </Link>
+                    </motion.div>
+                  ))}
+                </div>
+
+                {!isAuthenticated && (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.4 }}
                   >
-                    {link.name}
-                  </Link>
-                </motion.div>
-              ))}
-              {!isAuthenticated && (
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5 }}
-                >
-                  <Link
-                    to="/account"
-                    onClick={closeMobileMenu}
-                    className="mt-4 px-8 py-3 border border-champagne-gold text-champagne-gold text-sm tracking-widest uppercase hover:bg-champagne-gold hover:text-deep-coffee transition-all"
-                  >
-                    Sign In
-                  </Link>
-                </motion.div>
-              )}
-            </div>
+                    <Link
+                      to="/account"
+                      onClick={closeMobileMenu}
+                      className="block w-full py-3 text-center text-[10px] tracking-editorial uppercase font-body border border-espresso/20 text-espresso/60 hover:border-bronze hover:text-bronze transition-all duration-500"
+                    >
+                      Sign In
+                    </Link>
+                  </motion.div>
+                )}
+              </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
