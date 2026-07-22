@@ -1,21 +1,21 @@
-import Hero from '../components/home/Hero';
-import FeaturedCollections from '../components/home/FeaturedCollections';
-import BestSellers from '../components/home/BestSellers';
-import BrandStory from '../components/home/BrandStory';
-import WhyChoose from '../components/home/WhyChoose';
-import Reviews from '../components/home/Reviews';
-import Newsletter from '../components/home/Newsletter';
+import CinematicHero from '../components/home/CinematicHero';
+import EditorialSignature from '../components/home/EditorialSignature';
+import EditorialFloral from '../components/home/EditorialFloral';
+import EditorialOud from '../components/home/EditorialOud';
+import EditorialLimited from '../components/home/EditorialLimited';
+import TheAtelier from '../components/home/TheAtelier';
+import ArtShowcase from '../components/home/ArtShowcase';
 
 export default function Home() {
   return (
     <>
-      <Hero />
-      <FeaturedCollections />
-      <BestSellers />
-      <BrandStory />
-      <WhyChoose />
-      <Reviews />
-      <Newsletter />
+      <CinematicHero />
+      <EditorialSignature />
+      <EditorialFloral />
+      <EditorialOud />
+      <EditorialLimited />
+      <TheAtelier />
+      <ArtShowcase />
     </>
   );
 }

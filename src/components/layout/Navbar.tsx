@@ -7,11 +7,9 @@ import { useAuthStore } from '../../store/authStore';
 import { useUIStore } from '../../store/uiStore';
 
 const navLinks = [
-  { name: 'Home', path: '/' },
   { name: 'Collections', path: '/shop' },
-  { name: 'Best Sellers', path: '/shop?sort=best' },
+  { name: 'Journal', path: '/#atelier' },
   { name: 'About', path: '/#about' },
-  { name: 'Contact', path: '/#contact' },
 ];
 
 export default function Navbar() {
