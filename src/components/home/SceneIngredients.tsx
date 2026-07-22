@@ -6,8 +6,8 @@ const ingredients = [
     name: 'Bergamot',
     origin: 'Calabria, Italy',
     description: 'Hand-peeled at dawn when the essential oils reach their peak concentration. Our bergamot adds a luminous citrus top note.',
-    image: 'https://images.unsplash.com/photo-1587049352851-8d4e89133924?w=800&q=85',
-    accent: 'https://images.unsplash.com/photo-1598520106830-8c45c2035460?w=600&q=85',
+    image: 'https://images.unsplash.com/photo-1590502593747-42a996133562?w=800&q=85',
+    accent: 'https://images.unsplash.com/photo-1541643600914-78b084683601?w=600&q=85',
   },
   {
     name: 'Oud',
@@ -20,14 +20,14 @@ const ingredients = [
     name: 'Rose',
     origin: 'Grasse, France',
     description: 'May roses, harvested by hand in the fields of Grasse. It takes 60,000 flowers to produce a single gram of absolute.',
-    image: 'https://images.unsplash.com/photo-1490750967868-88aa4f44baee?w=800&q=85',
+    image: 'https://images.unsplash.com/photo-1455659817273-f96807779a8a?w=800&q=85',
     accent: 'https://images.unsplash.com/photo-1563170351-be82bc888aa4?w=600&q=85',
   },
   {
     name: 'Vanilla',
     origin: 'Madagascar',
     description: 'Bourbon vanilla from the SAVA region, cured for nine months. Its warm, gourmand sweetness forms the heart of our most sensual creations.',
-    image: 'https://images.unsplash.com/photo-1587049352851-8d4e89133924?w=800&q=85',
+    image: 'https://images.unsplash.com/photo-1587305120345-32e03f038921?w=800&q=85',
     accent: 'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=600&q=85',
   },
 ];
