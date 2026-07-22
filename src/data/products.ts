@@ -40,9 +40,9 @@ export const products: Product[] = [
       { id: 3, name: "Amara K.", rating: 4.5, date: "2026-05-10", comment: "Beautiful depth and complexity. The oud note is perfectly balanced." },
     ],
     images: [
-      "https://images.unsplash.com/photo-1541643600914-78b084683601?w=800&q=80",
-      "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=800&q=80",
-      "https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?w=800&q=80",
+      "/perfume-placeholder.svg",
+      "/perfume-placeholder.svg",
+      "/perfume-placeholder.svg",
     ],
     category: "Eau de Parfum",
     collection: "Signature",
@@ -62,8 +62,8 @@ export const products: Product[] = [
       { id: 5, name: "Emma W.", rating: 4.5, date: "2026-06-01", comment: "Beautiful floral that isn't overpowering. Sophisticated." },
     ],
     images: [
-      "https://images.unsplash.com/photo-1563170351-be82bc888aa4?w=800&q=80",
-      "https://images.unsplash.com/photo-1587017539504-67cfbddac569?w=800&q=80",
+      "/perfume-placeholder.svg",
+      "/perfume-placeholder.svg",
     ],
     category: "Eau de Parfum",
     collection: "Floral",
@@ -83,8 +83,8 @@ export const products: Product[] = [
       { id: 7, name: "Liam S.", rating: 5, date: "2026-05-30", comment: "Incredible longevity and projection. A masterpiece." },
     ],
     images: [
-      "https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?w=800&q=80",
-      "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=800&q=80",
+      "/perfume-placeholder.svg",
+      "/perfume-placeholder.svg",
     ],
     category: "Extrait de Parfum",
     collection: "Oud",
@@ -103,8 +103,8 @@ export const products: Product[] = [
       { id: 8, name: "Isabella N.", rating: 5, date: "2026-06-12", comment: "So beautiful and unique. The lychee note is perfection." },
     ],
     images: [
-      "https://images.unsplash.com/photo-1541643600914-78b084683601?w=800&q=80",
-      "https://images.unsplash.com/photo-1563170351-be82bc888aa4?w=800&q=80",
+      "/perfume-placeholder.svg",
+      "/perfume-placeholder.svg",
     ],
     category: "Eau de Parfum",
     collection: "Signature",
@@ -123,8 +123,8 @@ export const products: Product[] = [
       { id: 9, name: "Nathan P.", rating: 5, date: "2026-06-08", comment: "Rich, warm, and incredibly alluring. Gets compliments every time." },
     ],
     images: [
-      "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=800&q=80",
-      "https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?w=800&q=80",
+      "/perfume-placeholder.svg",
+      "/perfume-placeholder.svg",
     ],
     category: "Extrait de Parfum",
     collection: "Oud",
@@ -143,8 +143,8 @@ export const products: Product[] = [
       { id: 10, name: "Charlotte B.", rating: 4.5, date: "2026-05-20", comment: "Like a garden in full bloom. So fresh and elegant." },
     ],
     images: [
-      "https://images.unsplash.com/photo-1563170351-be82bc888aa4?w=800&q=80",
-      "https://images.unsplash.com/photo-1541643600914-78b084683601?w=800&q=80",
+      "/perfume-placeholder.svg",
+      "/perfume-placeholder.svg",
     ],
     category: "Eau de Parfum",
     collection: "Floral",
@@ -162,8 +162,8 @@ export const products: Product[] = [
       { id: 11, name: "Alexander H.", rating: 5, date: "2026-06-22", comment: "Dark, mysterious, and absolutely captivating. A nighttime essential." },
     ],
     images: [
-      "https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?w=800&q=80",
-      "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=800&q=80",
+      "/perfume-placeholder.svg",
+      "/perfume-placeholder.svg",
     ],
     category: "Extrait de Parfum",
     collection: "Oud",
@@ -183,8 +183,8 @@ export const products: Product[] = [
       { id: 12, name: "Zoe T.", rating: 4.5, date: "2026-06-05", comment: "Perfect summer scent. Light, fresh, and sophisticated." },
     ],
     images: [
-      "https://images.unsplash.com/photo-1541643600914-78b084683601?w=800&q=80",
-      "https://images.unsplash.com/photo-1563170351-be82bc888aa4?w=800&q=80",
+      "/perfume-placeholder.svg",
+      "/perfume-placeholder.svg",
     ],
     category: "Eau de Toilette",
     collection: "Limited Edition",
@@ -203,8 +203,8 @@ export const products: Product[] = [
       { id: 13, name: "Grace F.", rating: 5, date: "2026-06-14", comment: "Rich, creamy, and utterly luxurious. Tuberose at its finest." },
     ],
     images: [
-      "https://images.unsplash.com/photo-1563170351-be82bc888aa4?w=800&q=80",
-      "https://images.unsplash.com/photo-1541643600914-78b084683601?w=800&q=80",
+      "/perfume-placeholder.svg",
+      "/perfume-placeholder.svg",
     ],
     category: "Eau de Parfum",
     collection: "Floral",
@@ -222,8 +222,8 @@ export const products: Product[] = [
       { id: 14, name: "Oliver K.", rating: 5, date: "2026-06-10", comment: "The most unique sandalwood fragrance. Smoky, spicy, and sophisticated." },
     ],
     images: [
-      "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=800&q=80",
-      "https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?w=800&q=80",
+      "/perfume-placeholder.svg",
+      "/perfume-placeholder.svg",
     ],
     category: "Eau de Parfum",
     collection: "Signature",
@@ -241,8 +241,8 @@ export const products: Product[] = [
       { id: 15, name: "Victoria S.", rating: 5, date: "2026-06-25", comment: "Pure luxury in a bottle. The champagne note is divine." },
     ],
     images: [
-      "https://images.unsplash.com/photo-1541643600914-78b084683601?w=800&q=80",
-      "https://images.unsplash.com/photo-1563170351-be82bc888aa4?w=800&q=80",
+      "/perfume-placeholder.svg",
+      "/perfume-placeholder.svg",
     ],
     category: "Extrait de Parfum",
     collection: "Limited Edition",
@@ -262,8 +262,8 @@ export const products: Product[] = [
       { id: 16, name: "Aria N.", rating: 4.5, date: "2026-05-25", comment: "The perfect everyday scent. Clean, sophisticated, and subtle." },
     ],
     images: [
-      "https://images.unsplash.com/photo-1587017539504-67cfbddac569?w=800&q=80",
-      "https://images.unsplash.com/photo-1563170351-be82bc888aa4?w=800&q=80",
+      "/perfume-placeholder.svg",
+      "/perfume-placeholder.svg",
     ],
     category: "Eau de Parfum",
     collection: "Signature",
@@ -273,10 +273,10 @@ export const products: Product[] = [
 ];
 
 export const collections = [
-  { id: "Signature", name: "Signature Collection", description: "Timeless elegance for the discerning", image: "https://images.unsplash.com/photo-1541643600914-78b084683601?w=800&q=80", count: 4 },
-  { id: "Floral", name: "Floral Collection", description: "Nature's finest blossoms captured", image: "https://images.unsplash.com/photo-1563170351-be82bc888aa4?w=800&q=80", count: 3 },
-  { id: "Oud", name: "Oud Collection", description: "Rare and precious wood essences", image: "https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?w=800&q=80", count: 3 },
-  { id: "Limited Edition", name: "Limited Edition", description: "Exclusive creations, limited in number", image: "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=800&q=80", count: 2 },
+  { id: "Signature", name: "Signature Collection", description: "Timeless elegance for the discerning", image: "/perfume-placeholder.svg", count: 4 },
+  { id: "Floral", name: "Floral Collection", description: "Nature's finest blossoms captured", image: "/perfume-placeholder.svg", count: 3 },
+  { id: "Oud", name: "Oud Collection", description: "Rare and precious wood essences", image: "/perfume-placeholder.svg", count: 3 },
+  { id: "Limited Edition", name: "Limited Edition", description: "Exclusive creations, limited in number", image: "/perfume-placeholder.svg", count: 2 },
 ];
 
 export const categories = ["Eau de Parfum", "Extrait de Parfum", "Eau de Toilette"];

@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 import { collections } from '../../data/products';
 
 const familyImages: Record<string, string> = {
-  Signature: 'https://images.unsplash.com/photo-1541643600914-78b084683601?w=900&q=85',
-  Floral: 'https://images.unsplash.com/photo-1563170351-be82bc888aa4?w=900&q=85',
-  Oud: 'https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?w=900&q=85',
-  'Limited Edition': 'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=900&q=85',
+  Signature: '/perfume-placeholder.svg',
+  Floral: '/perfume-placeholder.svg',
+  Oud: '/perfume-placeholder.svg',
+  'Limited Edition': '/perfume-placeholder.svg',
 };
 
 const familyNotes: Record<string, string[]> = {

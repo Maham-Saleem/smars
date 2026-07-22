@@ -70,7 +70,7 @@ export default function EditorialLimited() {
               <div className="col-span-3 space-y-4">
                 <motion.div style={{ x: x2 }} className="aspect-[4/5] rounded-[3rem] overflow-hidden">
                   <img
-                    src={limited[0]?.images[0] || 'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=600&q=80'}
+                    src={limited[0]?.images[0] || '/perfume-placeholder.svg'}
                     alt="Limited Edition"
                     className="w-full h-full object-cover"
                   />
@@ -84,7 +84,7 @@ export default function EditorialLimited() {
               <div className="col-span-2 space-y-4 pt-12">
                 <div className="aspect-square rounded-[2rem] overflow-hidden">
                   <img
-                    src="https://images.unsplash.com/photo-1541643600914-78b084683601?w=400&q=80"
+                    src="/perfume-placeholder.svg"
                     alt=""
                     className="w-full h-full object-cover"
                   />

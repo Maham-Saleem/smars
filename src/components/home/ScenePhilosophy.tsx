@@ -86,7 +86,7 @@ export default function ScenePhilosophy() {
             >
               <div className="absolute inset-0 lg:inset-y-0 lg:left-0 lg:right-12">
                 <img
-                  src="https://images.unsplash.com/photo-1598520106830-8c45c2035460?w=1200&q=85"
+                  src="/perfume-placeholder.svg"
                   alt="Perfume craftsmanship"
                   className="w-full h-full object-cover"
                 />
@@ -104,7 +104,7 @@ export default function ScenePhilosophy() {
               style={{ border: '1px solid rgba(199, 163, 107, 0.2)' }}
             >
               <img
-                src="https://images.unsplash.com/photo-1541643600914-78b084683601?w=500&q=85"
+                src="/perfume-placeholder.svg"
                 alt="Signature bottle"
                 className="w-full h-full object-cover"
               />

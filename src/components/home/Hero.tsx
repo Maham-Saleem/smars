@@ -6,7 +6,7 @@ export default function Hero() {
     <section className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0">
         <img
-          src="https://images.unsplash.com/photo-1541643600914-78b084683601?w=1920&q=90"
+          src="/perfume-placeholder.svg"
           alt="Luxury Perfume"
           className="w-full h-full object-cover"
         />

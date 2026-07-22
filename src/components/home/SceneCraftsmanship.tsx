@@ -18,7 +18,7 @@ export default function SceneCraftsmanship() {
         className="absolute inset-0"
       >
         <img
-          src="https://images.unsplash.com/photo-1598520106830-8c45c2035460?w=1920&q=90"
+          src="/perfume-placeholder.svg"
           alt="The Atelier"
           className="w-full h-full object-cover"
         />

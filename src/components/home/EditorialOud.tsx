@@ -16,7 +16,7 @@ export default function EditorialOud() {
     <section ref={ref} className="relative h-[120vh] min-h-[800px] flex items-center overflow-hidden bg-deep-coffee">
       <motion.div className="absolute inset-0" style={{ y: bgY }}>
         <img
-          src="https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?w=1920&q=90"
+          src="/perfume-placeholder.svg"
           alt="Oud Collection"
           className="w-full h-[130%] object-cover"
         />

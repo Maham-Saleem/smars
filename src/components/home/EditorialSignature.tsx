@@ -28,7 +28,7 @@ export default function EditorialSignature() {
           <motion.div className="lg:col-span-7 relative" style={{ x, rotate }}>
             <div className="relative aspect-[4/5] rounded-full overflow-hidden">
               <img
-                src={signature[0]?.images[0] || 'https://images.unsplash.com/photo-1541643600914-78b084683601?w=800&q=80'}
+                src={signature[0]?.images[0] || '/perfume-placeholder.svg'}
                 alt="Signature Collection"
                 className="w-full h-full object-cover"
               />
@@ -42,7 +42,7 @@ export default function EditorialSignature() {
               className="absolute -bottom-8 -right-8 lg:-bottom-12 lg:-right-12 w-40 h-40 lg:w-56 lg:h-56 rounded-full overflow-hidden border-4 border-cream shadow-2xl"
             >
               <img
-                src={signature[1]?.images[0] || 'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=400&q=80'}
+                src={signature[1]?.images[0] || '/perfume-placeholder.svg'}
                 alt=""
                 className="w-full h-full object-cover"
               />

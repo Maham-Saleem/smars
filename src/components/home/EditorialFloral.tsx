@@ -70,14 +70,14 @@ export default function EditorialFloral() {
               <div className="space-y-4">
                 <div className="aspect-square rounded-[2rem] overflow-hidden">
                   <img
-                    src={floral[0]?.images[0] || 'https://images.unsplash.com/photo-1563170351-be82bc888aa4?w=600&q=80'}
+                    src={floral[0]?.images[0] || '/perfume-placeholder.svg'}
                     alt="Floral Collection"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="aspect-[4/3] rounded-[2rem] overflow-hidden">
                   <img
-                    src={floral[1]?.images[0] || 'https://images.unsplash.com/photo-1541643600914-78b084683601?w=600&q=80'}
+                    src={floral[1]?.images[0] || '/perfume-placeholder.svg'}
                     alt=""
                     className="w-full h-full object-cover"
                   />
@@ -86,7 +86,7 @@ export default function EditorialFloral() {
               <div className="pt-12">
                 <div className="aspect-[3/4] rounded-[2rem] overflow-hidden">
                   <img
-                    src="https://images.unsplash.com/photo-1598520106830-8c45c2035460?w=600&q=80"
+                    src="/perfume-placeholder.svg"
                     alt=""
                     className="w-full h-full object-cover"
                   />
