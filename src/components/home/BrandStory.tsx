@@ -14,7 +14,7 @@ export default function BrandStory() {
           >
             <div className="aspect-[4/5] rounded-2xl overflow-hidden">
               <img
-                src="/perfume-placeholder.svg"
+                src="/images/lifestyle.jpg"
                 alt="SMAR'S Craftsmanship"
                 className="w-full h-full object-cover"
               />

@@ -84,7 +84,7 @@ export default function EditorialLimited() {
               <div className="col-span-2 space-y-4 pt-12">
                 <div className="aspect-square rounded-[2rem] overflow-hidden">
                   <img
-                    src="/perfume-placeholder.svg"
+                    src="/images/lifestyle.jpg"
                     alt=""
                     className="w-full h-full object-cover"
                   />

@@ -57,7 +57,7 @@ export default function SceneBottle() {
             {/* Bottle image */}
             <div className="relative w-[280px] h-[400px] sm:w-[320px] sm:h-[460px] lg:w-[400px] lg:h-[560px]">
               <img
-                src="/perfume-placeholder.svg"
+                src="/images/notorious.jpg"
                 alt="SMAR'S Signature Fragrance"
                 className="w-full h-full object-cover"
                 style={{
@@ -85,8 +85,7 @@ export default function SceneBottle() {
               Maison de Parfum
             </p>
             <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl text-espresso leading-[1.1] max-w-xs">
-              Noir
-              <span className="block italic text-bronze">Élégance</span>
+              Amber
             </h1>
           </motion.div>
         </motion.div>

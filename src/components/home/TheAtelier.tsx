@@ -25,7 +25,7 @@ export default function TheAtelier() {
             <div className="relative aspect-[4/5] rounded-[3rem] overflow-hidden">
               <motion.img
                 style={{ y: imgParallax }}
-                src="/perfume-placeholder.svg"
+                src="/images/lifestyle.jpg"
                 alt="SMAR'S Atelier"
                 className="w-full h-[120%] object-cover"
               />

@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 import { collections } from '../../data/products';
 
 const familyImages: Record<string, string> = {
-  Signature: '/perfume-placeholder.svg',
-  Floral: '/perfume-placeholder.svg',
-  Oud: '/perfume-placeholder.svg',
-  'Limited Edition': '/perfume-placeholder.svg',
+  Signature: '/images/lifestyle.jpg',
+  Floral: '/images/rose.jpg',
+  Oud: '/images/oud.jpg',
+  'Limited Edition': '/images/notorious.jpg',
 };
 
 const familyNotes: Record<string, string[]> = {

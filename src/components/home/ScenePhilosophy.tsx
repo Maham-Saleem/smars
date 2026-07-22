@@ -86,7 +86,7 @@ export default function ScenePhilosophy() {
             >
               <div className="absolute inset-0 lg:inset-y-0 lg:left-0 lg:right-12">
                 <img
-                  src="/perfume-placeholder.svg"
+                  src="/images/lifestyle.jpg"
                   alt="Perfume craftsmanship"
                   className="w-full h-full object-cover"
                 />
@@ -104,7 +104,7 @@ export default function ScenePhilosophy() {
               style={{ border: '1px solid rgba(199, 163, 107, 0.2)' }}
             >
               <img
-                src="/perfume-placeholder.svg"
+                src="/images/shaheer.jpg"
                 alt="Signature bottle"
                 className="w-full h-full object-cover"
               />

@@ -28,7 +28,7 @@ export interface Review {
 export const products: Product[] = [
   {
     id: 1,
-    name: "Noir Élégance",
+    name: "Amber",
     description: "A captivating blend of dark woods, amber, and rare spices. This signature fragrance opens with bergamot and black pepper, unfolds into a heart of saffron and rose, and settles into a base of oud, leather, and vanilla. A scent for those who command attention.",
     shortDescription: "Dark woods, amber, and rare spices",
     price: 295,
@@ -39,11 +39,7 @@ export const products: Product[] = [
       { id: 2, name: "James R.", rating: 5, date: "2026-05-28", comment: "The most sophisticated scent I've ever worn. Worth every penny." },
       { id: 3, name: "Amara K.", rating: 4.5, date: "2026-05-10", comment: "Beautiful depth and complexity. The oud note is perfectly balanced." },
     ],
-    images: [
-      "/perfume-placeholder.svg",
-      "/perfume-placeholder.svg",
-      "/perfume-placeholder.svg",
-    ],
+    images: ["/images/amber.jpg", "/images/notorious.jpg", "/images/shaheer.jpg"],
     category: "Eau de Parfum",
     collection: "Signature",
     fragranceNotes: ["Bergamot", "Black Pepper", "Saffron", "Rose", "Oud", "Leather", "Vanilla", "Amber"],
@@ -52,7 +48,7 @@ export const products: Product[] = [
   },
   {
     id: 2,
-    name: "Fleur de Nuit",
+    name: "Rose",
     description: "An enchanting floral symphony that captures the magic of midnight blossoms. Top notes of pear and white freesia give way to a heart of jasmine and tuberose, resting on a base of sandalwood and musk.",
     shortDescription: "Midnight blossoms and white florals",
     price: 265,
@@ -61,10 +57,7 @@ export const products: Product[] = [
       { id: 4, name: "Olivia M.", rating: 5, date: "2026-06-20", comment: "This is my signature scent now. So elegant and feminine." },
       { id: 5, name: "Emma W.", rating: 4.5, date: "2026-06-01", comment: "Beautiful floral that isn't overpowering. Sophisticated." },
     ],
-    images: [
-      "/perfume-placeholder.svg",
-      "/perfume-placeholder.svg",
-    ],
+    images: ["/images/rose.jpg", "/images/blissful.jpg"],
     category: "Eau de Parfum",
     collection: "Floral",
     fragranceNotes: ["Pear", "White Freesia", "Jasmine", "Tuberose", "Sandalwood", "Musk"],
@@ -73,7 +66,7 @@ export const products: Product[] = [
   },
   {
     id: 3,
-    name: "Oud Royale",
+    name: "Oud",
     description: "A masterful interpretation of rare Cambodian oud blended with smoky birch and rich labdanum. This opulent fragrance is a statement of unparalleled refinement and luxury.",
     shortDescription: "Rare Cambodian oud and smoky birch",
     price: 420,
@@ -82,10 +75,7 @@ export const products: Product[] = [
       { id: 6, name: "Marcus D.", rating: 5, date: "2026-06-18", comment: "The finest oud fragrance I've encountered. Truly royal." },
       { id: 7, name: "Liam S.", rating: 5, date: "2026-05-30", comment: "Incredible longevity and projection. A masterpiece." },
     ],
-    images: [
-      "/perfume-placeholder.svg",
-      "/perfume-placeholder.svg",
-    ],
+    images: ["/images/oud.jpg", "/images/amber.jpg"],
     category: "Extrait de Parfum",
     collection: "Oud",
     fragranceNotes: ["Cambodian Oud", "Birch", "Labdanum", "Frankincense", "Patchouli", "Musk"],
@@ -94,7 +84,7 @@ export const products: Product[] = [
   },
   {
     id: 4,
-    name: "Crystal Rose",
+    name: "Janan",
     description: "A luminous rose fragrance that sparkles like cut glass. Fresh pink pepper and lychee introduce a heart of Damask rose and peony, with a warm ambrette and cashmere wood base.",
     shortDescription: "Sparkling rose with pink pepper",
     price: 285,
@@ -102,10 +92,7 @@ export const products: Product[] = [
     reviews: [
       { id: 8, name: "Isabella N.", rating: 5, date: "2026-06-12", comment: "So beautiful and unique. The lychee note is perfection." },
     ],
-    images: [
-      "/perfume-placeholder.svg",
-      "/perfume-placeholder.svg",
-    ],
+    images: ["/images/janan.jpg", "/images/rose.jpg"],
     category: "Eau de Parfum",
     collection: "Signature",
     fragranceNotes: ["Pink Pepper", "Lychee", "Damask Rose", "Peony", "Ambrette", "Cashmere Wood"],
@@ -114,7 +101,7 @@ export const products: Product[] = [
   },
   {
     id: 5,
-    name: "Amber Oud",
+    name: "Shaheer",
     description: "A warm embrace of golden amber and dark oud. This sensual fragrance weaves together honeyed tobacco, vanilla absolute, and a whisper of saffron for an unforgettable trail.",
     shortDescription: "Golden amber and dark oud",
     price: 380,
@@ -122,10 +109,7 @@ export const products: Product[] = [
     reviews: [
       { id: 9, name: "Nathan P.", rating: 5, date: "2026-06-08", comment: "Rich, warm, and incredibly alluring. Gets compliments every time." },
     ],
-    images: [
-      "/perfume-placeholder.svg",
-      "/perfume-placeholder.svg",
-    ],
+    images: ["/images/shaheer.jpg", "/images/notorious.jpg"],
     category: "Extrait de Parfum",
     collection: "Oud",
     fragranceNotes: ["Amber", "Oud", "Tobacco", "Vanilla", "Saffron", "Honey"],
@@ -134,7 +118,7 @@ export const products: Product[] = [
   },
   {
     id: 6,
-    name: "White Gardenia",
+    name: "Bless",
     description: "A pristine gardenia soliflore with modern elegance. Dewy green notes open to a lush gardenia heart, while creamy sandalwood and white musk provide an ethereal finish.",
     shortDescription: "Pristine gardenia with white musk",
     price: 245,
@@ -142,10 +126,7 @@ export const products: Product[] = [
     reviews: [
       { id: 10, name: "Charlotte B.", rating: 4.5, date: "2026-05-20", comment: "Like a garden in full bloom. So fresh and elegant." },
     ],
-    images: [
-      "/perfume-placeholder.svg",
-      "/perfume-placeholder.svg",
-    ],
+    images: ["/images/bless.jpg", "/images/blissful.jpg"],
     category: "Eau de Parfum",
     collection: "Floral",
     fragranceNotes: ["Dewy Greens", "Gardenia", "Sandalwood", "White Musk", "Coconut Water"],
@@ -153,7 +134,7 @@ export const products: Product[] = [
   },
   {
     id: 7,
-    name: "Midnight Oud",
+    name: "Notorious",
     description: "An intense dark fragrance for evening sophistication. Black truffle, dark chocolate, and incense create a mysterious opening that evolves into a heart of rose absolute and patchouli.",
     shortDescription: "Dark chocolate, incense, and rose",
     price: 450,
@@ -161,10 +142,7 @@ export const products: Product[] = [
     reviews: [
       { id: 11, name: "Alexander H.", rating: 5, date: "2026-06-22", comment: "Dark, mysterious, and absolutely captivating. A nighttime essential." },
     ],
-    images: [
-      "/perfume-placeholder.svg",
-      "/perfume-placeholder.svg",
-    ],
+    images: ["/images/notorious.jpg", "/images/oud.jpg"],
     category: "Extrait de Parfum",
     collection: "Oud",
     fragranceNotes: ["Black Truffle", "Dark Chocolate", "Incense", "Rose Absolute", "Patchouli", "Leather"],
@@ -174,7 +152,7 @@ export const products: Product[] = [
   },
   {
     id: 8,
-    name: "Summer Daze",
+    name: "Blissful",
     description: "A limited edition celebration of sun-drenched days. Mediterranean citrus and sea salt mingle with fig leaf and coconut water, drying down to a warm driftwood and amber base.",
     shortDescription: "Mediterranean citrus and sea salt",
     price: 195,
@@ -182,10 +160,7 @@ export const products: Product[] = [
     reviews: [
       { id: 12, name: "Zoe T.", rating: 4.5, date: "2026-06-05", comment: "Perfect summer scent. Light, fresh, and sophisticated." },
     ],
-    images: [
-      "/perfume-placeholder.svg",
-      "/perfume-placeholder.svg",
-    ],
+    images: ["/images/blissful.jpg", "/images/bless.jpg"],
     category: "Eau de Toilette",
     collection: "Limited Edition",
     fragranceNotes: ["Bergamot", "Sea Salt", "Fig Leaf", "Coconut Water", "Driftwood", "Amber"],
@@ -194,7 +169,7 @@ export const products: Product[] = [
   },
   {
     id: 9,
-    name: "Velvet Tuberose",
+    name: "Velvet",
     description: "A sumptuous tuberose fragrance draped in velvet. Creamy tuberose and orange blossom are entwined with warm cinnamon, benzoin, and a trace of exotic ylang-ylang.",
     shortDescription: "Creamy tuberose and warm cinnamon",
     price: 310,
@@ -202,10 +177,7 @@ export const products: Product[] = [
     reviews: [
       { id: 13, name: "Grace F.", rating: 5, date: "2026-06-14", comment: "Rich, creamy, and utterly luxurious. Tuberose at its finest." },
     ],
-    images: [
-      "/perfume-placeholder.svg",
-      "/perfume-placeholder.svg",
-    ],
+    images: ["/images/janan.jpg", "/images/rose.jpg"],
     category: "Eau de Parfum",
     collection: "Floral",
     fragranceNotes: ["Tuberose", "Orange Blossom", "Cinnamon", "Benzoin", "Ylang-Ylang", "Musk"],
@@ -213,7 +185,7 @@ export const products: Product[] = [
   },
   {
     id: 10,
-    name: "Santal Noir",
+    name: "Santal",
     description: "A dark take on sandalwood that pushes the boundary of woody fragrances. Smoky Australian sandalwood is paired with black cardamom, cumin, and a leathery suede accord.",
     shortDescription: "Smoky sandalwood and black cardamom",
     price: 350,
@@ -221,10 +193,7 @@ export const products: Product[] = [
     reviews: [
       { id: 14, name: "Oliver K.", rating: 5, date: "2026-06-10", comment: "The most unique sandalwood fragrance. Smoky, spicy, and sophisticated." },
     ],
-    images: [
-      "/perfume-placeholder.svg",
-      "/perfume-placeholder.svg",
-    ],
+    images: ["/images/janan.jpg", "/images/shaheer.jpg"],
     category: "Eau de Parfum",
     collection: "Signature",
     fragranceNotes: ["Black Cardamom", "Cumin", "Sandalwood", "Suede", "Vetiver", "Musk"],
@@ -232,7 +201,7 @@ export const products: Product[] = [
   },
   {
     id: 11,
-    name: "Golden Tuberose",
+    name: "Golden",
     description: "A luminous limited edition celebrating the golden hour. Sparkling champagne, honeyed apricot, and a heart of tuberose and narcissus rest on a base of amber and vanilla.",
     shortDescription: "Champagne, apricot, and tuberose",
     price: 430,
@@ -240,10 +209,7 @@ export const products: Product[] = [
     reviews: [
       { id: 15, name: "Victoria S.", rating: 5, date: "2026-06-25", comment: "Pure luxury in a bottle. The champagne note is divine." },
     ],
-    images: [
-      "/perfume-placeholder.svg",
-      "/perfume-placeholder.svg",
-    ],
+    images: ["/images/lifestyle.jpg", "/images/amber.jpg"],
     category: "Extrait de Parfum",
     collection: "Limited Edition",
     fragranceNotes: ["Champagne", "Apricot", "Tuberose", "Narcissus", "Amber", "Vanilla"],
@@ -253,7 +219,7 @@ export const products: Product[] = [
   },
   {
     id: 12,
-    name: "Musk Therapy",
+    name: "Musk",
     description: "A clean, modern musk that feels like a second skin. White musk is layered with ambrette seed, bergamot, and a touch of iris for an effortlessly elegant signature.",
     shortDescription: "Clean white musk and ambrette",
     price: 230,
@@ -261,10 +227,7 @@ export const products: Product[] = [
     reviews: [
       { id: 16, name: "Aria N.", rating: 4.5, date: "2026-05-25", comment: "The perfect everyday scent. Clean, sophisticated, and subtle." },
     ],
-    images: [
-      "/perfume-placeholder.svg",
-      "/perfume-placeholder.svg",
-    ],
+    images: ["/images/bless.jpg", "/images/janan.jpg"],
     category: "Eau de Parfum",
     collection: "Signature",
     fragranceNotes: ["Bergamot", "Ambrette Seed", "Iris", "White Musk", "Cotton Blossom"],
@@ -273,10 +236,10 @@ export const products: Product[] = [
 ];
 
 export const collections = [
-  { id: "Signature", name: "Signature Collection", description: "Timeless elegance for the discerning", image: "/perfume-placeholder.svg", count: 4 },
-  { id: "Floral", name: "Floral Collection", description: "Nature's finest blossoms captured", image: "/perfume-placeholder.svg", count: 3 },
-  { id: "Oud", name: "Oud Collection", description: "Rare and precious wood essences", image: "/perfume-placeholder.svg", count: 3 },
-  { id: "Limited Edition", name: "Limited Edition", description: "Exclusive creations, limited in number", image: "/perfume-placeholder.svg", count: 2 },
+  { id: "Signature", name: "Signature Collection", description: "Timeless elegance for the discerning", image: "/images/lifestyle.jpg", count: 4 },
+  { id: "Floral", name: "Floral Collection", description: "Nature's finest blossoms captured", image: "/images/rose.jpg", count: 3 },
+  { id: "Oud", name: "Oud Collection", description: "Rare and precious wood essences", image: "/images/oud.jpg", count: 3 },
+  { id: "Limited Edition", name: "Limited Edition", description: "Exclusive creations, limited in number", image: "/images/notorious.jpg", count: 2 },
 ];
 
 export const categories = ["Eau de Parfum", "Extrait de Parfum", "Eau de Toilette"];

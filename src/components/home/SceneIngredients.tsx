@@ -7,28 +7,28 @@ const ingredients = [
     origin: 'Calabria, Italy',
     description: 'Hand-peeled at dawn when the essential oils reach their peak concentration. Our bergamot adds a luminous citrus top note.',
     image: 'https://images.unsplash.com/photo-1590502593747-42a996133562?w=800&q=85',
-    accent: '/perfume-placeholder.svg',
+    accent: '/images/shaheer.jpg',
   },
   {
     name: 'Oud',
     origin: 'Cambodia',
     description: 'Aged for fifteen years in the forests of Pursat. This rare agarwood yields a smoky, animalic depth that defines our darker compositions.',
-    image: '/perfume-placeholder.svg',
-    accent: '/perfume-placeholder.svg',
+    image: '/images/oud.jpg',
+    accent: '/images/amber.jpg',
   },
   {
     name: 'Rose',
     origin: 'Grasse, France',
     description: 'May roses, harvested by hand in the fields of Grasse. It takes 60,000 flowers to produce a single gram of absolute.',
     image: 'https://images.unsplash.com/photo-1496062031456-07b8f162a322?w=800&q=85',
-    accent: '/perfume-placeholder.svg',
+    accent: '/images/rose.jpg',
   },
   {
     name: 'Vanilla',
     origin: 'Madagascar',
     description: 'Bourbon vanilla from the SAVA region, cured for nine months. Its warm, gourmand sweetness forms the heart of our most sensual creations.',
     image: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&q=85',
-    accent: '/perfume-placeholder.svg',
+    accent: '/images/bless.jpg',
   },
 ];
 

@@ -8,7 +8,7 @@ const reviews = [
     name: 'Victoria Ashford',
     location: 'New York, USA',
     rating: 5,
-    text: 'Noir Élégance is the most sophisticated fragrance I have ever owned. It evolves beautifully throughout the day and draws endless compliments. Truly a masterpiece.',
+    text: 'Amber is the most sophisticated fragrance I have ever owned. It evolves beautifully throughout the day and draws endless compliments. Truly a masterpiece.',
     avatar: 'VA',
   },
   {
@@ -16,7 +16,7 @@ const reviews = [
     name: 'James Harrington',
     location: 'London, UK',
     rating: 5,
-    text: 'The Oud Royale is absolutely transcendent. The quality of ingredients is immediately apparent. This is what luxury smells like.',
+    text: 'The Oud is absolutely transcendent. The quality of ingredients is immediately apparent. This is what luxury smells like.',
     avatar: 'JH',
   },
   {
@@ -24,7 +24,7 @@ const reviews = [
     name: 'Sofia Martinez',
     location: 'Paris, France',
     rating: 5,
-    text: 'Fleur de Nuit captures the essence of a midnight garden in full bloom. It is poetic, elegant, and utterly feminine. I have found my signature scent.',
+    text: 'Rose captures the essence of a midnight garden in full bloom. It is poetic, elegant, and utterly feminine. I have found my signature scent.',
     avatar: 'SM',
   },
   {
@@ -32,7 +32,7 @@ const reviews = [
     name: 'Alexander Kim',
     location: 'Seoul, Korea',
     rating: 4.5,
-    text: 'The attention to detail in both the fragrance and packaging is remarkable. SMAR\'S has earned a lifelong customer. Golden Tuberose is divine.',
+    text: 'The attention to detail in both the fragrance and packaging is remarkable. SMAR\'S has earned a lifelong customer. Golden is divine.',
     avatar: 'AK',
   },
 ];
