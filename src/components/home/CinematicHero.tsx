@@ -1,14 +1,6 @@
 import { useRef } from 'react';
-import { motion, useScroll, useTransform, type Variants } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
-
-const letterVariants: Variants = {
-  hidden: { opacity: 0, y: 80, rotateX: -40 },
-  visible: (i: number) => ({
-    opacity: 1, y: 0, rotateX: 0,
-    transition: { duration: 0.8, delay: 0.8 + i * 0.06, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] },
-  }),
-};
 
 export default function CinematicHero() {
   const ref = useRef(null);
@@ -16,9 +8,6 @@ export default function CinematicHero() {
   const scale = useTransform(scrollYProgress, [0, 1], [1, 0.85]);
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
   const y = useTransform(scrollYProgress, [0, 1], [0, 200]);
-
-  const brand = 'SMAR\'S'.split('');
-  const tagline = 'Luxury Beyond Fragrance'.split('');
 
   return (
     <motion.section ref={ref} style={{ opacity }} className="relative h-[110vh] min-h-[800px] flex items-center justify-center overflow-hidden bg-deep-coffee">
@@ -42,44 +31,17 @@ export default function CinematicHero() {
           </motion.p>
         </motion.div>
 
-        <h1 className="font-heading text-7xl sm:text-8xl lg:text-[10rem] xl:text-[12rem] leading-[0.85] font-bold text-cream mb-6 flex flex-wrap justify-center gap-x-4">
-          {brand.map((letter, i) => (
-            <motion.span
-              key={i}
-              custom={i}
-              variants={letterVariants}
-              initial="hidden"
-              animate="visible"
-              className="inline-block"
-              style={{ textShadow: '0 4px 40px rgba(0,0,0,0.3)' }}
-            >
-              {letter === "'" ? '\u2019' : letter}
-            </motion.span>
-          ))}
-        </h1>
-
         <motion.div
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: 1 }}
-          transition={{ duration: 1.2, delay: 1.8, ease: [0.16, 1, 0.3, 1] }}
-          className="w-16 h-[1px] bg-champagne-gold/40 mx-auto mb-8 origin-left"
-        />
-
-        <div className="flex flex-wrap justify-center gap-x-3 gap-y-1">
-          {tagline.map((char, i) => (
-            <motion.span
-              key={i}
-              custom={i}
-              variants={letterVariants}
-              initial="hidden"
-              animate="visible"
-              className="text-lg sm:text-xl lg:text-2xl text-cream/50 font-body font-light tracking-[0.15em]"
-              style={{ animationDelay: `${2.2 + i * 0.03}s` }}
-            >
-              {char === ' ' ? '\u00A0' : char}
-            </motion.span>
-          ))}
-        </div>
+          initial={{ opacity: 0, scale: 0.9, y: 30 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 1.2, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <img
+            src="/logo-light.svg"
+            alt="SMAR'S Fragrance"
+            className="w-[280px] sm:w-[360px] lg:w-[480px] xl:w-[560px] mx-auto drop-shadow-2xl"
+          />
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}

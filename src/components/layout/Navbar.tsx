@@ -44,11 +44,11 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex items-center justify-between h-20 lg:h-24">
             <Link to="/" className="flex items-center gap-2 group" onClick={closeMobileMenu}>
-              <span className={`font-heading text-2xl lg:text-3xl font-bold tracking-wider transition-colors ${
-                scrolled ? 'text-champagne-gold' : 'text-white'
-              }`}>
-                SMAR'S
-              </span>
+              <img
+                src={scrolled ? "/logo.svg" : "/logo-light.svg"}
+                alt="SMAR'S Fragrance"
+                className="h-14 lg:h-16 transition-all duration-500"
+              />
             </Link>
 
             <div className="hidden lg:flex items-center gap-8">
@@ -102,6 +102,7 @@ export default function Navbar() {
             className="fixed inset-0 z-40 bg-deep-coffee lg:hidden"
           >
             <div className="flex flex-col items-center justify-center h-full gap-8">
+              <img src="/logo-light.svg" alt="SMAR'S Fragrance" className="h-20 mb-8" />
               {navLinks.map((link, i) => (
                 <motion.div
                   key={link.name}

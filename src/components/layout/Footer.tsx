@@ -8,9 +8,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16 lg:py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
           <div>
-            <Link to="/" className="font-heading text-3xl font-bold text-champagne-gold tracking-wider">
-              SMAR'S
-            </Link>
+            <img src="/logo.svg" alt="SMAR'S Fragrance" className="h-16" />
             <p className="mt-4 text-sm leading-relaxed text-cream/60">
               Crafting exceptional fragrances since 2024. Every bottle tells a story of passion, artistry, and timeless elegance.
             </p>
