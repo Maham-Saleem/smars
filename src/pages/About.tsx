@@ -7,19 +7,19 @@ const pillars = [
     title: 'Artistry',
     description:
       'Every composition is a canvas. Our perfumers blend tradition with intuition, creating fragrances that are felt before they are understood.',
-    image: 'https://images.pexels.com/photos/13284500/pexels-photo-13284500.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: 'https://images.pexels.com/photos/672051/pexels-photo-672051.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
   {
     title: 'Heritage',
     description:
       'We draw from centuries of olfactory knowledge — the rose fields of Grasse, the agarwood forests of Cambodia, the bergamot groves of Calabria.',
-    image: 'https://images.pexels.com/photos/31188628/pexels-photo-31188628.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: 'https://images.pexels.com/photos/29837792/pexels-photo-29837792.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
   {
     title: 'Purity',
     description:
       'No shortcuts. No synthetic compromises. Every ingredient is sourced at its peak, distilled with care, and blended with reverence for the raw material.',
-    image: 'https://images.pexels.com/photos/15097440/pexels-photo-15097440.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: 'https://images.pexels.com/photos/6694202/pexels-photo-6694202.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
 ];
 
