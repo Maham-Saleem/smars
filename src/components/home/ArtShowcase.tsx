@@ -15,7 +15,7 @@ export default function ArtShowcase() {
   const { toggleWishlist, isInWishlist } = useAuthStore();
 
   return (
-    <section ref={ref} className="relative py-28 lg:py-40 bg-cream overflow-hidden">
+    <section ref={ref} className="relative py-20 lg:py-32 bg-cream overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -41,7 +41,7 @@ export default function ArtShowcase() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.08 }}
-              className={`snap-start shrink-0 ${i % 3 === 0 ? 'w-[280px] lg:w-[380px]' : i % 3 === 1 ? 'w-[240px] lg:w-[320px] pt-12' : 'w-[200px] lg:w-[280px] pt-24'}`}
+              className={`snap-start shrink-0 ${i % 3 === 0 ? 'w-[280px] lg:w-[380px]' : i % 3 === 1 ? 'w-[240px] lg:w-[320px]' : 'w-[200px] lg:w-[280px]'}`}
             >
               <div className="group relative">
                 <div className={`relative overflow-hidden mb-4 transition-all duration-700 ${
@@ -83,7 +83,7 @@ export default function ArtShowcase() {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.4 }}
-        className="text-center mt-12"
+        className="text-center mt-8"
       >
         <Link
           to="/shop"
