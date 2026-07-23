@@ -20,11 +20,10 @@ export default function Journal() {
       <section ref={heroRef} className="relative h-[60vh] min-h-[400px] flex items-center overflow-hidden">
         <motion.div style={{ y: heroY }} className="absolute inset-0">
           <img
-            src="https://images.pexels.com/photos/32817141/pexels-photo-32817141.jpeg?auto=compress&cs=tinysrgb&w=1200"
+            src="https://images.pexels.com/photos/34642421/pexels-photo-34642421.jpeg?auto=compress&cs=tinysrgb&w=1200"
             alt="Journal"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0" style={{ backgroundColor: 'rgba(0,0,0,0.65)' }} />
         </motion.div>
 
         <motion.div style={{ opacity: heroOpacity }} className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full">

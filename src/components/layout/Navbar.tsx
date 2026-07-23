@@ -30,8 +30,7 @@ export default function Navbar() {
   }, [location, closeMobileMenu]);
 
   const isHome = location.pathname === '/';
-  const isJournal = location.pathname === '/journal';
-  const isDark = !scrolled && (isHome || isJournal);
+  const isDark = isHome && !scrolled;
 
   return (
     <>
@@ -41,7 +40,7 @@ export default function Navbar() {
         transition={{ duration: 0.8, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
           scrolled
-            ? 'bg-[#2E221B] shadow-lg'
+            ? 'bg-ivory/90 backdrop-blur-md shadow-[0_1px_0_rgba(212,197,178,0.3)]'
             : 'bg-transparent'
         }`}
       >
@@ -52,8 +51,7 @@ export default function Navbar() {
               <img
                 src={isDark ? '/logo.svg' : '/logo.svg'}
                 alt="SMAR'S"
-                className={`h-10 sm:h-12 lg:h-14 transition-all duration-700 ${isDark ? 'brightness-125 saturate-125' : ''}`}
-                style={isDark ? { filter: 'brightness(1.25) saturate(1.25) sepia(0.3) hue-rotate(10deg)' } : undefined}
+                className="h-10 sm:h-12 lg:h-14 transition-all duration-700"
               />
             </Link>
 
@@ -65,12 +63,9 @@ export default function Navbar() {
                   to={link.path}
                   className={`text-[11px] tracking-editorial uppercase font-body transition-colors duration-500 relative group ${
                     isDark
-                      ? 'text-[#F8F4EE] hover:text-white'
-                      : scrolled
-                        ? 'text-[#F8F4EE]/80 hover:text-[#F8F4EE]'
-                        : 'text-espresso/40 hover:text-espresso'
+                      ? 'text-espresso/70 hover:text-espresso'
+                      : 'text-espresso/40 hover:text-espresso'
                   }`}
-                  style={isDark ? { textShadow: '0 2px 8px rgba(0,0,0,0.4)' } : undefined}
                 >
                   {link.name}
                   <span className={`absolute -bottom-1 left-0 w-0 h-[1px] transition-all duration-500 group-hover:w-full ${
@@ -85,52 +80,32 @@ export default function Navbar() {
               <button
                 onClick={openSearch}
                 className={`transition-colors duration-500 ${
-                  isDark
-                    ? 'text-[#F8F4EE] hover:text-white'
-                    : scrolled
-                      ? 'text-[#F8F4EE]/80 hover:text-[#F8F4EE]'
-                      : 'text-espresso/40 hover:text-espresso'
+                  isDark ? 'text-espresso/60 hover:text-espresso' : 'text-espresso/40 hover:text-espresso'
                 }`}
-                style={isDark ? { textShadow: '0 2px 8px rgba(0,0,0,0.4)' } : undefined}
               >
                 <HiOutlineSearch size={20} />
               </button>
               <Link
                 to="/account"
                 className={`hidden sm:block transition-colors duration-500 ${
-                  isDark
-                    ? 'text-[#F8F4EE] hover:text-white'
-                    : scrolled
-                      ? 'text-[#F8F4EE]/80 hover:text-[#F8F4EE]'
-                      : 'text-espresso/40 hover:text-espresso'
+                  isDark ? 'text-espresso/60 hover:text-espresso' : 'text-espresso/40 hover:text-espresso'
                 }`}
-                style={isDark ? { textShadow: '0 2px 8px rgba(0,0,0,0.4)' } : undefined}
               >
                 <HiOutlineUser size={20} />
               </Link>
               <Link
                 to="/account"
                 className={`transition-colors duration-500 relative ${
-                  isDark
-                    ? 'text-[#F8F4EE] hover:text-white'
-                    : scrolled
-                      ? 'text-[#F8F4EE]/80 hover:text-[#F8F4EE]'
-                      : 'text-espresso/40 hover:text-espresso'
+                  isDark ? 'text-espresso/60 hover:text-espresso' : 'text-espresso/40 hover:text-espresso'
                 }`}
-                style={isDark ? { textShadow: '0 2px 8px rgba(0,0,0,0.4)' } : undefined}
               >
                 <HiOutlineHeart size={20} />
               </Link>
               <button
                 onClick={openCart}
                 className={`transition-colors duration-500 relative ${
-                  isDark
-                    ? 'text-[#F8F4EE] hover:text-white'
-                    : scrolled
-                      ? 'text-[#F8F4EE]/80 hover:text-[#F8F4EE]'
-                      : 'text-espresso/40 hover:text-espresso'
+                  isDark ? 'text-espresso/60 hover:text-espresso' : 'text-espresso/40 hover:text-espresso'
                 }`}
-                style={isDark ? { textShadow: '0 2px 8px rgba(0,0,0,0.4)' } : undefined}
               >
                 <HiOutlineShoppingBag size={20} />
                 {totalItems() > 0 && (
@@ -142,13 +117,8 @@ export default function Navbar() {
               <button
                 onClick={toggleMobileMenu}
                 className={`lg:hidden transition-colors duration-500 ml-1 ${
-                  isDark
-                    ? 'text-[#F8F4EE] hover:text-white'
-                    : scrolled
-                      ? 'text-[#F8F4EE]/80 hover:text-[#F8F4EE]'
-                      : 'text-espresso/40 hover:text-espresso'
+                  isDark ? 'text-espresso/60 hover:text-espresso' : 'text-espresso/40 hover:text-espresso'
                 }`}
-                style={isDark ? { textShadow: '0 2px 8px rgba(0,0,0,0.4)' } : undefined}
               >
                 {isMobileMenuOpen ? <HiX size={24} /> : <HiMenu size={24} />}
               </button>
