@@ -24,7 +24,7 @@ export default function Journal() {
             alt="Journal"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0" style={{ backgroundColor: 'rgba(0,0,0,0.45)' }} />
+          <div className="absolute inset-0" style={{ backgroundColor: 'rgba(0,0,0,0.65)' }} />
         </motion.div>
 
         <motion.div style={{ opacity: heroOpacity }} className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full">
