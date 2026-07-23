@@ -31,7 +31,7 @@ export default function ArtShowcase() {
       </div>
 
       <div className="px-6 lg:px-8">
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6 max-w-[1100px] mx-auto">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6 max-w-[1200px] mx-auto">
           {showcase.map((product, i) => (
             <motion.div
               key={product.id}
@@ -39,9 +39,8 @@ export default function ArtShowcase() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.08 }}
-              className={i === 3 ? 'lg:translate-y-8' : ''}
             >
-              <div className="group relative">
+              <div className={`group relative ${i === 3 ? 'lg:mt-12' : ''}`}>
                 <div className="relative overflow-hidden mb-3 rounded-xl aspect-[3/4]">
                   <img
                     src={product.images[0]}
