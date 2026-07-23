@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { HiOutlineHeart } from 'react-icons/hi';
 import { products } from '../../data/products';
@@ -10,8 +10,6 @@ const showcase = products.slice(0, 6);
 
 export default function ArtShowcase() {
   const ref = useRef(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] });
-  const x = useTransform(scrollYProgress, [0, 1], ['5%', '-5%']);
   const { toggleWishlist, isInWishlist } = useAuthStore();
 
   return (
@@ -32,8 +30,8 @@ export default function ArtShowcase() {
         </motion.div>
       </div>
 
-      <motion.div style={{ x }} className="overflow-visible px-6 lg:px-8">
-        <div className="flex gap-5 lg:gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-none pb-4" style={{ scrollbarWidth: 'none' }}>
+      <div className="px-6 lg:px-8">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-5 gap-y-4 lg:gap-x-6 lg:gap-y-5">
           {showcase.map((product, i) => (
             <motion.div
               key={product.id}
@@ -41,7 +39,6 @@ export default function ArtShowcase() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.08 }}
-              className="snap-start shrink-0 w-[200px] sm:w-[240px] lg:w-[280px]"
             >
               <div className="group relative">
                 <div className="relative overflow-hidden mb-3 rounded-xl aspect-[3/4]">
@@ -72,7 +69,7 @@ export default function ArtShowcase() {
             </motion.div>
           ))}
         </div>
-      </motion.div>
+      </div>
 
       <div className="text-center mt-8">
         <Link
