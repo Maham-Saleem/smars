@@ -31,7 +31,7 @@ export default function ArtShowcase() {
       </div>
 
       <div className="px-6 lg:px-8">
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-5 gap-y-4 lg:gap-x-6 lg:gap-y-5">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6 max-w-[960px] mx-auto">
           {showcase.map((product, i) => (
             <motion.div
               key={product.id}
