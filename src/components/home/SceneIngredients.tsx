@@ -6,14 +6,14 @@ const ingredients = [
     name: 'Bergamot',
     origin: 'Calabria, Italy',
     description: 'Hand-peeled at dawn when the essential oils reach their peak concentration. Our bergamot adds a luminous citrus top note.',
-    image: 'https://images.pexels.com/photos/2307648/pexels-photo-2307648.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: 'https://images.unsplash.com/photo-1547514701-42782101795e?auto=format&fit=crop&w=800&q=80',
     accent: 'https://images.pexels.com/photos/13284500/pexels-photo-13284500.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
   {
     name: 'Oud',
     origin: 'Cambodia',
     description: 'Aged for fifteen years in the forests of Pursat. This rare agarwood yields a smoky, animalic depth that defines our darker compositions.',
-    image: 'https://images.pexels.com/photos/4352247/pexels-photo-4352247.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: 'https://images.pexels.com/photos/8796359/pexels-photo-8796359.jpeg?auto=compress&cs=tinysrgb&w=800',
     accent: 'https://images.pexels.com/photos/36389336/pexels-photo-36389336.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
   {
