@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
@@ -62,10 +62,15 @@ const articles = [
 const categories = ['All', 'Craft', 'Ingredients', 'Philosophy', 'Rituals', 'Behind the Scenes'];
 
 export default function Journal() {
+  const [activeCategory, setActiveCategory] = useState('All');
   const heroRef = useRef(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
   const heroY = useTransform(scrollYProgress, [0, 1], [0, 100]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+
+  const filteredArticles = activeCategory === 'All'
+    ? articles
+    : articles.filter((a) => a.category === activeCategory);
 
   return (
     <div className="min-h-screen bg-cream">
@@ -102,7 +107,12 @@ export default function Journal() {
           {categories.map((cat) => (
             <button
               key={cat}
-              className="px-6 py-2 text-xs tracking-[0.2em] uppercase font-body border border-dark-brown/10 text-dark-brown/50 hover:border-champagne-gold hover:text-champagne-gold transition-all duration-500 rounded-full"
+              onClick={() => setActiveCategory(cat)}
+              className={`px-6 py-2 text-xs tracking-[0.2em] uppercase font-body border transition-all duration-500 rounded-full ${
+                activeCategory === cat
+                  ? 'border-champagne-gold text-champagne-gold bg-champagne-gold/10'
+                  : 'border-dark-brown/10 text-dark-brown/50 hover:border-champagne-gold hover:text-champagne-gold'
+              }`}
             >
               {cat}
             </button>
@@ -111,6 +121,7 @@ export default function Journal() {
       </section>
 
       {/* Featured article */}
+      {activeCategory === 'All' && (
       <section className="max-w-7xl mx-auto px-6 lg:px-8 pb-20">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -151,11 +162,12 @@ export default function Journal() {
           </div>
         </motion.div>
       </section>
+      )}
 
       {/* Article grid */}
       <section className="max-w-7xl mx-auto px-6 lg:px-8 pb-24">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
-          {articles.slice(1).map((article, i) => (
+          {(activeCategory === 'All' ? filteredArticles.slice(1) : filteredArticles).map((article, i) => (
             <motion.article
               key={article.id}
               initial={{ opacity: 0, y: 40 }}
