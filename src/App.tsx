@@ -11,6 +11,7 @@ import Cart from './pages/Cart';
 import Checkout from './pages/Checkout';
 import Account from './pages/Account';
 import Journal from './pages/Journal';
+import JournalDetail from './pages/JournalDetail';
 
 export default function App() {
   return (
@@ -28,6 +29,7 @@ export default function App() {
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/account" element={<Account />} />
             <Route path="/journal" element={<Journal />} />
+            <Route path="/journal/:id" element={<JournalDetail />} />
           </Routes>
         </main>
         <Footer />

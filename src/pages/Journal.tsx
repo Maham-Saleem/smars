@@ -1,65 +1,7 @@
 import { useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
-
-const articles = [
-  {
-    id: 1,
-    title: 'The Art of Olfactory Storytelling',
-    excerpt: 'Every fragrance tells a story. Learn how our master perfumers compose scents that evoke emotion, memory, and desire.',
-    category: 'Craft',
-    date: 'June 2026',
-    image: 'https://images.pexels.com/photos/7850600/pexels-photo-7850600.jpeg?auto=compress&cs=tinysrgb&w=800',
-    readTime: '5 min read',
-  },
-  {
-    id: 2,
-    title: 'Oud: The Liquid Gold of Perfumery',
-    excerpt: 'From the forests of Cambodia to the still rooms of Grasse, discover why oud is the most precious ingredient in our collection.',
-    category: 'Ingredients',
-    date: 'May 2026',
-    image: 'https://images.pexels.com/photos/36389336/pexels-photo-36389336.jpeg?auto=compress&cs=tinysrgb&w=800',
-    readTime: '7 min read',
-  },
-  {
-    id: 3,
-    title: 'Why Niche Perfumery Matters',
-    excerpt: 'In a world of mass production, we choose craft over compromise. Here is why niche fragrances are worth the investment.',
-    category: 'Philosophy',
-    date: 'April 2026',
-    image: 'https://images.pexels.com/photos/8624586/pexels-photo-8624586.jpeg?auto=compress&cs=tinysrgb&w=800',
-    readTime: '4 min read',
-  },
-  {
-    id: 4,
-    title: 'Rose de Mai: A Harvest Like No Other',
-    excerpt: 'Every May, the fields of Grasse transform into a sea of pink. Follow the journey from petal to perfume.',
-    category: 'Ingredients',
-    date: 'March 2026',
-    image: 'https://images.pexels.com/photos/31188628/pexels-photo-31188628.jpeg?auto=compress&cs=tinysrgb&w=800',
-    readTime: '6 min read',
-  },
-  {
-    id: 5,
-    title: 'Layering Scents: A Complete Guide',
-    excerpt: 'Master the art of fragrance layering to create a signature that is uniquely yours. Our expert tips inside.',
-    category: 'Rituals',
-    date: 'February 2026',
-    image: 'https://images.pexels.com/photos/13284500/pexels-photo-13284500.jpeg?auto=compress&cs=tinysrgb&w=800',
-    readTime: '5 min read',
-  },
-  {
-    id: 6,
-    title: 'The SMAR\'S Atelier: Where Time Stands Still',
-    excerpt: 'Step inside our studio in Grasse, where master perfumers work in quiet contemplation to compose our most iconic fragrances.',
-    category: 'Behind the Scenes',
-    date: 'January 2026',
-    image: 'https://images.pexels.com/photos/32817141/pexels-photo-32817141.jpeg?auto=compress&cs=tinysrgb&w=800',
-    readTime: '8 min read',
-  },
-];
-
-const categories = ['All', 'Craft', 'Ingredients', 'Philosophy', 'Rituals', 'Behind the Scenes'];
+import { articles, categories } from '../data/articles';
 
 export default function Journal() {
   const [activeCategory, setActiveCategory] = useState('All');
@@ -122,46 +64,46 @@ export default function Journal() {
 
       {/* Featured article */}
       {activeCategory === 'All' && (
-      <section className="max-w-7xl mx-auto px-6 lg:px-8 pb-20">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center"
-        >
-          <div className="relative aspect-[4/5] rounded-2xl overflow-hidden group">
-            <img
-              src={articles[0].image}
-              alt={articles[0].title}
-              className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-deep-coffee/40 via-transparent to-transparent" />
-          </div>
-          <div className="space-y-6">
-            <span className="text-champagne-gold text-xs tracking-[0.3em] uppercase font-body">{articles[0].category}</span>
-            <h2 className="font-heading text-3xl lg:text-4xl xl:text-5xl text-dark-brown leading-tight">
-              {articles[0].title}
-            </h2>
-            <div className="w-12 h-[1px] bg-champagne-gold" />
-            <p className="text-dark-brown/60 leading-relaxed text-base lg:text-lg font-light">
-              {articles[0].excerpt}
-            </p>
-            <div className="flex items-center gap-4 text-xs text-dark-brown/40 font-body">
-              <span>{articles[0].date}</span>
-              <span className="w-1 h-1 rounded-full bg-champagne-gold/40" />
-              <span>{articles[0].readTime}</span>
-            </div>
-            <Link
-              to="#"
-              className="group inline-flex items-center gap-3 text-sm tracking-[0.25em] uppercase text-dark-brown font-body"
-            >
-              <span>Read Article</span>
-              <span className="w-8 h-[1px] bg-dark-brown/30 group-hover:w-12 transition-all duration-500" />
+        <section className="max-w-7xl mx-auto px-6 lg:px-8 pb-20">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center"
+          >
+            <Link to={`/journal/${articles[0].id}`} className="relative aspect-[4/5] rounded-2xl overflow-hidden group">
+              <img
+                src={articles[0].image}
+                alt={articles[0].title}
+                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-deep-coffee/40 via-transparent to-transparent" />
             </Link>
-          </div>
-        </motion.div>
-      </section>
+            <div className="space-y-6">
+              <span className="text-champagne-gold text-xs tracking-[0.3em] uppercase font-body">{articles[0].category}</span>
+              <h2 className="font-heading text-3xl lg:text-4xl xl:text-5xl text-dark-brown leading-tight">
+                {articles[0].title}
+              </h2>
+              <div className="w-12 h-[1px] bg-champagne-gold" />
+              <p className="text-dark-brown/60 leading-relaxed text-base lg:text-lg font-light">
+                {articles[0].excerpt}
+              </p>
+              <div className="flex items-center gap-4 text-xs text-dark-brown/40 font-body">
+                <span>{articles[0].date}</span>
+                <span className="w-1 h-1 rounded-full bg-champagne-gold/40" />
+                <span>{articles[0].readTime}</span>
+              </div>
+              <Link
+                to={`/journal/${articles[0].id}`}
+                className="group inline-flex items-center gap-3 text-sm tracking-[0.25em] uppercase text-dark-brown font-body"
+              >
+                <span>Read Article</span>
+                <span className="w-8 h-[1px] bg-dark-brown/30 group-hover:w-12 transition-all duration-500" />
+              </Link>
+            </div>
+          </motion.div>
+        </section>
       )}
 
       {/* Article grid */}
@@ -174,30 +116,31 @@ export default function Journal() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: i * 0.1 }}
-              className="group cursor-pointer"
             >
-              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden mb-6">
-                <img
-                  src={article.image}
-                  alt={article.title}
-                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-deep-coffee/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              </div>
-              <div className="space-y-3">
-                <div className="flex items-center gap-3">
-                  <span className="text-champagne-gold text-[10px] tracking-[0.3em] uppercase font-body">{article.category}</span>
-                  <span className="w-1 h-1 rounded-full bg-champagne-gold/40" />
-                  <span className="text-dark-brown/30 text-[10px] tracking-wider uppercase font-body">{article.date}</span>
+              <Link to={`/journal/${article.id}`} className="group block">
+                <div className="relative aspect-[4/3] rounded-2xl overflow-hidden mb-6">
+                  <img
+                    src={article.image}
+                    alt={article.title}
+                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-deep-coffee/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </div>
-                <h3 className="font-heading text-xl lg:text-2xl text-dark-brown group-hover:text-champagne-gold transition-colors duration-500 leading-tight">
-                  {article.title}
-                </h3>
-                <p className="text-dark-brown/50 text-sm leading-relaxed font-light line-clamp-2">
-                  {article.excerpt}
-                </p>
-                <span className="text-[10px] text-dark-brown/30 tracking-wider uppercase font-body">{article.readTime}</span>
-              </div>
+                <div className="space-y-3">
+                  <div className="flex items-center gap-3">
+                    <span className="text-champagne-gold text-[10px] tracking-[0.3em] uppercase font-body">{article.category}</span>
+                    <span className="w-1 h-1 rounded-full bg-champagne-gold/40" />
+                    <span className="text-dark-brown/30 text-[10px] tracking-wider uppercase font-body">{article.date}</span>
+                  </div>
+                  <h3 className="font-heading text-xl lg:text-2xl text-dark-brown group-hover:text-champagne-gold transition-colors duration-500 leading-tight">
+                    {article.title}
+                  </h3>
+                  <p className="text-dark-brown/50 text-sm leading-relaxed font-light line-clamp-2">
+                    {article.excerpt}
+                  </p>
+                  <span className="text-[10px] text-dark-brown/30 tracking-wider uppercase font-body">{article.readTime}</span>
+                </div>
+              </Link>
             </motion.article>
           ))}
         </div>
