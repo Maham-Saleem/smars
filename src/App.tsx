@@ -12,6 +12,7 @@ import Checkout from './pages/Checkout';
 import Account from './pages/Account';
 import Journal from './pages/Journal';
 import JournalDetail from './pages/JournalDetail';
+import About from './pages/About';
 
 export default function App() {
   return (
@@ -30,6 +31,7 @@ export default function App() {
             <Route path="/account" element={<Account />} />
             <Route path="/journal" element={<Journal />} />
             <Route path="/journal/:id" element={<JournalDetail />} />
+            <Route path="/about" element={<About />} />
           </Routes>
         </main>
         <Footer />

@@ -38,7 +38,7 @@ export default function Footer() {
               {[
                 { name: 'Home', path: '/' },
                 { name: 'Collections', path: '/shop' },
-                { name: 'About', path: '/#about' },
+                { name: 'About', path: '/about' },
                 { name: 'Account', path: '/account' },
               ].map((item) => (
                 <li key={item.name}>
