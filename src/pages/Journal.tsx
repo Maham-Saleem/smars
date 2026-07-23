@@ -20,7 +20,7 @@ export default function Journal() {
       <section ref={heroRef} className="relative h-[60vh] min-h-[400px] flex items-center overflow-hidden">
         <motion.div style={{ y: heroY }} className="absolute inset-0">
           <img
-            src="https://images.pexels.com/photos/34642421/pexels-photo-34642421.jpeg?auto=compress&cs=tinysrgb&w=1200"
+            src="https://images.pexels.com/photos/4735908/pexels-photo-4735908.jpeg?auto=compress&cs=tinysrgb&w=1200"
             alt="Journal"
             className="w-full h-full object-cover"
           />
