@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
+import ScrollToTop from './components/layout/ScrollToTop';
 import CartSidebar from './components/cart/CartSidebar';
 import SearchModal from './components/layout/SearchModal';
 import Home from './pages/Home';
@@ -17,6 +18,7 @@ import About from './pages/About';
 export default function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <div className="min-h-screen bg-cream">
         <Navbar />
         <CartSidebar />
