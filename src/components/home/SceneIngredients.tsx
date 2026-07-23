@@ -6,7 +6,7 @@ const ingredients = [
     name: 'Bergamot',
     origin: 'Calabria, Italy',
     description: 'Hand-peeled at dawn when the essential oils reach their peak concentration. Our bergamot adds a luminous citrus top note.',
-    image: 'https://images.pexels.com/photos/16156634/pexels-photo-16156634.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: 'https://images.pexels.com/photos/1414651/pexels-photo-1414651.jpeg?auto=compress&cs=tinysrgb&w=800',
     accent: 'https://images.pexels.com/photos/13284500/pexels-photo-13284500.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
   {
@@ -27,7 +27,7 @@ const ingredients = [
     name: 'Vanilla',
     origin: 'Madagascar',
     description: 'Bourbon vanilla from the SAVA region, cured for nine months. Its warm, gourmand sweetness forms the heart of our most sensual creations.',
-    image: 'https://images.pexels.com/photos/6932038/pexels-photo-6932038.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: 'https://images.pexels.com/photos/209339/pexels-photo-209339.jpeg?auto=compress&cs=tinysrgb&w=800',
     accent: 'https://images.pexels.com/photos/15097440/pexels-photo-15097440.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
 ];
