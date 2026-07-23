@@ -49,10 +49,10 @@ export default function Journal() {
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-6 py-2 text-xs tracking-[0.2em] uppercase font-body border transition-all duration-500 rounded-full ${
+              className={`px-6 py-2 text-xs tracking-[0.2em] uppercase font-body border transition-all duration-300 rounded-full ${
                 activeCategory === cat
-                  ? 'border-champagne-gold text-champagne-gold bg-champagne-gold/10'
-                  : 'border-dark-brown/10 text-dark-brown/50 hover:border-champagne-gold hover:text-champagne-gold'
+                  ? 'border-champagne-gold text-champagne-gold bg-champagne-gold/15'
+                  : 'border-dark-brown/15 text-dark-brown/50 hover:border-champagne-gold hover:text-champagne-gold hover:bg-champagne-gold/10 hover:scale-105'
               }`}
             >
               {cat}
