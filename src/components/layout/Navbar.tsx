@@ -41,7 +41,7 @@ export default function Navbar() {
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
           scrolled
             ? 'bg-ivory/90 backdrop-blur-md shadow-[0_1px_0_rgba(212,197,178,0.3)]'
-            : 'bg-transparent'
+            : 'bg-espresso/20 backdrop-blur-sm'
         }`}
       >
         <div className="max-w-[1600px] mx-auto px-6 sm:px-8 lg:px-12">
@@ -63,7 +63,7 @@ export default function Navbar() {
                   to={link.path}
                   className={`text-[11px] tracking-editorial uppercase font-body transition-colors duration-500 relative group ${
                     isDark
-                      ? 'text-espresso/70 hover:text-espresso'
+                      ? 'text-cream/90 hover:text-cream'
                       : 'text-espresso/40 hover:text-espresso'
                   }`}
                 >
@@ -80,7 +80,7 @@ export default function Navbar() {
               <button
                 onClick={openSearch}
                 className={`transition-colors duration-500 ${
-                  isDark ? 'text-espresso/60 hover:text-espresso' : 'text-espresso/40 hover:text-espresso'
+                  isDark ? 'text-cream/80 hover:text-cream' : 'text-espresso/40 hover:text-espresso'
                 }`}
               >
                 <HiOutlineSearch size={20} />
@@ -88,7 +88,7 @@ export default function Navbar() {
               <Link
                 to="/account"
                 className={`hidden sm:block transition-colors duration-500 ${
-                  isDark ? 'text-espresso/60 hover:text-espresso' : 'text-espresso/40 hover:text-espresso'
+                  isDark ? 'text-cream/80 hover:text-cream' : 'text-espresso/40 hover:text-espresso'
                 }`}
               >
                 <HiOutlineUser size={20} />
@@ -96,7 +96,7 @@ export default function Navbar() {
               <Link
                 to="/account"
                 className={`transition-colors duration-500 relative ${
-                  isDark ? 'text-espresso/60 hover:text-espresso' : 'text-espresso/40 hover:text-espresso'
+                  isDark ? 'text-cream/80 hover:text-cream' : 'text-espresso/40 hover:text-espresso'
                 }`}
               >
                 <HiOutlineHeart size={20} />
@@ -104,7 +104,7 @@ export default function Navbar() {
               <button
                 onClick={openCart}
                 className={`transition-colors duration-500 relative ${
-                  isDark ? 'text-espresso/60 hover:text-espresso' : 'text-espresso/40 hover:text-espresso'
+                  isDark ? 'text-cream/80 hover:text-cream' : 'text-espresso/40 hover:text-espresso'
                 }`}
               >
                 <HiOutlineShoppingBag size={20} />
@@ -117,7 +117,7 @@ export default function Navbar() {
               <button
                 onClick={toggleMobileMenu}
                 className={`lg:hidden transition-colors duration-500 ml-1 ${
-                  isDark ? 'text-espresso/60 hover:text-espresso' : 'text-espresso/40 hover:text-espresso'
+                  isDark ? 'text-cream/80 hover:text-cream' : 'text-espresso/40 hover:text-espresso'
                 }`}
               >
                 {isMobileMenuOpen ? <HiX size={24} /> : <HiMenu size={24} />}
