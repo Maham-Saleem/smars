@@ -7,9 +7,9 @@ import { useAuthStore } from '../../store/authStore';
 import { useUIStore } from '../../store/uiStore';
 
 const navLinks = [
+  { name: 'Atelier', path: '/' },
   { name: 'Collections', path: '/shop' },
   { name: 'Journal', path: '/journal' },
-  { name: 'Atelier', path: '/' },
   { name: 'About', path: '/#about' },
 ];
 
