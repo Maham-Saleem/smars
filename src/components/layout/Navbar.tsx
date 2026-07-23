@@ -9,7 +9,8 @@ import { useUIStore } from '../../store/uiStore';
 const navLinks = [
   { name: 'Collections', path: '/shop' },
   { name: 'Journal', path: '/journal' },
-  { name: 'Atelier', path: '/#about' },
+  { name: 'Atelier', path: '/' },
+  { name: 'About', path: '/#about' },
 ];
 
 export default function Navbar() {
