@@ -48,7 +48,7 @@ export default function About() {
             alt="SMAR'S Atelier"
             className="w-full h-[120%] object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-espresso/30 via-espresso/10 to-cream" />
+          <div className="absolute inset-0 bg-gradient-to-b from-cream/70 via-cream/20 to-cream" />
         </motion.div>
 
         <motion.div style={{ opacity: heroOpacity }} className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full">
