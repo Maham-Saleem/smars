@@ -24,7 +24,7 @@ export default function Journal() {
             alt="Journal"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-deep-coffee/30 via-deep-coffee/15 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-deep-coffee/15 via-deep-coffee/5 to-transparent" />
         </motion.div>
 
         <motion.div style={{ opacity: heroOpacity }} className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full">
