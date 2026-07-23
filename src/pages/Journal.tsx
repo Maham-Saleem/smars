@@ -167,7 +167,7 @@ export default function Journal() {
                 placeholder="Your email"
                 className="flex-1 px-6 py-3 bg-transparent border border-dark-brown/15 text-dark-brown text-sm font-body placeholder:text-dark-brown/30 focus:outline-none focus:border-champagne-gold transition-colors duration-500"
               />
-              <button className="px-8 py-3 bg-dark-brown text-cream text-[10px] tracking-[0.25em] uppercase font-body hover:bg-champagne-gold transition-colors duration-500">
+              <button className="px-8 py-3 bg-espresso text-cream text-[10px] tracking-[0.25em] uppercase font-body hover:bg-bronze transition-colors duration-500">
                 Subscribe
               </button>
             </div>
