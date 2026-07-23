@@ -30,7 +30,7 @@ export default function Navbar() {
   }, [location, closeMobileMenu]);
 
   const isHome = location.pathname === '/';
-  const showLight = isHome && !scrolled;
+  const isDark = isHome && !scrolled;
 
   return (
     <>
@@ -49,7 +49,7 @@ export default function Navbar() {
             {/* Logo */}
             <Link to="/" onClick={closeMobileMenu} className="relative z-10">
               <img
-                src={showLight ? '/logo-light.svg' : '/logo.svg'}
+                src={isDark ? '/logo.svg' : '/logo.svg'}
                 alt="SMAR'S"
                 className="h-10 sm:h-12 lg:h-14 transition-all duration-700"
               />
@@ -62,14 +62,14 @@ export default function Navbar() {
                   key={link.name}
                   to={link.path}
                   className={`text-[11px] tracking-editorial uppercase font-body transition-colors duration-500 relative group ${
-                    showLight
-                      ? 'text-cream/60 hover:text-cream'
+                    isDark
+                      ? 'text-espresso/70 hover:text-espresso'
                       : 'text-espresso/40 hover:text-espresso'
                   }`}
                 >
                   {link.name}
                   <span className={`absolute -bottom-1 left-0 w-0 h-[1px] transition-all duration-500 group-hover:w-full ${
-                    showLight ? 'bg-champagne/60' : 'bg-bronze/60'
+                    isDark ? 'bg-bronze/60' : 'bg-bronze/60'
                   }`} />
                 </Link>
               ))}
@@ -80,7 +80,7 @@ export default function Navbar() {
               <button
                 onClick={openSearch}
                 className={`transition-colors duration-500 ${
-                  showLight ? 'text-cream/60 hover:text-cream' : 'text-espresso/40 hover:text-espresso'
+                  isDark ? 'text-espresso/60 hover:text-espresso' : 'text-espresso/40 hover:text-espresso'
                 }`}
               >
                 <HiOutlineSearch size={20} />
@@ -88,7 +88,7 @@ export default function Navbar() {
               <Link
                 to="/account"
                 className={`hidden sm:block transition-colors duration-500 ${
-                  showLight ? 'text-cream/60 hover:text-cream' : 'text-espresso/40 hover:text-espresso'
+                  isDark ? 'text-espresso/60 hover:text-espresso' : 'text-espresso/40 hover:text-espresso'
                 }`}
               >
                 <HiOutlineUser size={20} />
@@ -96,7 +96,7 @@ export default function Navbar() {
               <Link
                 to="/account"
                 className={`transition-colors duration-500 relative ${
-                  showLight ? 'text-cream/60 hover:text-cream' : 'text-espresso/40 hover:text-espresso'
+                  isDark ? 'text-espresso/60 hover:text-espresso' : 'text-espresso/40 hover:text-espresso'
                 }`}
               >
                 <HiOutlineHeart size={20} />
@@ -104,7 +104,7 @@ export default function Navbar() {
               <button
                 onClick={openCart}
                 className={`transition-colors duration-500 relative ${
-                  showLight ? 'text-cream/60 hover:text-cream' : 'text-espresso/40 hover:text-espresso'
+                  isDark ? 'text-espresso/60 hover:text-espresso' : 'text-espresso/40 hover:text-espresso'
                 }`}
               >
                 <HiOutlineShoppingBag size={20} />
@@ -117,7 +117,7 @@ export default function Navbar() {
               <button
                 onClick={toggleMobileMenu}
                 className={`lg:hidden transition-colors duration-500 ml-1 ${
-                  showLight ? 'text-cream/60 hover:text-cream' : 'text-espresso/40 hover:text-espresso'
+                  isDark ? 'text-espresso/60 hover:text-espresso' : 'text-espresso/40 hover:text-espresso'
                 }`}
               >
                 {isMobileMenuOpen ? <HiX size={24} /> : <HiMenu size={24} />}
