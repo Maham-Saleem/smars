@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   HiOutlineUser, HiOutlineHeart, HiOutlineLocationMarker, HiOutlineLogout,
   HiOutlineClipboardList, HiOutlineShieldCheck, HiOutlineAdjustments,
-  HiOutlineMail, HiOutlinePhone, HiOutlinePencil, HiOutlineTrash,
+  HiOutlineMail, HiOutlinePencil, HiOutlineTrash,
   HiOutlinePlus, HiOutlineStar, HiOutlineShoppingBag, HiOutlineEye,
   HiOutlineChevronRight, HiOutlineClock, HiOutlineLockClosed, HiOutlineGlobe,
   HiOutlineBell,   HiOutlineCalendar, HiOutlineCheck, HiOutlineRefresh,
