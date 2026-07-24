@@ -12,10 +12,23 @@ import { useOrderStore } from '../store/orderStore';
 type Tab = 'profile' | 'orders' | 'wishlist' | 'addresses';
 
 export default function Account() {
-  const { isAuthenticated, user, logout, wishlist } = useAuthStore();
+  const { isAuthenticated, user, logout, wishlist, savedAddress, updateProfile, saveAddress: persistAddress } = useAuthStore();
   const orders = useOrderStore((s) => s.orders);
   const [activeTab, setActiveTab] = useState<Tab>('profile');
   const [authView, setAuthView] = useState<'login' | 'register' | 'forgot'>('login');
+  const [editingProfile, setEditingProfile] = useState(false);
+  const [editingAddr, setEditingAddr] = useState(false);
+  const [profileForm, setProfileForm] = useState({ name: user?.name || '', phone: user?.phone || '' });
+  const [addressForm, setAddressForm] = useState({
+    fullName: savedAddress?.fullName || user?.name || '',
+    phone: savedAddress?.phone || user?.phone || '',
+    address: savedAddress?.address || '',
+    apartment: savedAddress?.apartment || '',
+    city: savedAddress?.city || '',
+    state: savedAddress?.state || '',
+    zip: savedAddress?.zip || '',
+    country: savedAddress?.country || 'United States',
+  });
 
   const wishlistProducts = products.filter((p) => wishlist.includes(p.id));
 
@@ -126,23 +139,58 @@ export default function Account() {
                 >
                   <h2 className="font-heading text-2xl text-dark-brown mb-6">Profile Settings</h2>
                   <div className="space-y-4 max-w-md">
-                    {[
-                      { label: 'Full Name', value: user?.name, icon: HiOutlineUser },
-                      { label: 'Email', value: user?.email, icon: HiOutlineMail },
-                      { label: 'Phone', value: '+1 (555) 123-4567', icon: HiOutlinePhone },
-                    ].map((field) => (
-                      <div key={field.label} className="flex items-center gap-4 p-4 bg-warm-beige rounded-xl">
-                        <field.icon size={20} className="text-dark-brown/40 shrink-0" />
-                        <div>
-                          <p className="text-xs text-dark-brown/50 uppercase tracking-wider">{field.label}</p>
-                          <p className="text-dark-brown">{field.value}</p>
-                        </div>
+                    <div className="flex items-center gap-4 p-4 bg-warm-beige rounded-xl">
+                      <HiOutlineUser size={20} className="text-dark-brown/40 shrink-0" />
+                      <div className="flex-1">
+                        <p className="text-xs text-dark-brown/50 uppercase tracking-wider">Full Name</p>
+                        {editingProfile ? (
+                          <input
+                            type="text" value={profileForm.name}
+                            onChange={(e) => setProfileForm({ ...profileForm, name: e.target.value })}
+                            className="w-full bg-transparent border-b border-dark-brown/20 text-dark-brown outline-none py-0.5"
+                          />
+                        ) : (
+                          <p className="text-dark-brown">{user?.name}</p>
+                        )}
                       </div>
-                    ))}
+                    </div>
+                    <div className="flex items-center gap-4 p-4 bg-warm-beige rounded-xl">
+                      <HiOutlineMail size={20} className="text-dark-brown/40 shrink-0" />
+                      <div>
+                        <p className="text-xs text-dark-brown/50 uppercase tracking-wider">Email</p>
+                        <p className="text-dark-brown">{user?.email}</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-4 p-4 bg-warm-beige rounded-xl">
+                      <HiOutlinePhone size={20} className="text-dark-brown/40 shrink-0" />
+                      <div className="flex-1">
+                        <p className="text-xs text-dark-brown/50 uppercase tracking-wider">Phone</p>
+                        {editingProfile ? (
+                          <input
+                            type="tel" value={profileForm.phone}
+                            onChange={(e) => setProfileForm({ ...profileForm, phone: e.target.value })}
+                            className="w-full bg-transparent border-b border-dark-brown/20 text-dark-brown outline-none py-0.5"
+                          />
+                        ) : (
+                          <p className="text-dark-brown">{user?.phone || 'Not set'}</p>
+                        )}
+                      </div>
+                    </div>
                   </div>
-                  <button className="mt-6 px-6 py-2 border border-dark-brown/20 text-dark-brown/60 text-sm tracking-wider uppercase rounded-lg hover:border-dark-brown hover:text-dark-brown transition-all">
-                    Edit Profile
-                  </button>
+                  {editingProfile ? (
+                    <div className="flex gap-3 mt-6">
+                      <button onClick={() => { setEditingProfile(false); setProfileForm({ name: user?.name || '', phone: user?.phone || '' }); }} className="px-6 py-2 border border-dark-brown/20 text-dark-brown/60 text-sm tracking-wider uppercase rounded-lg hover:border-dark-brown hover:text-dark-brown transition-all">
+                        Cancel
+                      </button>
+                      <button onClick={() => { updateProfile(profileForm); setEditingProfile(false); }} className="px-6 py-2 bg-dark-brown text-cream text-sm tracking-wider uppercase rounded-lg hover:bg-champagne-gold hover:text-deep-coffee active:bg-dark-brown/90 focus:outline-none focus:ring-2 focus:ring-dark-brown/20 transition-all">
+                        Save Changes
+                      </button>
+                    </div>
+                  ) : (
+                    <button onClick={() => { setEditingProfile(true); setProfileForm({ name: user?.name || '', phone: user?.phone || '' }); }} className="mt-6 px-6 py-2 border border-dark-brown/20 text-dark-brown/60 text-sm tracking-wider uppercase rounded-lg hover:border-dark-brown hover:text-dark-brown transition-all">
+                      Edit Profile
+                    </button>
+                  )}
                 </motion.div>
               )}
 
@@ -221,18 +269,72 @@ export default function Account() {
                   exit={{ opacity: 0, y: -10 }}
                 >
                   <h2 className="font-heading text-2xl text-dark-brown mb-6">Saved Addresses</h2>
-                  <div className="bg-white rounded-2xl p-6 shadow-sm">
-                    <div className="flex items-start justify-between">
-                      <div>
-                        <p className="font-heading text-dark-brown">Home</p>
-                        <p className="text-sm text-dark-brown/60 mt-1">123 Luxury Lane<br />Beverly Hills, CA 90210<br />United States</p>
+                  {editingAddr ? (
+                    <div className="bg-white rounded-2xl p-6 shadow-sm">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div className="sm:col-span-2">
+                          <label className="block text-xs tracking-wider uppercase text-dark-brown/50 mb-2">Full Name</label>
+                          <input type="text" value={addressForm.fullName} onChange={(e) => setAddressForm({ ...addressForm, fullName: e.target.value })} className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors" />
+                        </div>
+                        <div>
+                          <label className="block text-xs tracking-wider uppercase text-dark-brown/50 mb-2">Phone</label>
+                          <input type="tel" value={addressForm.phone} onChange={(e) => setAddressForm({ ...addressForm, phone: e.target.value })} className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors" />
+                        </div>
+                        <div className="sm:col-span-2">
+                          <label className="block text-xs tracking-wider uppercase text-dark-brown/50 mb-2">Street Address</label>
+                          <input type="text" value={addressForm.address} onChange={(e) => setAddressForm({ ...addressForm, address: e.target.value })} className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors" />
+                        </div>
+                        <div className="sm:col-span-2">
+                          <label className="block text-xs tracking-wider uppercase text-dark-brown/50 mb-2">Apartment (optional)</label>
+                          <input type="text" value={addressForm.apartment} onChange={(e) => setAddressForm({ ...addressForm, apartment: e.target.value })} className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors" />
+                        </div>
+                        <div>
+                          <label className="block text-xs tracking-wider uppercase text-dark-brown/50 mb-2">City</label>
+                          <input type="text" value={addressForm.city} onChange={(e) => setAddressForm({ ...addressForm, city: e.target.value })} className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors" />
+                        </div>
+                        <div>
+                          <label className="block text-xs tracking-wider uppercase text-dark-brown/50 mb-2">State</label>
+                          <input type="text" value={addressForm.state} onChange={(e) => setAddressForm({ ...addressForm, state: e.target.value })} className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors" />
+                        </div>
+                        <div>
+                          <label className="block text-xs tracking-wider uppercase text-dark-brown/50 mb-2">Postal Code</label>
+                          <input type="text" value={addressForm.zip} onChange={(e) => setAddressForm({ ...addressForm, zip: e.target.value })} className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors" />
+                        </div>
+                        <div>
+                          <label className="block text-xs tracking-wider uppercase text-dark-brown/50 mb-2">Country</label>
+                          <input type="text" value={addressForm.country} onChange={(e) => setAddressForm({ ...addressForm, country: e.target.value })} className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors" />
+                        </div>
                       </div>
-                      <button className="text-xs text-dark-brown/50 hover:text-champagne-gold transition-colors">Edit</button>
+                      <div className="flex gap-3 mt-6">
+                        <button onClick={() => { setEditingAddr(false); }} className="flex-1 py-3 border border-dark-brown/20 text-dark-brown/60 text-sm tracking-wider uppercase rounded-lg hover:border-dark-brown hover:text-dark-brown transition-all">
+                          Cancel
+                        </button>
+                        <button onClick={() => { persistAddress(addressForm); setEditingAddr(false); }} className="flex-1 py-3 bg-dark-brown text-cream text-sm tracking-widest uppercase font-medium hover:bg-champagne-gold hover:text-deep-coffee active:bg-dark-brown/90 focus:outline-none focus:ring-2 focus:ring-dark-brown/20 transition-all duration-300 rounded-lg">
+                          Save Address
+                        </button>
+                      </div>
                     </div>
-                  </div>
-                  <button className="mt-4 px-6 py-3 border border-dashed border-dark-brown/20 rounded-2xl text-sm text-dark-brown/50 hover:border-dark-brown hover:text-dark-brown transition-all w-full">
-                    + Add New Address
-                  </button>
+                  ) : (
+                    <>
+                      {savedAddress ? (
+                        <div className="bg-white rounded-2xl p-6 shadow-sm">
+                          <div className="flex items-start justify-between">
+                            <div>
+                              <p className="font-heading text-dark-brown">{savedAddress.fullName}</p>
+                              <p className="text-sm text-dark-brown/60 mt-1">{savedAddress.address}{savedAddress.apartment ? `, ${savedAddress.apartment}` : ''}<br />{savedAddress.city}, {savedAddress.state} {savedAddress.zip}<br />{savedAddress.country}</p>
+                              <p className="text-sm text-dark-brown/40 mt-2">{savedAddress.phone}</p>
+                            </div>
+                            <button onClick={() => { setAddressForm({ ...savedAddress }); setEditingAddr(true); }} className="text-xs text-dark-brown/50 hover:text-champagne-gold transition-colors">Edit</button>
+                          </div>
+                        </div>
+                      ) : (
+                        <p className="text-dark-brown/50 bg-white rounded-2xl p-6 shadow-sm">No saved address yet.</p>
+                      )}
+                      <button onClick={() => setEditingAddr(true)} className="mt-4 px-6 py-3 border border-dashed border-dark-brown/20 rounded-2xl text-sm text-dark-brown/50 hover:border-dark-brown hover:text-dark-brown transition-all w-full">
+                        + Add New Address
+                      </button>
+                    </>
+                  )}
                 </motion.div>
               )}
             </AnimatePresence>
