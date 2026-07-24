@@ -16,10 +16,11 @@ export default function Footer() {
               a story of passion, artistry, and timeless elegance.
             </p>
             <div className="flex gap-4">
-              {[FaInstagram, FaPinterestP].map((Icon, i) => (
+              {[{ Icon: FaInstagram, label: 'Instagram' }, { Icon: FaPinterestP, label: 'Pinterest' }].map(({ Icon, label }) => (
                 <a
-                  key={i}
+                  key={label}
                   href="#"
+                  aria-label={label}
                   className="w-10 h-10 rounded-full flex items-center justify-center text-cream/30 hover:text-champagne hover:bg-cream/5 transition-all duration-500"
                   style={{ border: '1px solid rgba(199, 163, 107, 0.15)' }}
                 >

@@ -10,10 +10,11 @@ export default function Pagination({ current, total, onPage }: Props) {
   if (total <= 1) return null;
 
   return (
-    <div className="flex items-center justify-center gap-1 mt-16">
+    <nav className="flex items-center justify-center gap-1 mt-16" aria-label="Pagination">
       <button
         onClick={() => onPage(current - 1)}
         disabled={current === 1}
+        aria-label="Previous page"
         className="w-10 h-10 flex items-center justify-center text-espresso/20 hover:text-espresso/60 disabled:opacity-20 disabled:cursor-not-allowed transition-colors"
       >
         <HiChevronLeft size={16} />
@@ -24,6 +25,7 @@ export default function Pagination({ current, total, onPage }: Props) {
           <button
             key={page}
             onClick={() => onPage(page)}
+            aria-label={`Page ${page}`}
             className={`w-10 h-10 text-xs tracking-[0.2em] font-body rounded transition-all duration-500 ${
               current === page
                 ? 'bg-espresso text-cream'
@@ -37,10 +39,11 @@ export default function Pagination({ current, total, onPage }: Props) {
       <button
         onClick={() => onPage(current + 1)}
         disabled={current === total}
+        aria-label="Next page"
         className="w-10 h-10 flex items-center justify-center text-espresso/20 hover:text-espresso/60 disabled:opacity-20 disabled:cursor-not-allowed transition-colors"
       >
         <HiChevronRight size={16} />
       </button>
-    </div>
+    </nav>
   );
 }
