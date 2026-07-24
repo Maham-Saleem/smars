@@ -1,16 +1,29 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { HiOutlineMinus, HiOutlinePlus, HiOutlineTrash, HiOutlineArrowLeft, HiOutlineShoppingBag } from 'react-icons/hi';
+import { HiOutlineMinus, HiOutlinePlus, HiOutlineTrash, HiOutlineArrowLeft, HiOutlineShoppingBag, HiX } from 'react-icons/hi';
 import { useCartStore } from '../store/cartStore';
+import { useCouponStore } from '../store/couponStore';
+import toast from 'react-hot-toast';
 
 export default function Cart() {
   const { items, removeItem, updateQuantity, totalPrice } = useCartStore();
-  const [coupon, setCoupon] = useState('');
-  const [couponApplied, setCouponApplied] = useState(false);
+  const { appliedCode, activeCoupon, applyCoupon, removeCoupon, calculateDiscount } = useCouponStore();
+  const [couponInput, setCouponInput] = useState('');
 
-  const discount = couponApplied ? totalPrice() * 0.1 : 0;
+  const discount = calculateDiscount(totalPrice());
   const shipping = totalPrice() > 300 ? 0 : 15;
+
+  const handleApplyCoupon = () => {
+    if (!couponInput.trim()) { toast.error('Please enter a coupon code.'); return; }
+    const result = applyCoupon(couponInput);
+    if (result.success) {
+      toast.success(result.message);
+      setCouponInput('');
+    } else {
+      toast.error(result.message);
+    }
+  };
 
   return (
     <div className="pt-24 lg:pt-28 pb-20 bg-cream min-h-screen">
@@ -91,9 +104,14 @@ export default function Cart() {
                     <span>Subtotal</span>
                     <span>${totalPrice().toFixed(2)}</span>
                   </div>
-                  {couponApplied && (
-                    <div className="flex justify-between text-green-600">
-                      <span>Discount (10%)</span>
+                  {discount > 0 && activeCoupon && (
+                    <div className="flex justify-between text-emerald-600">
+                      <span className="flex items-center gap-1.5">
+                        Discount ({activeCoupon.code})
+                        <button onClick={() => { removeCoupon(); toast.success('Coupon removed'); }} aria-label="Remove coupon" className="text-emerald-400 hover:text-emerald-600 transition-colors">
+                          <HiX size={14} />
+                        </button>
+                      </span>
                       <span>-${discount.toFixed(2)}</span>
                     </div>
                   )}
@@ -111,18 +129,22 @@ export default function Cart() {
                   <div className="flex gap-2">
                     <input
                       type="text"
-                      value={coupon}
-                      onChange={(e) => setCoupon(e.target.value)}
+                      value={couponInput}
+                      onChange={(e) => setCouponInput(e.target.value)}
+                      onKeyDown={(e) => e.key === 'Enter' && handleApplyCoupon()}
                       placeholder="Coupon code"
-                      className="flex-1 px-4 py-2 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold placeholder-dark-brown/30"
+                      className="flex-1 px-4 py-2 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold placeholder-dark-brown/30 font-light"
                     />
                     <button
-                      onClick={() => { if (coupon) setCouponApplied(true); }}
+                      onClick={handleApplyCoupon}
                       className="px-4 py-2 bg-dark-brown text-cream text-xs tracking-wider uppercase rounded-lg hover:bg-champagne-gold hover:text-deep-coffee active:bg-dark-brown/90 focus:outline-none focus:ring-2 focus:ring-dark-brown/20 transition-all"
                     >
                       Apply
                     </button>
                   </div>
+                  {!appliedCode && (
+                    <p className="text-[9px] text-dark-brown/30 mt-2 font-light">Try: WELCOME10, SMARS20, VIP50</p>
+                  )}
                 </div>
 
                 <Link

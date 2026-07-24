@@ -6,6 +6,7 @@ import { useCartStore } from '../store/cartStore';
 import { useAuthStore } from '../store/authStore';
 import { useOrderStore, generateOrderId, estimateDeliveryDate } from '../store/orderStore';
 import { useUIStore } from '../store/uiStore';
+import { useCouponStore } from '../store/couponStore';
 import toast from 'react-hot-toast';
 
 const steps = ['Shipping', 'Delivery', 'Payment', 'Review'];
@@ -103,7 +104,8 @@ export default function Checkout() {
 
   const selectedDelivery = deliveryMethods.find((d) => d.id === deliveryMethod)!;
   const selectedPayment = paymentMethods.find((m) => m.id === paymentMethod)!;
-  const discount = totalPrice() * 0.1;
+  const { activeCoupon, calculateDiscount } = useCouponStore();
+  const discount = calculateDiscount(totalPrice());
   const shippingCost = deliveryMethod === 'pickup' ? 0 : selectedDelivery.cost;
   const finalTotal = totalPrice() - discount + shippingCost;
 
@@ -540,7 +542,7 @@ export default function Checkout() {
 
                 <div className="mt-6 space-y-2 text-sm border-t border-dark-brown/10 pt-6">
                   <div className="flex justify-between text-dark-brown/70"><span>Subtotal</span><span>${totalPrice().toFixed(2)}</span></div>
-                  <div className="flex justify-between text-dark-brown/70"><span>Discount</span><span>-${discount.toFixed(2)}</span></div>
+                  <div className="flex justify-between text-dark-brown/70"><span>Discount{activeCoupon ? ` (${activeCoupon.code})` : ''}</span><span>-${discount.toFixed(2)}</span></div>
                   <div className="flex justify-between text-dark-brown/70"><span>Shipping</span><span>{shippingCost === 0 ? 'Free' : `$${shippingCost.toFixed(2)}`}</span></div>
                   <div className="flex justify-between font-heading text-xl text-dark-brown pt-2 border-t border-dark-brown/10 mt-2">
                     <span>Total</span>
