@@ -38,11 +38,21 @@ export default function SearchModal() {
   };
 
   const filtered = query
-    ? products.filter(
-        (p) =>
-          p.name.toLowerCase().includes(query.toLowerCase()) ||
-          p.description.toLowerCase().includes(query.toLowerCase())
-      )
+    ? products
+        .filter(
+          (p) =>
+            p.name.toLowerCase().includes(query.toLowerCase()) ||
+            p.description.toLowerCase().includes(query.toLowerCase())
+        )
+        .sort((a, b) => {
+          const q = query.toLowerCase();
+          const aName = a.name.toLowerCase();
+          const bName = b.name.toLowerCase();
+          const aNameMatch = aName.includes(q) ? (aName.startsWith(q) ? 0 : 1) : 2;
+          const bNameMatch = bName.includes(q) ? (bName.startsWith(q) ? 0 : 1) : 2;
+          if (aNameMatch !== bNameMatch) return aNameMatch - bNameMatch;
+          return aName.localeCompare(bName);
+        })
     : [];
 
   return (
