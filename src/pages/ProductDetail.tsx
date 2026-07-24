@@ -38,9 +38,9 @@ export default function ProductDetail() {
   const related = products.filter((p) => p.collection === product.collection && p.id !== product.id).slice(0, 4);
 
   return (
-    <div className="pt-20 lg:pt-24 bg-cream min-h-screen">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-8 lg:py-12">
-        <Link to="/shop" className="inline-flex items-center gap-2 text-sm text-dark-brown/50 hover:text-champagne-gold transition-colors mb-8">
+    <div className="pt-20 lg:pt-24 bg-cream min-h-screen pb-16 lg:pb-0">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-12">
+        <Link to="/shop" className="inline-flex items-center gap-2 text-sm text-dark-brown/50 hover:text-champagne-gold transition-colors mb-6 sm:mb-8">
           <HiChevronLeft size={18} />
           Back to Shop
         </Link>
@@ -126,13 +126,13 @@ export default function ProductDetail() {
               </button>
             </div>
 
-            <div className="mt-8 border-t border-dark-brown/10 pt-8">
-              <div className="flex gap-6 border-b border-dark-brown/10">
+            <div className="mt-8 sm:mt-12 border-t border-dark-brown/10 pt-6 sm:pt-8">
+              <div className="flex gap-6 border-b border-dark-brown/10 overflow-x-auto scrollbar-none -mx-4 sm:mx-0 px-4 sm:px-0">
                 {(['description', 'notes', 'reviews'] as const).map((tab) => (
                   <button
                     key={tab}
                     onClick={() => setActiveTab(tab)}
-                    className={`pb-3 text-sm tracking-wider uppercase transition-colors ${
+                    className={`pb-3 text-sm tracking-wider uppercase transition-colors whitespace-nowrap ${
                       activeTab === tab ? 'text-dark-brown border-b-2 border-dark-brown' : 'text-dark-brown/40 hover:text-dark-brown/70'
                     }`}
                   >
@@ -273,6 +273,44 @@ export default function ProductDetail() {
             </div>
           </div>
         )}
+      </div>
+
+      {/* Sticky Add to Cart bar — mobile only */}
+      <div className="fixed bottom-0 left-0 right-0 z-30 lg:hidden bg-cream/95 backdrop-blur-md border-t border-dark-brown/10 px-4 py-3 safe-bottom">
+        <div className="flex items-center gap-3 max-w-lg mx-auto">
+          <div className="flex items-center border border-dark-brown/20 rounded-lg shrink-0">
+            <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="touch-target w-10 flex items-center justify-center hover:bg-dark-brown/5 transition-colors">
+              <HiMinus size={16} />
+            </button>
+            <span className="w-8 text-center text-sm font-body">{quantity}</span>
+            <button onClick={() => setQuantity(quantity + 1)} className="touch-target w-10 flex items-center justify-center hover:bg-dark-brown/5 transition-colors">
+              <HiPlus size={16} />
+            </button>
+          </div>
+          <button
+            onClick={() => {
+              if (isAuthenticated) {
+                addItem(product, quantity);
+                toast.success('Added to your shopping bag.');
+              } else {
+                setPendingProduct(product);
+                openAuth();
+              }
+            }}
+            className="flex-1 py-3 bg-dark-brown text-cream text-xs tracking-widest uppercase font-medium hover:bg-champagne-gold hover:text-deep-coffee active:bg-dark-brown/90 focus:outline-none focus:ring-2 focus:ring-dark-brown/20 transition-all duration-300 rounded-lg flex items-center justify-center gap-2"
+          >
+            <HiOutlineShoppingBag size={16} />
+            Add to Cart — ${(product.price * quantity).toFixed(2)}
+          </button>
+          <button
+            onClick={() => { toggleWishlist(product.id); toast.success(isInWishlist(product.id) ? 'Added to wishlist' : 'Removed from wishlist'); }}
+            className={`touch-target w-12 flex items-center justify-center rounded-lg border transition-all shrink-0 ${
+              isInWishlist(product.id) ? 'bg-champagne-gold border-champagne-gold text-deep-coffee' : 'border-dark-brown/20 text-dark-brown/50 hover:border-dark-brown'
+            }`}
+          >
+            <HiOutlineHeart size={18} />
+          </button>
+        </div>
       </div>
     </div>
   );
