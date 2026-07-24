@@ -1,15 +1,27 @@
 import { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { HiOutlineHeart } from 'react-icons/hi';
+import { HiOutlineHeart, HiOutlineShoppingBag } from 'react-icons/hi';
 import { products } from '../../data/products';
 import { useAuthStore } from '../../store/authStore';
+import { useCartStore } from '../../store/cartStore';
 import toast from 'react-hot-toast';
 
 export default function SceneShop() {
   const ref = useRef(null);
   const [filter, setFilter] = useState<string>('all');
-  const { toggleWishlist, isInWishlist } = useAuthStore();
+  const { toggleWishlist, isInWishlist, isAuthenticated, openAuth, setPendingProduct } = useAuthStore();
+  const { addItem } = useCartStore();
+
+  const handleAddToCart = (product: (typeof products)[0]) => {
+    if (isAuthenticated) {
+      addItem(product);
+      toast.success(`${product.name} added to your bag.`);
+    } else {
+      setPendingProduct(product);
+      openAuth();
+    }
+  };
 
   const filtered = filter === 'all'
     ? products.slice(0, 8)
@@ -145,6 +157,13 @@ export default function SceneShop() {
                     </span>
                   )}
                 </div>
+                <button
+                  onClick={() => handleAddToCart(product)}
+                  className="mt-3 w-full py-2.5 bg-espresso text-cream text-[9px] tracking-widest uppercase font-body rounded-full hover:bg-bronze active:bg-espresso/90 focus:outline-none focus:ring-2 focus:ring-espresso/20 transition-all duration-500 opacity-0 group-hover:opacity-100 translate-y-1 group-hover:translate-y-0 flex items-center justify-center gap-2"
+                >
+                  <HiOutlineShoppingBag size={14} />
+                  Add to Cart
+                </button>
               </div>
             </motion.div>
           ))}
