@@ -58,16 +58,13 @@ export default function Sidebar({ filters, setFilters }: Props) {
             <button
               key={item.value}
               onClick={() => update('collection', item.value)}
-              className={`block w-full text-left py-2 text-sm border-b border-transparent transition-all duration-500 ${
+              className={`block w-full text-left py-2 px-3 text-sm rounded transition-all duration-500 ${
                 filters.collection === item.value
-                  ? 'text-espresso border-bronze/40'
-                  : 'text-espresso/40 hover:text-espresso/70'
+                  ? 'bg-espresso text-cream'
+                  : 'text-espresso/40 hover:bg-espresso/5 hover:text-espresso/70'
               }`}
             >
               {item.label}
-              {filters.collection === item.value && (
-                <span className="float-right text-[8px] text-bronze/60">●</span>
-              )}
             </button>
           ))}
         </div>
@@ -86,16 +83,13 @@ export default function Sidebar({ filters, setFilters }: Props) {
             <button
               key={item.value}
               onClick={() => update('category', item.value)}
-              className={`block w-full text-left py-2 text-sm border-b border-transparent transition-all duration-500 ${
+              className={`block w-full text-left py-2 px-3 text-sm rounded transition-all duration-500 ${
                 filters.category === item.value
-                  ? 'text-espresso border-bronze/40'
-                  : 'text-espresso/40 hover:text-espresso/70'
+                  ? 'bg-espresso text-cream'
+                  : 'text-espresso/40 hover:bg-espresso/5 hover:text-espresso/70'
               }`}
             >
               {item.label}
-              {filters.category === item.value && (
-                <span className="float-right text-[8px] text-bronze/60">●</span>
-              )}
             </button>
           ))}
         </div>
@@ -117,9 +111,9 @@ export default function Sidebar({ filters, setFilters }: Props) {
                   update('minPrice', preset.min);
                   update('maxPrice', preset.max);
                 }}
-                className={`px-4 py-2 text-xs border transition-all duration-500 ${
+                className={`px-4 py-2 text-xs border transition-all duration-500 rounded ${
                   isActive
-                    ? 'border-espresso text-espresso bg-espresso/5'
+                    ? 'border-espresso bg-espresso text-cream'
                     : 'border-espresso/10 text-espresso/40 hover:border-espresso/30 hover:text-espresso/70'
                 }`}
               >
@@ -153,16 +147,13 @@ export default function Sidebar({ filters, setFilters }: Props) {
             <button
               key={item.value}
               onClick={() => update('sort', item.value)}
-              className={`block w-full text-left py-2 text-sm border-b border-transparent transition-all duration-500 ${
+              className={`block w-full text-left py-2 px-3 text-sm rounded transition-all duration-500 ${
                 filters.sort === item.value
-                  ? 'text-espresso border-bronze/40'
-                  : 'text-espresso/40 hover:text-espresso/70'
+                  ? 'bg-espresso text-cream'
+                  : 'text-espresso/40 hover:bg-espresso/5 hover:text-espresso/70'
               }`}
             >
               {item.label}
-              {filters.sort === item.value && (
-                <span className="float-right text-[8px] text-bronze/60">●</span>
-              )}
             </button>
           ))}
         </div>
