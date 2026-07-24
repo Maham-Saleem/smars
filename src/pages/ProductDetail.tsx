@@ -196,7 +196,7 @@ export default function ProductDetail() {
                   <div key={rp.id} className="group">
                     <div className="relative aspect-square rounded-xl overflow-hidden bg-white mb-3">
                       <Link to={`/product/${rp.id}`}>
-                        <img src={rp.images[0]} alt={rp.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                        <img src={rp.images[0]} alt={rp.name} loading="lazy" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                       </Link>
                       <div className="absolute bottom-2 left-2 right-2 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-500">
                         <button

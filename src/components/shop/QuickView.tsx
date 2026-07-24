@@ -41,7 +41,7 @@ export default function QuickView({ product, onClose }: Props) {
             </button>
             <div className="grid grid-cols-1 md:grid-cols-2">
               <div className="aspect-square overflow-hidden rounded-t-2xl md:rounded-l-2xl md:rounded-tr-none">
-                <img src={product.images[0]} alt={product.name} className="w-full h-full object-cover" />
+                <img src={product.images[0]} alt={product.name} loading="lazy" className="w-full h-full object-cover" />
               </div>
               <div className="p-6 lg:p-8">
                 <p className="text-champagne-gold text-xs tracking-[0.2em] uppercase mb-2">{product.category}</p>

@@ -251,7 +251,7 @@ export default function Account() {
                       {wishlistProducts.map((product) => (
                         <Link key={product.id} to={`/product/${product.id}`} className="bg-white rounded-2xl p-4 shadow-sm group">
                           <div className="aspect-square rounded-xl overflow-hidden bg-warm-beige mb-3">
-                            <img src={product.images[0]} alt={product.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                            <img src={product.images[0]} alt={product.name} loading="lazy" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                           </div>
                           <h3 className="font-heading text-dark-brown group-hover:text-champagne-gold transition-colors">{product.name}</h3>
                           <p className="font-heading text-dark-brown mt-1">${product.price}</p>

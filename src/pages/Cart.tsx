@@ -45,7 +45,7 @@ export default function Cart() {
                   className="flex gap-6 p-6 bg-white rounded-2xl shadow-sm"
                 >
                   <Link to={`/product/${item.product.id}`} className="w-24 h-28 lg:w-28 lg:h-32 shrink-0">
-                    <img src={item.product.images[0]} alt={item.product.name} className="w-full h-full object-cover rounded-xl" />
+                    <img src={item.product.images[0]} alt={item.product.name} loading="lazy" className="w-full h-full object-cover rounded-xl" />
                   </Link>
                   <div className="flex-1 min-w-0">
                     <div className="flex justify-between">

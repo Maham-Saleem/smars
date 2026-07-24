@@ -456,7 +456,7 @@ export default function Checkout() {
                 <div className="space-y-4">
                   {items.map((item) => (
                     <div key={item.product.id} className="flex gap-4 pb-4 border-b border-dark-brown/10">
-                      <img src={item.product.images[0]} alt={item.product.name} className="w-16 h-20 object-cover rounded-lg" />
+                      <img src={item.product.images[0]} alt={item.product.name} loading="lazy" className="w-16 h-20 object-cover rounded-lg" />
                       <div className="flex-1">
                         <h3 className="font-heading text-dark-brown">{item.product.name}</h3>
                         <p className="text-sm text-dark-brown/50">Qty: {item.quantity}</p>
