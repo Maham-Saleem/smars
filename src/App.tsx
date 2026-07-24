@@ -18,6 +18,7 @@ import About from './pages/About';
 import ShippingReturns from './pages/ShippingReturns';
 import OrderConfirmation from './pages/OrderConfirmation';
 import ContactUs from './pages/ContactUs';
+import PrivacyPolicy from './pages/PrivacyPolicy';
 
 export default function App() {
   return (
@@ -41,6 +42,7 @@ export default function App() {
             <Route path="/about" element={<About />} />
             <Route path="/shipping-returns" element={<ShippingReturns />} />
             <Route path="/contact" element={<ContactUs />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/order-confirmation/:orderId" element={<OrderConfirmation />} />
           </Routes>
         </main>
