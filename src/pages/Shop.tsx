@@ -1,7 +1,7 @@
 import { useState, useMemo, useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { useSearchParams } from 'react-router-dom';
-import { products } from '../data/products';
+import { products, img } from '../data/products';
 import ProductCard from '../components/shop/ProductCard';
 import Sidebar from '../components/shop/Sidebar';
 import QuickView from '../components/shop/QuickView';
@@ -34,6 +34,11 @@ export default function Shop() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const [filtersOpen, setFiltersOpen] = useState(false);
   const gridTopRef = useRef<HTMLDivElement>(null);
+
+  const heroRef = useRef(null);
+  const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
+  const heroY = useTransform(scrollYProgress, [0, 1], [0, 100]);
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   useEffect(() => {
     setPage(1);
@@ -83,18 +88,37 @@ export default function Shop() {
   const selectedProduct = quickView ? products.find((p) => p.id === quickView) ?? null : null;
 
   return (
-    <div className="pt-24 lg:pt-28 pb-20 lg:pb-28 bg-cream min-h-screen">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="mb-10"
-        >
-          <p className="text-bronze text-[10px] tracking-[0.3em] uppercase font-body mb-3">Our Collection</p>
-          <h1 className="font-display text-4xl sm:text-5xl text-espresso leading-[0.95]">Shop Fragrances</h1>
-          <p className="text-espresso/30 text-xs tracking-[0.2em] uppercase mt-4 font-body">{filtered.length} fragrances found</p>
+    <div className="min-h-screen bg-cream">
+      {/* Hero */}
+      <section ref={heroRef} className="relative h-[60vh] min-h-[400px] flex items-center overflow-hidden">
+        <motion.div style={{ y: heroY }} className="absolute inset-0">
+          <img
+            src={img.collection}
+            alt="SMAR'S Collection"
+            className="w-full h-[120%] object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-cream/70 via-cream/30 to-cream" />
         </motion.div>
+
+        <motion.div style={{ opacity: heroOpacity }} className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.3 }}
+          >
+            <p className="text-bronze text-xs tracking-[0.35em] uppercase font-body mb-4">Our Collection</p>
+            <h1 className="font-heading text-5xl sm:text-6xl lg:text-7xl text-espresso leading-[0.95]">
+              Shop
+              <span className="block text-bronze">Fragrances</span>
+            </h1>
+            <div className="w-16 h-[1px] bg-bronze mt-8" />
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Products */}
+      <section className="max-w-7xl mx-auto px-6 lg:px-8 py-16 lg:py-24">
+        <p className="text-espresso/30 text-xs tracking-[0.2em] uppercase mb-10 font-body">{filtered.length} fragrances found</p>
 
         <div className="flex gap-8">
           <motion.div
@@ -162,7 +186,7 @@ export default function Shop() {
             <Pagination current={page} total={totalPages} onPage={(p) => { setPage(p); }} />
           </div>
         </div>
-      </div>
+      </section>
 
       {mobileFiltersOpen && (
         <motion.div

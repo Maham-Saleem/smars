@@ -25,7 +25,7 @@ export interface Review {
   avatar?: string;
 }
 
-const img = {
+export const img = {
   amber: 'https://images.pexels.com/photos/36389336/pexels-photo-36389336.jpeg?auto=compress&cs=tinysrgb&w=800',
   rose: 'https://images.pexels.com/photos/31188628/pexels-photo-31188628.jpeg?auto=compress&cs=tinysrgb&w=800',
   oud: 'https://images.pexels.com/photos/7850600/pexels-photo-7850600.jpeg?auto=compress&cs=tinysrgb&w=800',
