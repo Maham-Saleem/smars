@@ -1,12 +1,20 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { HiOutlineCheck, HiOutlineCreditCard, HiOutlineCash, HiOutlineGlobe } from 'react-icons/hi';
+import { HiOutlineCheck, HiOutlineCreditCard, HiOutlineCash, HiOutlineGlobe, HiOutlineTruck, HiOutlineCube, HiOutlineLocationMarker } from 'react-icons/hi';
 import { useCartStore } from '../store/cartStore';
 import { useAuthStore } from '../store/authStore';
+import { useOrderStore, generateOrderId, estimateDeliveryDate } from '../store/orderStore';
+import { useUIStore } from '../store/uiStore';
 import toast from 'react-hot-toast';
 
-const steps = ['Shipping', 'Payment', 'Review', 'Confirmation'];
+const steps = ['Shipping', 'Delivery', 'Payment', 'Review'];
+
+const deliveryMethods = [
+  { id: 'standard', name: 'Standard Delivery', description: '5–8 business days', cost: 10, icon: HiOutlineTruck },
+  { id: 'express', name: 'Express Delivery', description: '2–3 business days', cost: 25, icon: HiOutlineCube },
+  { id: 'pickup', name: 'Store Pickup', description: 'Free · Beverly Hills atelier', cost: 0, icon: HiOutlineLocationMarker },
+];
 
 const paymentMethods = [
   { id: 'cod', name: 'Cash on Delivery', icon: HiOutlineCash },
@@ -19,34 +27,52 @@ export default function Checkout() {
   const navigate = useNavigate();
   const { items, totalPrice, clearCart } = useCartStore();
   const { isAuthenticated } = useAuthStore();
+  const { openAuth } = useUIStore();
+  const addOrder = useOrderStore((s) => s.addOrder);
   const [step, setStep] = useState(0);
+  const [submitting, setSubmitting] = useState(false);
+  const [acceptedTerms, setAcceptedTerms] = useState(false);
+  const [deliveryMethod, setDeliveryMethod] = useState('standard');
   const [paymentMethod, setPaymentMethod] = useState('cod');
   const [shipping, setShipping] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
+    fullName: '',
     phone: '',
+    email: '',
     address: '',
+    apartment: '',
     city: '',
     state: '',
     zip: '',
     country: 'United States',
+    saveAddress: false,
   });
-  if (!isAuthenticated && step > 0) {
+  const [cardDetails, setCardDetails] = useState({
+    cardNumber: '',
+    cardName: '',
+    expiry: '',
+    cvv: '',
+  });
+  const [jazzcashPhone, setJazzcashPhone] = useState('');
+  const [easypaisaPhone, setEasypaisaPhone] = useState('');
+
+  if (!isAuthenticated) {
     return (
       <div className="pt-24 lg:pt-28 pb-20 bg-cream min-h-screen flex items-center justify-center">
         <div className="text-center max-w-md px-6">
+          <div className="w-16 h-16 rounded-full bg-dark-brown/5 flex items-center justify-center mx-auto mb-6">
+            <HiOutlineLocationMarker size={28} className="text-dark-brown/60" />
+          </div>
           <h1 className="font-heading text-3xl text-dark-brown mb-4">Authentication Required</h1>
-          <p className="text-dark-brown/60 mb-8">Please sign in to continue with your checkout.</p>
-          <a href="/account" className="inline-block px-8 py-3 bg-dark-brown text-cream text-sm tracking-widest uppercase font-medium hover:bg-champagne-gold hover:text-deep-coffee transition-all rounded-lg">
+          <p className="text-dark-brown/60 mb-8 text-sm">Please sign in to your account to proceed with checkout.</p>
+          <button onClick={openAuth} className="px-8 py-3 bg-dark-brown text-cream text-sm tracking-widest uppercase font-medium hover:bg-champagne-gold hover:text-deep-coffee transition-all duration-300 rounded-lg">
             Sign In
-          </a>
+          </button>
         </div>
       </div>
     );
   }
 
-  if (items.length === 0 && step < 3) {
+  if (items.length === 0 && step < 4) {
     return (
       <div className="pt-24 lg:pt-28 pb-20 bg-cream min-h-screen flex items-center justify-center">
         <div className="text-center">
@@ -59,21 +85,45 @@ export default function Checkout() {
     );
   }
 
+  const selectedDelivery = deliveryMethods.find((d) => d.id === deliveryMethod)!;
+  const selectedPayment = paymentMethods.find((m) => m.id === paymentMethod)!;
+  const discount = totalPrice() * 0.1;
+  const shippingCost = deliveryMethod === 'pickup' ? 0 : selectedDelivery.cost;
+  const finalTotal = totalPrice() - discount + shippingCost;
+
   const handleShippingSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setStep(1);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handlePlaceOrder = () => {
-    setStep(3);
+  const handlePlaceOrder = async () => {
+    if (submitting) return;
+    if (!acceptedTerms) {
+      toast.error('Please accept the terms & conditions.');
+      return;
+    }
+    setSubmitting(true);
+    await new Promise((r) => setTimeout(r, 1500));
+    const orderId = generateOrderId();
+    addOrder({
+      id: orderId,
+      items: items.map((i) => ({ product: i.product, quantity: i.quantity })),
+      subtotal: totalPrice(),
+      shipping: shippingCost,
+      discount,
+      total: finalTotal,
+      deliveryMethod: selectedDelivery.name,
+      paymentMethod: selectedPayment.name,
+      shippingDetails: { ...shipping },
+      status: 'Confirmed',
+      date: new Date().toISOString(),
+      estimatedDelivery: estimateDeliveryDate(),
+    });
     clearCart();
-    toast.success('Order placed successfully!');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setSubmitting(false);
+    navigate(`/order-confirmation/${orderId}`);
   };
-
-  const discount = totalPrice() * 0.1;
-  const shippingCost = totalPrice() > 300 ? 0 : 15;
 
   return (
     <div className="pt-24 lg:pt-28 pb-20 bg-cream min-h-screen">
@@ -85,9 +135,9 @@ export default function Checkout() {
         >
           <h1 className="font-heading text-4xl lg:text-5xl text-dark-brown">Checkout</h1>
 
-          <div className="flex items-center gap-2 mt-8 mb-10">
+          <div className="flex items-center gap-2 mt-8 mb-10 overflow-x-auto pb-2">
             {steps.map((s, i) => (
-              <div key={s} className="flex items-center gap-2">
+              <div key={s} className="flex items-center gap-2 shrink-0">
                 <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-medium transition-all ${
                   i <= step ? 'bg-dark-brown text-cream' : 'bg-dark-brown/10 text-dark-brown/40'
                 }`}>
@@ -105,61 +155,134 @@ export default function Checkout() {
             <motion.div key="shipping" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
               <form onSubmit={handleShippingSubmit} className="bg-white rounded-2xl p-6 lg:p-8 shadow-sm">
                 <h2 className="font-heading text-2xl text-dark-brown mb-6">Shipping Details</h2>
+
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {[
-                    { label: 'First Name', key: 'firstName', type: 'text' },
-                    { label: 'Last Name', key: 'lastName', type: 'text' },
-                    { label: 'Email', key: 'email', type: 'email' },
-                    { label: 'Phone', key: 'phone', type: 'tel' },
-                  ].map((field) => (
-                    <div key={field.key}>
-                      <label className="block text-xs tracking-wider uppercase text-dark-brown/50 mb-2">{field.label}</label>
-                      <input
-                        type={field.type}
-                        required
-                        value={(shipping as any)[field.key]}
-                        onChange={(e) => setShipping({ ...shipping, [field.key]: e.target.value })}
-                        className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors"
-                      />
-                    </div>
-                  ))}
+                  <div className="sm:col-span-2">
+                    <label className="block text-xs tracking-wider uppercase text-dark-brown/50 mb-2">Full Name</label>
+                    <input
+                      type="text" required value={shipping.fullName}
+                      onChange={(e) => setShipping({ ...shipping, fullName: e.target.value })}
+                      className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs tracking-wider uppercase text-dark-brown/50 mb-2">Phone</label>
+                    <input
+                      type="tel" required value={shipping.phone}
+                      onChange={(e) => setShipping({ ...shipping, phone: e.target.value })}
+                      className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs tracking-wider uppercase text-dark-brown/50 mb-2">Email</label>
+                    <input
+                      type="email" required value={shipping.email}
+                      onChange={(e) => setShipping({ ...shipping, email: e.target.value })}
+                      className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors"
+                    />
+                  </div>
                 </div>
+
                 <div className="mt-4">
-                  <label className="block text-xs tracking-wider uppercase text-dark-brown/50 mb-2">Address</label>
+                  <label className="block text-xs tracking-wider uppercase text-dark-brown/50 mb-2">Street Address</label>
                   <input
-                    type="text"
-                    required
-                    value={shipping.address}
+                    type="text" required value={shipping.address}
                     onChange={(e) => setShipping({ ...shipping, address: e.target.value })}
                     className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors"
                   />
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-4">
-                  {[
-                    { label: 'City', key: 'city' },
-                    { label: 'State', key: 'state' },
-                    { label: 'ZIP Code', key: 'zip' },
-                  ].map((field) => (
-                    <div key={field.key}>
-                      <label className="block text-xs tracking-wider uppercase text-dark-brown/50 mb-2">{field.label}</label>
-                      <input
-                        type="text"
-                        required
-                        value={(shipping as any)[field.key]}
-                        onChange={(e) => setShipping({ ...shipping, [field.key]: e.target.value })}
-                        className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors"
-                      />
-                    </div>
-                  ))}
+                <div className="mt-4">
+                  <label className="block text-xs tracking-wider uppercase text-dark-brown/50 mb-2">Apartment (optional)</label>
+                  <input
+                    type="text" value={shipping.apartment}
+                    onChange={(e) => setShipping({ ...shipping, apartment: e.target.value })}
+                    className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors"
+                  />
                 </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-4">
+                  <div>
+                    <label className="block text-xs tracking-wider uppercase text-dark-brown/50 mb-2">City</label>
+                    <input
+                      type="text" required value={shipping.city}
+                      onChange={(e) => setShipping({ ...shipping, city: e.target.value })}
+                      className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs tracking-wider uppercase text-dark-brown/50 mb-2">State</label>
+                    <input
+                      type="text" required value={shipping.state}
+                      onChange={(e) => setShipping({ ...shipping, state: e.target.value })}
+                      className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs tracking-wider uppercase text-dark-brown/50 mb-2">Postal Code</label>
+                    <input
+                      type="text" required value={shipping.zip}
+                      onChange={(e) => setShipping({ ...shipping, zip: e.target.value })}
+                      className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors"
+                    />
+                  </div>
+                </div>
+
+                <div className="mt-6">
+                  <label className="flex items-center gap-3 cursor-pointer">
+                    <input
+                      type="checkbox" checked={shipping.saveAddress}
+                      onChange={(e) => setShipping({ ...shipping, saveAddress: e.target.checked })}
+                      className="w-4 h-4 accent-dark-brown"
+                    />
+                    <span className="text-sm text-dark-brown/60">Save this address for future orders</span>
+                  </label>
+                </div>
+
                 <button type="submit" className="mt-8 w-full py-3 bg-dark-brown text-cream text-sm tracking-widest uppercase font-medium hover:bg-champagne-gold hover:text-deep-coffee transition-all duration-300 rounded-lg">
-                  Continue to Payment
+                  Continue to Delivery
                 </button>
               </form>
             </motion.div>
           )}
 
           {step === 1 && (
+            <motion.div key="delivery" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
+              <div className="bg-white rounded-2xl p-6 lg:p-8 shadow-sm">
+                <h2 className="font-heading text-2xl text-dark-brown mb-6">Delivery Method</h2>
+                <div className="space-y-3">
+                  {deliveryMethods.map((method) => (
+                    <button
+                      key={method.id}
+                      type="button"
+                      onClick={() => setDeliveryMethod(method.id)}
+                      className={`w-full flex items-center gap-4 p-4 rounded-xl border-2 transition-all ${
+                        deliveryMethod === method.id ? 'border-dark-brown bg-dark-brown/5' : 'border-dark-brown/10 hover:border-dark-brown/30'
+                      }`}
+                    >
+                      <method.icon size={24} className={deliveryMethod === method.id ? 'text-dark-brown' : 'text-dark-brown/40'} />
+                      <div className="text-left flex-1">
+                        <p className={`font-medium ${deliveryMethod === method.id ? 'text-dark-brown' : 'text-dark-brown/60'}`}>{method.name}</p>
+                        <p className={`text-xs mt-0.5 ${deliveryMethod === method.id ? 'text-dark-brown/50' : 'text-dark-brown/40'}`}>{method.description}</p>
+                      </div>
+                      <span className={`text-sm font-medium ${deliveryMethod === method.id ? 'text-dark-brown' : 'text-dark-brown/40'}`}>
+                        {method.cost === 0 ? 'Free' : `$${method.cost}`}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+                <div className="flex gap-4 mt-8">
+                  <button onClick={() => setStep(0)} className="flex-1 py-3 border border-dark-brown/20 text-dark-brown/60 text-sm tracking-wider uppercase hover:border-dark-brown hover:text-dark-brown transition-all rounded-lg">
+                    Back
+                  </button>
+                  <button onClick={() => { setStep(2); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="flex-1 py-3 bg-dark-brown text-cream text-sm tracking-widest uppercase font-medium hover:bg-champagne-gold hover:text-deep-coffee transition-all duration-300 rounded-lg">
+                    Continue to Payment
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          )}
+
+          {step === 2 && (
             <motion.div key="payment" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
               <div className="bg-white rounded-2xl p-6 lg:p-8 shadow-sm">
                 <h2 className="font-heading text-2xl text-dark-brown mb-6">Payment Method</h2>
@@ -167,6 +290,7 @@ export default function Checkout() {
                   {paymentMethods.map((method) => (
                     <button
                       key={method.id}
+                      type="button"
                       onClick={() => setPaymentMethod(method.id)}
                       className={`w-full flex items-center gap-4 p-4 rounded-xl border-2 transition-all ${
                         paymentMethod === method.id ? 'border-dark-brown bg-dark-brown/5' : 'border-dark-brown/10 hover:border-dark-brown/30'
@@ -179,11 +303,107 @@ export default function Checkout() {
                     </button>
                   ))}
                 </div>
+
+                {paymentMethod === 'card' && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    className="mt-6 space-y-4 border-t border-dark-brown/10 pt-6"
+                  >
+                    <h3 className="text-xs tracking-wider uppercase text-dark-brown/50 font-medium">Card Details</h3>
+                    <div>
+                      <label className="block text-xs tracking-wider uppercase text-dark-brown/50 mb-2">Card Number</label>
+                      <input
+                        type="text" required value={cardDetails.cardNumber}
+                        onChange={(e) => setCardDetails({ ...cardDetails, cardNumber: e.target.value })}
+                        placeholder="1234 5678 9012 3456"
+                        className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs tracking-wider uppercase text-dark-brown/50 mb-2">Name on Card</label>
+                      <input
+                        type="text" required value={cardDetails.cardName}
+                        onChange={(e) => setCardDetails({ ...cardDetails, cardName: e.target.value })}
+                        className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors"
+                      />
+                    </div>
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-xs tracking-wider uppercase text-dark-brown/50 mb-2">Expiry</label>
+                        <input
+                          type="text" required value={cardDetails.expiry}
+                          onChange={(e) => setCardDetails({ ...cardDetails, expiry: e.target.value })}
+                          placeholder="MM/YY"
+                          className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs tracking-wider uppercase text-dark-brown/50 mb-2">CVV</label>
+                        <input
+                          type="text" required value={cardDetails.cvv}
+                          onChange={(e) => setCardDetails({ ...cardDetails, cvv: e.target.value })}
+                          placeholder="123"
+                          className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors"
+                        />
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+
+                {paymentMethod === 'jazzcash' && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    className="mt-6 space-y-4 border-t border-dark-brown/10 pt-6"
+                  >
+                    <h3 className="text-xs tracking-wider uppercase text-dark-brown/50 font-medium">JazzCash Details</h3>
+                    <div>
+                      <label className="block text-xs tracking-wider uppercase text-dark-brown/50 mb-2">JazzCash Phone Number</label>
+                      <input
+                        type="tel" required value={jazzcashPhone}
+                        onChange={(e) => setJazzcashPhone(e.target.value)}
+                        placeholder="03XX-XXXXXXX"
+                        className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors"
+                      />
+                    </div>
+                  </motion.div>
+                )}
+
+                {paymentMethod === 'easypaisa' && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    className="mt-6 space-y-4 border-t border-dark-brown/10 pt-6"
+                  >
+                    <h3 className="text-xs tracking-wider uppercase text-dark-brown/50 font-medium">EasyPaisa Details</h3>
+                    <div>
+                      <label className="block text-xs tracking-wider uppercase text-dark-brown/50 mb-2">EasyPaisa Phone Number</label>
+                      <input
+                        type="tel" required value={easypaisaPhone}
+                        onChange={(e) => setEasypaisaPhone(e.target.value)}
+                        placeholder="03XX-XXXXXXX"
+                        className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors"
+                      />
+                    </div>
+                  </motion.div>
+                )}
+
+                {paymentMethod === 'cod' && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    className="mt-6 border-t border-dark-brown/10 pt-6"
+                  >
+                    <p className="text-sm text-dark-brown/60">Pay with cash upon delivery. No additional fees.</p>
+                  </motion.div>
+                )}
+
                 <div className="flex gap-4 mt-8">
-                  <button onClick={() => setStep(0)} className="flex-1 py-3 border border-dark-brown/20 text-dark-brown/60 text-sm tracking-wider uppercase hover:border-dark-brown hover:text-dark-brown transition-all rounded-lg">
+                  <button onClick={() => setStep(1)} className="flex-1 py-3 border border-dark-brown/20 text-dark-brown/60 text-sm tracking-wider uppercase hover:border-dark-brown hover:text-dark-brown transition-all rounded-lg">
                     Back
                   </button>
-                  <button onClick={() => setStep(2)} className="flex-1 py-3 bg-dark-brown text-cream text-sm tracking-widest uppercase font-medium hover:bg-champagne-gold hover:text-deep-coffee transition-all duration-300 rounded-lg">
+                  <button onClick={() => { setStep(3); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="flex-1 py-3 bg-dark-brown text-cream text-sm tracking-widest uppercase font-medium hover:bg-champagne-gold hover:text-deep-coffee transition-all duration-300 rounded-lg">
                     Review Order
                   </button>
                 </div>
@@ -191,10 +411,11 @@ export default function Checkout() {
             </motion.div>
           )}
 
-          {step === 2 && (
+          {step === 3 && (
             <motion.div key="review" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
               <div className="bg-white rounded-2xl p-6 lg:p-8 shadow-sm">
                 <h2 className="font-heading text-2xl text-dark-brown mb-6">Review Your Order</h2>
+
                 <div className="space-y-4">
                   {items.map((item) => (
                     <div key={item.product.id} className="flex gap-4 pb-4 border-b border-dark-brown/10">
@@ -208,16 +429,21 @@ export default function Checkout() {
                   ))}
                 </div>
 
-                <div className="mt-6 p-4 bg-warm-beige rounded-xl">
-                  <h3 className="font-heading text-dark-brown mb-2">Shipping to</h3>
-                  <p className="text-sm text-dark-brown/70">{shipping.firstName} {shipping.lastName}</p>
-                  <p className="text-sm text-dark-brown/70">{shipping.address}</p>
-                  <p className="text-sm text-dark-brown/70">{shipping.city}, {shipping.state} {shipping.zip}</p>
-                </div>
-
-                <div className="mt-4 p-4 bg-warm-beige rounded-xl">
-                  <h3 className="font-heading text-dark-brown mb-2">Payment</h3>
-                  <p className="text-sm text-dark-brown/70">{paymentMethods.find((m) => m.id === paymentMethod)?.name}</p>
+                <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="p-4 bg-warm-beige rounded-xl">
+                    <h3 className="font-heading text-dark-brown text-sm mb-2">Shipping to</h3>
+                    <p className="text-sm text-dark-brown/70">{shipping.fullName}</p>
+                    <p className="text-sm text-dark-brown/70">{shipping.address}{shipping.apartment ? `, ${shipping.apartment}` : ''}</p>
+                    <p className="text-sm text-dark-brown/70">{shipping.city}, {shipping.state} {shipping.zip}</p>
+                    <p className="text-sm text-dark-brown/70">{shipping.phone} · {shipping.email}</p>
+                  </div>
+                  <div className="p-4 bg-warm-beige rounded-xl">
+                    <h3 className="font-heading text-dark-brown text-sm mb-2">Delivery</h3>
+                    <p className="text-sm text-dark-brown/70">{selectedDelivery.name}</p>
+                    <p className="text-sm text-dark-brown/50">{selectedDelivery.description}</p>
+                    <h3 className="font-heading text-dark-brown text-sm mt-4 mb-1">Payment</h3>
+                    <p className="text-sm text-dark-brown/70">{selectedPayment.name}</p>
+                  </div>
                 </div>
 
                 <div className="mt-6 space-y-2 text-sm border-t border-dark-brown/10 pt-6">
@@ -226,34 +452,38 @@ export default function Checkout() {
                   <div className="flex justify-between text-dark-brown/70"><span>Shipping</span><span>{shippingCost === 0 ? 'Free' : `$${shippingCost.toFixed(2)}`}</span></div>
                   <div className="flex justify-between font-heading text-xl text-dark-brown pt-2 border-t border-dark-brown/10 mt-2">
                     <span>Total</span>
-                    <span>${(totalPrice() - discount + shippingCost).toFixed(2)}</span>
+                    <span>${finalTotal.toFixed(2)}</span>
                   </div>
                 </div>
 
-                <div className="flex gap-4 mt-8">
-                  <button onClick={() => setStep(1)} className="flex-1 py-3 border border-dark-brown/20 text-dark-brown/60 text-sm tracking-wider uppercase hover:border-dark-brown hover:text-dark-brown transition-all rounded-lg">
+                <label className="flex items-start gap-3 mt-6 cursor-pointer">
+                  <input
+                    type="checkbox" checked={acceptedTerms}
+                    onChange={(e) => setAcceptedTerms(e.target.checked)}
+                    className="w-4 h-4 accent-dark-brown mt-0.5"
+                  />
+                  <span className="text-sm text-dark-brown/60">
+                    I agree to the <span className="text-champagne-gold hover:underline cursor-pointer">Terms & Conditions</span> and <span className="text-champagne-gold hover:underline cursor-pointer">Privacy Policy</span>.
+                  </span>
+                </label>
+
+                <div className="flex gap-4 mt-6">
+                  <button onClick={() => setStep(2)} className="flex-1 py-3 border border-dark-brown/20 text-dark-brown/60 text-sm tracking-wider uppercase hover:border-dark-brown hover:text-dark-brown transition-all rounded-lg">
                     Back
                   </button>
-                  <button onClick={handlePlaceOrder} className="flex-1 py-3 bg-dark-brown text-cream text-sm tracking-widest uppercase font-medium hover:bg-champagne-gold hover:text-deep-coffee transition-all duration-300 rounded-lg">
-                    Place Order
+                  <button
+                    onClick={handlePlaceOrder}
+                    disabled={submitting}
+                    className="flex-1 py-3 bg-dark-brown text-cream text-sm tracking-widest uppercase font-medium hover:bg-champagne-gold hover:text-deep-coffee transition-all duration-300 rounded-lg disabled:opacity-50 flex items-center justify-center gap-2"
+                  >
+                    {submitting ? (
+                      <>
+                        <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" /></svg>
+                        Processing...
+                      </>
+                    ) : 'Place Order'}
                   </button>
                 </div>
-              </div>
-            </motion.div>
-          )}
-
-          {step === 3 && (
-            <motion.div key="confirmation" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}>
-              <div className="bg-white rounded-2xl p-8 lg:p-12 shadow-sm text-center">
-                <div className="w-20 h-20 rounded-full bg-green-100 flex items-center justify-center mx-auto">
-                  <HiOutlineCheck size={36} className="text-green-600" />
-                </div>
-                <h2 className="font-heading text-3xl text-dark-brown mt-6 mb-3">Order Confirmed!</h2>
-                <p className="text-dark-brown/60">Thank you for your order. You'll receive a confirmation email shortly.</p>
-                <p className="text-dark-brown/50 text-sm mt-4">Order #SMARS-{Math.random().toString(36).substr(2, 8).toUpperCase()}</p>
-                <button onClick={() => navigate('/')} className="mt-8 px-8 py-3 bg-dark-brown text-cream text-sm tracking-widest uppercase hover:bg-champagne-gold hover:text-deep-coffee transition-all rounded-lg">
-                  Continue Shopping
-                </button>
               </div>
             </motion.div>
           )}

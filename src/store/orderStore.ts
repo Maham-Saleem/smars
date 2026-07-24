@@ -8,16 +8,16 @@ export interface OrderItem {
 }
 
 export interface ShippingDetails {
-  firstName: string;
-  lastName: string;
-  email: string;
+  fullName: string;
   phone: string;
+  email: string;
   address: string;
   apartment: string;
   city: string;
   state: string;
   zip: string;
   country: string;
+  saveAddress: boolean;
 }
 
 export interface Order {
