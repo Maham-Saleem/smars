@@ -24,10 +24,10 @@ export default function Pagination({ current, total, onPage }: Props) {
           <button
             key={page}
             onClick={() => onPage(page)}
-            className={`w-10 h-10 text-xs tracking-[0.2em] font-body transition-all duration-500 ${
+            className={`w-10 h-10 text-xs tracking-[0.2em] font-body rounded transition-all duration-500 ${
               current === page
-                ? 'text-espresso border-b border-bronze/60'
-                : 'text-espresso/20 hover:text-espresso/50'
+                ? 'bg-espresso text-cream'
+                : 'text-espresso/20 hover:bg-espresso/5 hover:text-espresso/50'
             }`}
           >
             {String(page).padStart(2, '0')}
