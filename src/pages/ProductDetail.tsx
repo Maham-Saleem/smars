@@ -7,11 +7,14 @@ import { useCartStore } from '../store/cartStore';
 import { useAuthStore } from '../store/authStore';
 import { useUIStore } from '../store/uiStore';
 import { useReviewStore } from '../store/reviewStore';
+import { useRecentStore } from '../store/recentStore';
 import toast from 'react-hot-toast';
 
 export default function ProductDetail() {
   const { id } = useParams();
   const product = products.find((p) => p.id === Number(id));
+  const { addRecentView } = useRecentStore();
+  if (product) addRecentView(product.id);
   const [quantity, setQuantity] = useState(1);
   const [activeTab, setActiveTab] = useState<'description' | 'notes' | 'reviews'>('description');
   const [reviewForm, setReviewForm] = useState({ rating: 5, comment: '' });

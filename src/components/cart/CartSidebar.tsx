@@ -1,12 +1,15 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { HiX, HiOutlineMinus, HiOutlinePlus, HiOutlineTrash } from 'react-icons/hi';
+import { HiX, HiOutlineMinus, HiOutlinePlus, HiOutlineTrash, HiOutlineClock } from 'react-icons/hi';
 import { Link } from 'react-router-dom';
 import { useCartStore } from '../../store/cartStore';
 import { useUIStore } from '../../store/uiStore';
+import { useRecentStore } from '../../store/recentStore';
 
 export default function CartSidebar() {
   const { isCartOpen, closeCart } = useUIStore();
   const { items, removeItem, updateQuantity, totalPrice } = useCartStore();
+  const { getRecentProducts } = useRecentStore();
+  const recentProducts = getRecentProducts();
 
   return (
     <AnimatePresence>
@@ -35,11 +38,35 @@ export default function CartSidebar() {
 
             <div className="flex-1 overflow-y-auto p-6 space-y-4">
               {items.length === 0 ? (
-                <div className="text-center py-12">
-                  <p className="text-dark-brown/50">Your bag is empty</p>
-                  <Link to="/shop" onClick={closeCart} className="inline-block mt-4 px-6 py-2 bg-dark-brown text-cream text-sm tracking-widest uppercase hover:bg-champagne-gold active:bg-dark-brown/90 focus:outline-none focus:ring-2 focus:ring-dark-brown/20 transition-colors">
+                <div className="text-center py-8">
+                  <p className="text-dark-brown/50 text-sm">Your bag is empty</p>
+                  <Link to="/shop" onClick={closeCart} className="inline-block mt-3 px-5 py-2 bg-dark-brown text-cream text-[10px] tracking-widest uppercase hover:bg-champagne-gold active:bg-dark-brown/90 focus:outline-none focus:ring-2 focus:ring-dark-brown/20 transition-colors rounded">
                     Shop Now
                   </Link>
+                  {recentProducts.length > 0 && (
+                    <div className="mt-8 text-left">
+                      <div className="flex items-center gap-1.5 mb-3 px-1">
+                        <HiOutlineClock size={12} className="text-dark-brown/30" />
+                        <p className="text-dark-brown/40 text-[10px] tracking-widest uppercase">Recently Viewed</p>
+                      </div>
+                      <div className="space-y-2">
+                        {recentProducts.map((p) => (
+                          <Link
+                            key={p.id}
+                            to={`/product/${p.id}`}
+                            onClick={closeCart}
+                            className="flex items-center gap-3 p-2 rounded-lg hover:bg-dark-brown/5 transition-colors group"
+                          >
+                            <img src={p.images[0]} alt={p.name} loading="lazy" className="w-12 h-16 object-cover rounded shrink-0" />
+                            <div className="min-w-0 flex-1">
+                              <p className="text-dark-brown text-xs font-heading truncate group-hover:text-champagne-gold transition-colors">{p.name}</p>
+                              <p className="text-dark-brown/40 text-[10px]">${p.price}</p>
+                            </div>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
               ) : (
                 items.map((item) => (
