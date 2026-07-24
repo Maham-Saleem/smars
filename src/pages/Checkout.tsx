@@ -26,7 +26,7 @@ const paymentMethods = [
 export default function Checkout() {
   const navigate = useNavigate();
   const { items, totalPrice, clearCart } = useCartStore();
-  const { isAuthenticated } = useAuthStore();
+  const { isAuthenticated, user, savedAddress, saveAddress: persistAddress } = useAuthStore();
   const { openAuth } = useUIStore();
   const addOrder = useOrderStore((s) => s.addOrder);
   const [step, setStep] = useState(0);
@@ -34,16 +34,17 @@ export default function Checkout() {
   const [acceptedTerms, setAcceptedTerms] = useState(false);
   const [deliveryMethod, setDeliveryMethod] = useState('standard');
   const [paymentMethod, setPaymentMethod] = useState('cod');
+  const [editingAddress, setEditingAddress] = useState(!savedAddress);
   const [shipping, setShipping] = useState({
-    fullName: '',
-    phone: '',
-    email: '',
-    address: '',
-    apartment: '',
-    city: '',
-    state: '',
-    zip: '',
-    country: 'United States',
+    fullName: user?.name || '',
+    phone: user?.phone || '',
+    email: user?.email || '',
+    address: savedAddress?.address || '',
+    apartment: savedAddress?.apartment || '',
+    city: savedAddress?.city || '',
+    state: savedAddress?.state || '',
+    zip: savedAddress?.zip || '',
+    country: savedAddress?.country || 'United States',
     saveAddress: false,
   });
   const [cardDetails, setCardDetails] = useState({
@@ -93,6 +94,18 @@ export default function Checkout() {
 
   const handleShippingSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (shipping.saveAddress) {
+      persistAddress({
+        fullName: shipping.fullName,
+        phone: shipping.phone,
+        address: shipping.address,
+        apartment: shipping.apartment,
+        city: shipping.city,
+        state: shipping.state,
+        zip: shipping.zip,
+        country: shipping.country,
+      });
+    }
     setStep(1);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -153,95 +166,119 @@ export default function Checkout() {
         <AnimatePresence mode="wait">
           {step === 0 && (
             <motion.div key="shipping" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
-              <form onSubmit={handleShippingSubmit} className="bg-white rounded-2xl p-6 lg:p-8 shadow-sm">
-                <h2 className="font-heading text-2xl text-dark-brown mb-6">Shipping Details</h2>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="sm:col-span-2">
-                    <label className="block text-xs tracking-wider uppercase text-dark-brown/50 mb-2">Full Name</label>
-                    <input
-                      type="text" required value={shipping.fullName}
-                      onChange={(e) => setShipping({ ...shipping, fullName: e.target.value })}
-                      className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors"
-                    />
+              {savedAddress && !editingAddress ? (
+                <div className="bg-white rounded-2xl p-6 lg:p-8 shadow-sm">
+                  <h2 className="font-heading text-2xl text-dark-brown mb-6">Shipping Details</h2>
+                  <div className="p-4 bg-warm-beige rounded-xl">
+                    <p className="font-heading text-dark-brown">{savedAddress.fullName}</p>
+                    <p className="text-sm text-dark-brown/70 mt-1">{savedAddress.address}{savedAddress.apartment ? `, ${savedAddress.apartment}` : ''}</p>
+                    <p className="text-sm text-dark-brown/70">{savedAddress.city}, {savedAddress.state} {savedAddress.zip}</p>
+                    <p className="text-sm text-dark-brown/70">{savedAddress.country}</p>
+                    <p className="text-sm text-dark-brown/70 mt-2">{savedAddress.phone}</p>
                   </div>
-                  <div>
-                    <label className="block text-xs tracking-wider uppercase text-dark-brown/50 mb-2">Phone</label>
-                    <input
-                      type="tel" required value={shipping.phone}
-                      onChange={(e) => setShipping({ ...shipping, phone: e.target.value })}
-                      className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-xs tracking-wider uppercase text-dark-brown/50 mb-2">Email</label>
-                    <input
-                      type="email" required value={shipping.email}
-                      onChange={(e) => setShipping({ ...shipping, email: e.target.value })}
-                      className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors"
-                    />
+                  <div className="flex gap-4 mt-6">
+                    <button type="button" onClick={() => setEditingAddress(true)} className="flex-1 py-3 border border-dark-brown/20 text-dark-brown/60 text-sm tracking-wider uppercase hover:border-dark-brown hover:text-dark-brown transition-all rounded-lg">
+                      Change Address
+                    </button>
+                    <button type="button" onClick={() => { setStep(1); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="flex-1 py-3 bg-dark-brown text-cream text-sm tracking-widest uppercase font-medium hover:bg-champagne-gold hover:text-deep-coffee active:bg-dark-brown/90 focus:outline-none focus:ring-2 focus:ring-dark-brown/20 transition-all duration-300 rounded-lg">
+                      Continue to Delivery
+                    </button>
                   </div>
                 </div>
+              ) : (
+                <form onSubmit={handleShippingSubmit} className="bg-white rounded-2xl p-6 lg:p-8 shadow-sm">
+                  <h2 className="font-heading text-2xl text-dark-brown mb-6">Shipping Details</h2>
+                  {savedAddress && (
+                    <p className="text-xs text-dark-brown/50 mb-4">Update your saved address below, or <button type="button" onClick={() => setEditingAddress(false)} className="text-champagne-gold underline">use current</button>.</p>
+                  )}
 
-                <div className="mt-4">
-                  <label className="block text-xs tracking-wider uppercase text-dark-brown/50 mb-2">Street Address</label>
-                  <input
-                    type="text" required value={shipping.address}
-                    onChange={(e) => setShipping({ ...shipping, address: e.target.value })}
-                    className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors"
-                  />
-                </div>
-                <div className="mt-4">
-                  <label className="block text-xs tracking-wider uppercase text-dark-brown/50 mb-2">Apartment (optional)</label>
-                  <input
-                    type="text" value={shipping.apartment}
-                    onChange={(e) => setShipping({ ...shipping, apartment: e.target.value })}
-                    className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors"
-                  />
-                </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="sm:col-span-2">
+                      <label className="block text-xs tracking-wider uppercase text-dark-brown/50 mb-2">Full Name</label>
+                      <input
+                        type="text" required value={shipping.fullName}
+                        onChange={(e) => setShipping({ ...shipping, fullName: e.target.value })}
+                        className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs tracking-wider uppercase text-dark-brown/50 mb-2">Phone</label>
+                      <input
+                        type="tel" required value={shipping.phone}
+                        onChange={(e) => setShipping({ ...shipping, phone: e.target.value })}
+                        className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs tracking-wider uppercase text-dark-brown/50 mb-2">Email</label>
+                      <input
+                        type="email" required value={shipping.email}
+                        onChange={(e) => setShipping({ ...shipping, email: e.target.value })}
+                        className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors"
+                      />
+                    </div>
+                  </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-4">
-                  <div>
-                    <label className="block text-xs tracking-wider uppercase text-dark-brown/50 mb-2">City</label>
+                  <div className="mt-4">
+                    <label className="block text-xs tracking-wider uppercase text-dark-brown/50 mb-2">Street Address</label>
                     <input
-                      type="text" required value={shipping.city}
-                      onChange={(e) => setShipping({ ...shipping, city: e.target.value })}
+                      type="text" required value={shipping.address}
+                      onChange={(e) => setShipping({ ...shipping, address: e.target.value })}
                       className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors"
                     />
                   </div>
-                  <div>
-                    <label className="block text-xs tracking-wider uppercase text-dark-brown/50 mb-2">State</label>
+                  <div className="mt-4">
+                    <label className="block text-xs tracking-wider uppercase text-dark-brown/50 mb-2">Apartment (optional)</label>
                     <input
-                      type="text" required value={shipping.state}
-                      onChange={(e) => setShipping({ ...shipping, state: e.target.value })}
+                      type="text" value={shipping.apartment}
+                      onChange={(e) => setShipping({ ...shipping, apartment: e.target.value })}
                       className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors"
                     />
                   </div>
-                  <div>
-                    <label className="block text-xs tracking-wider uppercase text-dark-brown/50 mb-2">Postal Code</label>
-                    <input
-                      type="text" required value={shipping.zip}
-                      onChange={(e) => setShipping({ ...shipping, zip: e.target.value })}
-                      className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors"
-                    />
+
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-4">
+                    <div>
+                      <label className="block text-xs tracking-wider uppercase text-dark-brown/50 mb-2">City</label>
+                      <input
+                        type="text" required value={shipping.city}
+                        onChange={(e) => setShipping({ ...shipping, city: e.target.value })}
+                        className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs tracking-wider uppercase text-dark-brown/50 mb-2">State</label>
+                      <input
+                        type="text" required value={shipping.state}
+                        onChange={(e) => setShipping({ ...shipping, state: e.target.value })}
+                        className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs tracking-wider uppercase text-dark-brown/50 mb-2">Postal Code</label>
+                      <input
+                        type="text" required value={shipping.zip}
+                        onChange={(e) => setShipping({ ...shipping, zip: e.target.value })}
+                        className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors"
+                      />
+                    </div>
                   </div>
-                </div>
 
-                <div className="mt-6">
-                  <label className="flex items-center gap-3 cursor-pointer">
-                    <input
-                      type="checkbox" checked={shipping.saveAddress}
-                      onChange={(e) => setShipping({ ...shipping, saveAddress: e.target.checked })}
-                      className="w-4 h-4 accent-dark-brown"
-                    />
-                    <span className="text-sm text-dark-brown/60">Save this address for future orders</span>
-                  </label>
-                </div>
+                  <div className="mt-6">
+                    <label className="flex items-center gap-3 cursor-pointer">
+                      <input
+                        type="checkbox" checked={shipping.saveAddress}
+                        onChange={(e) => setShipping({ ...shipping, saveAddress: e.target.checked })}
+                        className="w-4 h-4 accent-dark-brown"
+                      />
+                      <span className="text-sm text-dark-brown/60">Save this address for future orders</span>
+                    </label>
+                  </div>
 
-                <button type="submit" className="mt-8 w-full py-3 bg-dark-brown text-cream text-sm tracking-widest uppercase font-medium hover:bg-champagne-gold hover:text-deep-coffee active:bg-dark-brown/90 focus:outline-none focus:ring-2 focus:ring-dark-brown/20 transition-all duration-300 rounded-lg">
-                  Continue to Delivery
-                </button>
-              </form>
+                  <button type="submit" className="mt-8 w-full py-3 bg-dark-brown text-cream text-sm tracking-widest uppercase font-medium hover:bg-champagne-gold hover:text-deep-coffee active:bg-dark-brown/90 focus:outline-none focus:ring-2 focus:ring-dark-brown/20 transition-all duration-300 rounded-lg">
+                    Continue to Delivery
+                  </button>
+                </form>
+              )}
             </motion.div>
           )}
 
