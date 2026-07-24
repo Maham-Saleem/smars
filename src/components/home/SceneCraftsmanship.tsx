@@ -39,21 +39,21 @@ export default function SceneCraftsmanship() {
                 The Atelier
               </p>
 
-              <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-cream/90 leading-[0.95] mb-10">
+              <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-cream leading-[0.95] mb-10">
                 Where time
-                <span className="block italic text-champagne/70">stands still</span>
+                <span className="block italic text-champagne">stands still</span>
               </h2>
 
               <div className="w-12 h-[1px] bg-champagne/30 mb-10" />
 
-              <p className="text-sm sm:text-base text-cream/50 leading-relaxed font-light max-w-lg mb-6">
+              <p className="text-sm sm:text-base text-cream/70 leading-relaxed max-w-lg mb-6">
                 In our atelier in Grasse, the world capital of perfumery, 
                 our maîtres parfumeurs work in quiet contemplation. Each 
                 composition begins with a single note — an emotion — and 
                 unfolds over months or years into its final form.
               </p>
 
-              <p className="text-sm sm:text-base text-cream/50 leading-relaxed font-light max-w-lg">
+              <p className="text-sm sm:text-base text-cream/70 leading-relaxed max-w-lg">
                 We do not follow trends. We do not rush. We wait for nature 
                 to offer its finest expression, then we compose with patience 
                 and precision that only comes from decades of mastery.
@@ -95,7 +95,7 @@ export default function SceneCraftsmanship() {
                     <span className="font-display text-3xl sm:text-4xl text-champagne/70 leading-none shrink-0 mt-1">
                       {stat.number}
                     </span>
-                    <p className="text-xs sm:text-sm text-cream/40 leading-relaxed font-light">
+                    <p className="text-xs sm:text-sm text-cream/60 leading-relaxed">
                       {stat.label}
                     </p>
                   </motion.div>
@@ -112,7 +112,7 @@ export default function SceneCraftsmanship() {
               >
                 <a
                   href="/#atelier"
-                  className="group inline-flex items-center gap-4 text-[10px] sm:text-xs tracking-editorial uppercase text-champagne/60 hover:text-champagne transition-colors duration-700 font-body"
+                  className="group inline-flex items-center gap-4 text-[10px] sm:text-xs tracking-editorial uppercase text-champagne/80 hover:text-champagne transition-colors duration-700 font-body"
                 >
                   <span>Our Story</span>
                   <span className="w-6 h-[1px] bg-champagne/30 group-hover:w-10 transition-all duration-700" />
