@@ -318,6 +318,46 @@ Only when all twelve checkpoints have been passed is the bottle approved for shi
     readTime: '5 min read',
     author: 'Maison SMAR\'S',
   },
+  {
+    id: 16,
+    title: 'The Chemistry of Sillage',
+    excerpt: 'What makes a fragrance linger in a room long after you have left? The science behind sillage and skin chemistry.',
+    content: `Sillage — the French word for "wake" — describes the trail of fragrance that lingers in the air as you move. It is one of the most sought-after qualities in perfumery, yet it remains one of the most elusive.
+
+The chemistry of sillage begins with molecular weight. Heavier molecules — those with higher molecular weights — evaporate more slowly and therefore last longer on the skin. These are typically the base notes: amber, musk, vanillin, and the various woods. Lighter molecules — citrus, green notes, aldehydes — evaporate quickly, creating the initial burst that fades within minutes.
+
+But sillage is not just about the fragrance itself. It depends equally on the wearer's skin chemistry. pH levels, oil content, and even diet can dramatically affect how a fragrance performs. People with oilier skin tend to hold fragrance longer because the oils trap the volatile molecules. Dry skin, by contrast, allows fragrance to evaporate more quickly — which is why we often recommend moisturizing before application.
+
+Temperature plays a role too. Warm skin accelerates evaporation, which can actually increase sillage in the short term — the fragrance projects more aggressively — but reduces longevity. Cool skin slows evaporation, creating a subtler, more intimate scent experience.
+
+At SMAR'S, we formulate our fragrances to perform beautifully across a wide range of skin types. Our higher concentration extraits — with 25-30% perfume oil — naturally produce richer sillage and longer longevity than our eau de parfums. But regardless of concentration, every SMAR'S composition is designed to leave a memorable trail.`,
+    category: 'Craft',
+    date: 'July 2026',
+    image: 'https://images.pexels.com/photos/3060888/pexels-photo-3060888.jpeg?auto=compress&cs=tinysrgb&w=800',
+    readTime: '6 min read',
+    author: 'Maison SMAR\'S',
+  },
+  {
+    id: 17,
+    title: 'Saffron: The Red Gold of Perfumery',
+    excerpt: 'More expensive than gold by weight, saffron lends an unparalleled warmth and complexity to our most luxurious compositions.',
+    content: `Saffron is the most expensive spice in the world — and one of the most precious ingredients in fine perfumery. Derived from the dried stigmas of Crocus sativus, it takes approximately 150,000 flowers to produce a single kilogram of saffron.
+
+The harvesting process is extraordinarily labor-intensive. Each crocus flower blooms for only one week in autumn, and the three delicate red stigmas must be hand-picked before dawn, before the sun causes them to wilt. A skilled picker can harvest only 60-80 grams of saffron per day.
+
+In perfumery, saffron is valued for its unique olfactory profile: simultaneously sweet, honeyed, leathery, and slightly metallic. It has the rare ability to add both warmth and brightness to a composition — a quality that few other ingredients possess.
+
+Our saffron is sourced from the Taliouine region of Morocco, where the soil and microclimate produce a particularly nuanced expression of the spice. The stigmas are dried naturally in the shade for ten days before being shipped to our atelier in Grasse.
+
+When used in a fragrance, saffron creates a sensation of warmth that is almost tactile — like a ray of autumn sunlight on the skin. It pairs beautifully with oud, adding a luminous quality to the wood's darkness. It also complements rose, where its honeyed undertones amplify the flower's natural sweetness.
+
+Saffron is the signature ingredient in our Notorious composition, where it appears alongside black pepper and Cambodian oud to create a fragrance of extraordinary depth and character.`,
+    category: 'Ingredients',
+    date: 'July 2026',
+    image: 'https://images.pexels.com/photos/4197442/pexels-photo-4197442.jpeg?auto=compress&cs=tinysrgb&w=800',
+    readTime: '6 min read',
+    author: 'Maison SMAR\'S',
+  },
 ];
 
 export const categories = ['All', 'Craft', 'Ingredients', 'Philosophy', 'Rituals', 'Behind the Scenes'];
