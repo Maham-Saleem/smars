@@ -13,8 +13,8 @@ export default function EditorialOud() {
   const textY = useTransform(scrollYProgress, [0.2, 0.5], [80, 0]);
 
   return (
-    <section ref={ref} className="relative h-[120vh] min-h-[800px] flex items-center overflow-hidden bg-deep-coffee" style={{ contentVisibility: 'auto', contain: 'content' as const }}>
-      <motion.div className="absolute inset-0" style={{ y: bgY }}>
+    <section ref={ref} className="relative h-[120vh] min-h-[800px] flex items-center overflow-hidden bg-deep-coffee" style={{ contentVisibility: 'auto', contain: 'content' as const, willChange: 'transform' }}>
+      <motion.div className="absolute inset-0" style={{ y: bgY, willChange: 'transform' }}>
         <img
           src="https://images.pexels.com/photos/7850600/pexels-photo-7850600.jpeg?auto=compress&cs=tinysrgb&w=800"
           alt="Oud Collection"
@@ -26,7 +26,7 @@ export default function EditorialOud() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          <motion.div style={{ opacity, y: textY }} className="space-y-8">
+          <motion.div style={{ opacity, y: textY, willChange: 'transform' }} className="space-y-8">
             <span className="text-champagne-gold/60 text-xs tracking-[0.35em] uppercase font-body">Collection 03</span>
             <h2 className="font-heading text-5xl lg:text-7xl text-cream leading-tight">
               Oud
@@ -57,7 +57,7 @@ export default function EditorialOud() {
             </Link>
           </motion.div>
 
-          <motion.div style={{ opacity }} className="hidden lg:flex justify-center">
+          <motion.div style={{ opacity, willChange: 'transform' }} className="hidden lg:flex justify-center">
             <div className="relative">
               <div className="w-64 h-64 lg:w-80 lg:h-80 rounded-full border border-champagne-gold/20 flex items-center justify-center">
                 <div className="w-48 h-48 lg:w-60 lg:h-60 rounded-full border border-champagne-gold/10 flex items-center justify-center">
@@ -72,7 +72,7 @@ export default function EditorialOud() {
       </div>
 
       <motion.div
-        style={{ opacity: useTransform(scrollYProgress, [0.7, 1], [1, 0]) }}
+        style={{ opacity: useTransform(scrollYProgress, [0.7, 1], [1, 0]), willChange: 'transform' }}
         className="absolute bottom-12 left-1/2 -translate-x-1/2"
       >
         <motion.div

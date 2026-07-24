@@ -11,7 +11,7 @@ export default function EditorialFloral() {
   const y = useTransform(scrollYProgress, [0, 1], [60, -60]);
 
   return (
-    <section ref={ref} className="relative py-28 lg:py-40 bg-warm-beige overflow-hidden" style={{ contentVisibility: 'auto', contain: 'content' as const }}>
+    <section ref={ref} className="relative py-28 lg:py-40 bg-warm-beige overflow-hidden" style={{ contentVisibility: 'auto', contain: 'content' as const, willChange: 'transform' }}>
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -65,7 +65,7 @@ export default function EditorialFloral() {
             </div>
           </motion.div>
 
-          <motion.div className="lg:col-span-7 relative order-1 lg:order-2" style={{ y }}>
+          <motion.div className="lg:col-span-7 relative order-1 lg:order-2" style={{ y, willChange: 'transform' }}>
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-4">
                 <div className="aspect-square rounded-[2rem] overflow-hidden">

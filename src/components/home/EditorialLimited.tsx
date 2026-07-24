@@ -12,7 +12,7 @@ export default function EditorialLimited() {
   const x2 = useTransform(scrollYProgress, [0, 1], [60, -60]);
 
   return (
-    <section ref={ref} className="relative py-28 lg:py-40 bg-cream overflow-hidden" style={{ contentVisibility: 'auto', contain: 'content' as const }}>
+    <section ref={ref} className="relative py-28 lg:py-40 bg-cream overflow-hidden" style={{ contentVisibility: 'auto', contain: 'content' as const, willChange: 'transform' }}>
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -65,10 +65,10 @@ export default function EditorialLimited() {
             </div>
           </motion.div>
 
-          <motion.div className="lg:col-span-7 relative" style={{ x: x1 }}>
+          <motion.div className="lg:col-span-7 relative" style={{ x: x1, willChange: 'transform' }}>
             <div className="grid grid-cols-5 gap-4">
               <div className="col-span-3 space-y-4">
-                <motion.div style={{ x: x2 }} className="aspect-[4/5] rounded-[3rem] overflow-hidden">
+                <motion.div style={{ x: x2, willChange: 'transform' }} className="aspect-[4/5] rounded-[3rem] overflow-hidden">
                   <img
                     src={limited[0]?.images[0] || '/perfume-placeholder.svg'}
                     alt="Limited Edition"
@@ -91,7 +91,7 @@ export default function EditorialLimited() {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <motion.div style={{ x: x2 }} className="w-20 h-20 lg:w-28 lg:h-28 rounded-full bg-champagne-gold/10 flex items-center justify-center mx-auto">
+                <motion.div style={{ x: x2, willChange: 'transform' }} className="w-20 h-20 lg:w-28 lg:h-28 rounded-full bg-champagne-gold/10 flex items-center justify-center mx-auto">
                   <span className="font-heading text-champagne-gold text-sm tracking-widest">24</span>
                 </motion.div>
               </div>
@@ -101,7 +101,7 @@ export default function EditorialLimited() {
       </div>
 
       <motion.div
-        style={{ x: useTransform(scrollYProgress, [0, 1], [0, 150]) }}
+        style={{ x: useTransform(scrollYProgress, [0, 1], [0, 150]), willChange: 'transform' }}
         className="absolute -bottom-32 -left-32 w-96 h-96 rounded-full border border-dark-brown/5 pointer-events-none"
       />
     </section>

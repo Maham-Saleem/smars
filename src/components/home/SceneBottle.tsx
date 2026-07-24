@@ -15,7 +15,7 @@ export default function SceneBottle() {
     <section
       ref={ref}
       className="relative h-[100vh] min-h-[700px] overflow-hidden"
-      style={{ contentVisibility: 'auto', contain: 'content' as const, background: 'linear-gradient(165deg, #FEFCF9 0%, #F5EFE6 40%, #E8DDD0 100%)' }}
+      style={{ contentVisibility: 'auto', contain: 'content' as const, background: 'linear-gradient(165deg, #FEFCF9 0%, #F5EFE6 40%, #E8DDD0 100%)', willChange: 'transform' }}
     >
       {/* Architectural lines */}
       <div className="absolute inset-0 pointer-events-none">
@@ -26,15 +26,13 @@ export default function SceneBottle() {
 
       {/* Ambient texture */}
       <motion.div
-        style={{ scale: bgScale }}
+        style={{ scale: bgScale, willChange: 'transform' }}
         className="absolute inset-0 opacity-[0.03]"
         aria-hidden
       >
         <div
           className="w-full h-full"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%232E1F14' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          }}
+          style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%232E1F14' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")` }}
         />
       </motion.div>
 
@@ -42,7 +40,7 @@ export default function SceneBottle() {
       <div className="relative z-10 h-full flex items-center justify-center">
         {/* Floating bottle */}
         <motion.div
-          style={{ y: bottleY }}
+          style={{ y: bottleY, willChange: 'transform' }}
           className="relative"
         >
           <motion.div
@@ -73,7 +71,7 @@ export default function SceneBottle() {
 
         {/* Floating text — bottom left */}
         <motion.div
-          style={{ opacity: textOpacity, y: textY }}
+          style={{ opacity: textOpacity, y: textY, willChange: 'transform' }}
           className="absolute bottom-16 sm:bottom-20 lg:bottom-24 left-8 sm:left-12 lg:left-20"
         >
           <motion.div

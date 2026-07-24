@@ -42,7 +42,7 @@ export default function About() {
     <div className="min-h-screen bg-cream">
       {/* Hero */}
       <section ref={heroRef} className="relative h-[70vh] min-h-[480px] flex items-center overflow-hidden">
-        <motion.div style={{ y: heroY }} className="absolute inset-0">
+        <motion.div style={{ y: heroY, willChange: 'transform' }} className="absolute inset-0">
           <img
             src="https://images.pexels.com/photos/32817141/pexels-photo-32817141.jpeg?auto=compress&cs=tinysrgb&w=1400"
             alt="SMAR'S Atelier"
@@ -51,7 +51,7 @@ export default function About() {
           <div className="absolute inset-0 bg-gradient-to-b from-cream/70 via-cream/20 to-cream" />
         </motion.div>
 
-        <motion.div style={{ opacity: heroOpacity }} className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full">
+        <motion.div style={{ opacity: heroOpacity, willChange: 'transform' }} className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
@@ -81,7 +81,7 @@ export default function About() {
             >
               <div className="aspect-[4/5] overflow-hidden">
                 <motion.img
-                  style={{ y: storyImageY }}
+                  style={{ y: storyImageY, willChange: 'transform' }}
                   src="https://images.pexels.com/photos/7850600/pexels-photo-7850600.jpeg?auto=compress&cs=tinysrgb&w=800"
                   alt="SMAR'S Fragrance"
                   className="w-full h-[115%] object-cover"
@@ -194,7 +194,7 @@ export default function About() {
 
       {/* Craftsmanship — full bleed */}
       <section ref={craftRef} className="relative h-[80vh] min-h-[500px] flex items-center overflow-hidden">
-        <motion.div style={{ y: craftY }} className="absolute inset-0">
+        <motion.div style={{ y: craftY, willChange: 'transform' }} className="absolute inset-0">
           <img
             src="https://images.pexels.com/photos/3993447/pexels-photo-3993447.jpeg?auto=compress&cs=tinysrgb&w=1400"
             alt="Craftsmanship"
@@ -207,7 +207,7 @@ export default function About() {
         {/* Decorative gold line - left */}
         <div className="absolute left-8 lg:left-16 top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-champagne-gold/20 to-transparent" />
 
-        <motion.div style={{ opacity: craftOpacity }} className="relative z-10 w-full">
+        <motion.div style={{ opacity: craftOpacity, willChange: 'transform' }} className="relative z-10 w-full">
           <div className="max-w-[1400px] mx-auto px-8 lg:px-16">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
               {/* Left content */}

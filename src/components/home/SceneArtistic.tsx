@@ -15,7 +15,7 @@ export default function SceneArtistic() {
     <section
       ref={ref}
       className="relative py-24 sm:py-32 lg:py-40 overflow-hidden"
-      style={{ contentVisibility: 'auto', contain: 'content' as const, background: 'linear-gradient(180deg, #FEFCF9 0%, #F5EFE6 50%, #FEFCF9 100%)' }}
+      style={{ contentVisibility: 'auto', contain: 'content' as const, background: 'linear-gradient(180deg, #FEFCF9 0%, #F5EFE6 50%, #FEFCF9 100%)', willChange: 'transform' }}
     >
       {/* Section label */}
       <div className="px-8 sm:px-12 lg:px-20 mb-16 sm:mb-20 lg:mb-24">
@@ -46,7 +46,7 @@ export default function SceneArtistic() {
 
           {/* Product 1 — large, left */}
           <motion.div
-            style={{ y: parallax1 }}
+            style={{ y: parallax1, willChange: 'transform' }}
             className="col-span-12 sm:col-span-7 lg:col-span-5 relative group"
           >
             <Link to={`/product/${featured[0].id}`} className="block">
@@ -74,7 +74,7 @@ export default function SceneArtistic() {
 
           {/* Product 2 — tall, offset right */}
           <motion.div
-            style={{ y: parallax2 }}
+            style={{ y: parallax2, willChange: 'transform' }}
             className="col-span-12 sm:col-span-5 lg:col-span-4 lg:col-start-7 relative group sm:mt-24"
           >
             <Link to={`/product/${featured[1].id}`} className="block">
@@ -106,11 +106,9 @@ export default function SceneArtistic() {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.5 }}
               className="absolute -top-8 -left-4 sm:-left-8 p-5 z-10"
-              style={{
-                background: 'rgba(254, 252, 249, 0.85)',
+              style={{ background: 'rgba(254, 252, 249, 0.85)',
                 backdropFilter: 'blur(20px)',
-                border: '1px solid rgba(199, 163, 107, 0.15)',
-              }}
+                border: '1px solid rgba(199, 163, 107, 0.15)' }}
             >
               <p className="text-[9px] tracking-editorial uppercase text-bronze/60 font-body mb-1">
                 Heart Notes
@@ -123,7 +121,7 @@ export default function SceneArtistic() {
 
           {/* Product 3 — small, far right, stacked */}
           <motion.div
-            style={{ y: parallax1 }}
+            style={{ y: parallax1, willChange: 'transform' }}
             className="col-span-12 sm:col-span-6 lg:col-span-3 relative group lg:mt-48"
           >
             <Link to={`/product/${featured[2].id}`} className="block">
@@ -150,7 +148,7 @@ export default function SceneArtistic() {
 
           {/* Product 4 — bottom, spanning */}
           <motion.div
-            style={{ y: parallax2 }}
+            style={{ y: parallax2, willChange: 'transform' }}
             className="col-span-12 sm:col-span-6 lg:col-span-3 relative group lg:col-start-10 lg:-mt-16"
           >
             <Link to={`/product/${featured[3].id}`} className="block">

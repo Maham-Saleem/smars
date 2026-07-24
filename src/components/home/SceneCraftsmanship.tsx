@@ -11,10 +11,10 @@ export default function SceneCraftsmanship() {
   const textOpacity = useTransform(scrollYProgress, [0.2, 0.5], [0, 1]);
 
   return (
-    <section ref={ref} className="relative min-h-screen overflow-hidden" style={{ contentVisibility: 'auto', contain: 'content' as const }}>
+    <section ref={ref} className="relative min-h-screen overflow-hidden" style={{ contentVisibility: 'auto', contain: 'content' as const, willChange: 'transform' }}>
       {/* Full-bleed background image */}
       <motion.div
-        style={{ scale: imageScale, opacity: imageOpacity }}
+        style={{ scale: imageScale, opacity: imageOpacity, willChange: 'transform' }}
         className="absolute inset-0"
       >
         <img
@@ -32,7 +32,7 @@ export default function SceneCraftsmanship() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
             {/* Left text */}
             <motion.div
-              style={{ y: textY, opacity: textOpacity }}
+              style={{ y: textY, opacity: textOpacity, willChange: 'transform' }}
               className="lg:col-span-6"
             >
               <p className="text-[10px] tracking-editorial uppercase text-champagne/50 font-body mb-8">
@@ -62,7 +62,7 @@ export default function SceneCraftsmanship() {
 
             {/* Right — stats & details */}
             <motion.div
-              style={{ y: textY, opacity: textOpacity }}
+              style={{ y: textY, opacity: textOpacity, willChange: 'transform' }}
               className="lg:col-span-5 lg:col-start-8 flex flex-col justify-center"
             >
               <div className="space-y-12">

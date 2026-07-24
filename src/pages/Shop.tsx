@@ -91,7 +91,7 @@ export default function Shop() {
     <div className="min-h-screen bg-cream">
       {/* Hero */}
       <section ref={heroRef} className="relative h-[60vh] min-h-[400px] flex items-center overflow-hidden">
-        <motion.div style={{ y: heroY }} className="absolute inset-0">
+        <motion.div style={{ y: heroY, willChange: 'transform' }} className="absolute inset-0">
           <img
             src={img.collection}
             alt="SMAR'S Collection"
@@ -100,7 +100,7 @@ export default function Shop() {
           <div className="absolute inset-0 bg-gradient-to-b from-cream/70 via-cream/30 to-cream" />
         </motion.div>
 
-        <motion.div style={{ opacity: heroOpacity }} className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full">
+        <motion.div style={{ opacity: heroOpacity, willChange: 'transform' }} className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}

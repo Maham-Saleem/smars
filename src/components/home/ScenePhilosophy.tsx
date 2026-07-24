@@ -13,13 +13,13 @@ export default function ScenePhilosophy() {
     <section
       ref={ref}
       className="relative py-0 overflow-hidden"
-      style={{ contentVisibility: 'auto', contain: 'content' as const, background: 'linear-gradient(180deg, #E8DDD0 0%, #FEFCF9 100%)' }}
+      style={{ contentVisibility: 'auto', contain: 'content' as const, background: 'linear-gradient(180deg, #E8DDD0 0%, #FEFCF9 100%)', willChange: 'transform' }}
     >
       <div className="max-w-[1600px] mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 min-h-screen">
           {/* Left — oversized typography */}
           <motion.div
-            style={{ y: textY }}
+            style={{ y: textY, willChange: 'transform' }}
             className="lg:col-span-5 flex items-center px-8 sm:px-12 lg:px-16 py-24 lg:py-0 relative z-10"
           >
             <div className="max-w-lg">
@@ -47,7 +47,7 @@ export default function ScenePhilosophy() {
               </motion.h2>
 
               <motion.div
-                style={{ scaleX: lineScale }}
+                style={{ scaleX: lineScale, willChange: 'transform' }}
                 className="w-16 h-[1px] bg-bronze/40 mb-8 origin-left"
               />
 
@@ -81,7 +81,7 @@ export default function ScenePhilosophy() {
           <div className="lg:col-span-7 relative min-h-[60vh] lg:min-h-screen">
             {/* Background image */}
             <motion.div
-              style={{ y: imageY }}
+              style={{ y: imageY, willChange: 'transform' }}
               className="absolute inset-0"
             >
               <div className="absolute inset-0 lg:inset-y-0 lg:left-0 lg:right-12">
@@ -101,7 +101,7 @@ export default function ScenePhilosophy() {
               viewport={{ once: true }}
               transition={{ duration: 1.2, delay: 0.5 }}
               className="absolute bottom-12 right-8 sm:right-12 lg:right-16 w-40 h-52 sm:w-48 sm:h-60 lg:w-56 lg:h-72 overflow-hidden shadow-2xl z-10"
-              style={{ border: '1px solid rgba(199, 163, 107, 0.2)' }}
+              style={{ border: '1px solid rgba(199, 163, 107, 0.2)', willChange: 'transform' }}
             >
               <img
                 src="https://images.pexels.com/photos/13284500/pexels-photo-13284500.jpeg?auto=compress&cs=tinysrgb&w=800"
@@ -120,10 +120,8 @@ export default function ScenePhilosophy() {
             >
               <div
                 className="p-6 sm:p-8 backdrop-blur-sm"
-                style={{
-                  background: 'rgba(254, 252, 249, 0.7)',
-                  border: '1px solid rgba(199, 163, 107, 0.15)',
-                }}
+                style={{ background: 'rgba(254, 252, 249, 0.7)',
+                  border: '1px solid rgba(199, 163, 107, 0.15)' }}
               >
                 <p className="font-display text-lg sm:text-xl italic text-espresso/80 leading-relaxed">
                   "The art of perfumery is the art of restraint — knowing what to leave out."
