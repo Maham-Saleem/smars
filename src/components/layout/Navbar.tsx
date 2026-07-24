@@ -51,7 +51,7 @@ export default function Navbar() {
             {/* Logo */}
             <Link to="/" onClick={closeMobileMenu} className="relative z-10">
               <img
-                src={isDark ? '/logo.svg' : '/logo.svg'}
+                src={'/logo.svg'}
                 alt="SMAR'S"
                 className="h-10 sm:h-12 lg:h-14 transition-all duration-700"
               />
@@ -70,9 +70,7 @@ export default function Navbar() {
                   }`}
                 >
                   {link.name}
-                  <span className={`absolute -bottom-1 left-0 w-0 h-[1px] transition-all duration-500 group-hover:w-full ${
-                    isDark ? 'bg-bronze/60' : 'bg-bronze/60'
-                  }`} />
+                  <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-bronze/60 transition-all duration-500 group-hover:w-full" />
                 </Link>
               ))}
             </div>
