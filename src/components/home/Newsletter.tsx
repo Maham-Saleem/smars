@@ -44,6 +44,7 @@ export default function Newsletter() {
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Your email address"
               required
+              autoComplete="email"
               className="flex-1 px-6 py-4 bg-white border border-dark-brown/10 rounded-lg text-dark-brown placeholder-dark-brown/30 outline-none focus:border-champagne-gold transition-colors"
             />
             <button

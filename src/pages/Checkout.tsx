@@ -198,6 +198,7 @@ export default function Checkout() {
                       <input
                         type="text" required value={shipping.fullName}
                         onChange={(e) => setShipping({ ...shipping, fullName: e.target.value })}
+                        autoComplete="name"
                         className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors"
                       />
                     </div>
@@ -206,6 +207,7 @@ export default function Checkout() {
                       <input
                         type="tel" required value={shipping.phone}
                         onChange={(e) => setShipping({ ...shipping, phone: e.target.value })}
+                        autoComplete="tel"
                         className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors"
                       />
                     </div>
@@ -214,6 +216,7 @@ export default function Checkout() {
                       <input
                         type="email" required value={shipping.email}
                         onChange={(e) => setShipping({ ...shipping, email: e.target.value })}
+                        autoComplete="email"
                         className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors"
                       />
                     </div>
@@ -224,6 +227,7 @@ export default function Checkout() {
                     <input
                       type="text" required value={shipping.address}
                       onChange={(e) => setShipping({ ...shipping, address: e.target.value })}
+                      autoComplete="street-address"
                       className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors"
                     />
                   </div>
@@ -232,6 +236,7 @@ export default function Checkout() {
                     <input
                       type="text" value={shipping.apartment}
                       onChange={(e) => setShipping({ ...shipping, apartment: e.target.value })}
+                      autoComplete="address-line2"
                       className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors"
                     />
                   </div>
@@ -242,6 +247,7 @@ export default function Checkout() {
                       <input
                         type="text" required value={shipping.city}
                         onChange={(e) => setShipping({ ...shipping, city: e.target.value })}
+                        autoComplete="address-level2"
                         className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors"
                       />
                     </div>
@@ -250,6 +256,7 @@ export default function Checkout() {
                       <input
                         type="text" required value={shipping.state}
                         onChange={(e) => setShipping({ ...shipping, state: e.target.value })}
+                        autoComplete="address-level1"
                         className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors"
                       />
                     </div>
@@ -258,6 +265,7 @@ export default function Checkout() {
                       <input
                         type="text" required value={shipping.zip}
                         onChange={(e) => setShipping({ ...shipping, zip: e.target.value })}
+                        autoComplete="postal-code"
                         className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors"
                       />
                     </div>
@@ -353,6 +361,7 @@ export default function Checkout() {
                       <input
                         type="text" required value={cardDetails.cardNumber}
                         onChange={(e) => setCardDetails({ ...cardDetails, cardNumber: e.target.value })}
+                        autoComplete="cc-number"
                         placeholder="1234 5678 9012 3456"
                         className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors"
                       />
@@ -362,6 +371,7 @@ export default function Checkout() {
                       <input
                         type="text" required value={cardDetails.cardName}
                         onChange={(e) => setCardDetails({ ...cardDetails, cardName: e.target.value })}
+                        autoComplete="cc-name"
                         className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors"
                       />
                     </div>
@@ -371,6 +381,7 @@ export default function Checkout() {
                         <input
                           type="text" required value={cardDetails.expiry}
                           onChange={(e) => setCardDetails({ ...cardDetails, expiry: e.target.value })}
+                          autoComplete="cc-exp"
                           placeholder="MM/YY"
                           className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors"
                         />
@@ -380,6 +391,7 @@ export default function Checkout() {
                         <input
                           type="text" required value={cardDetails.cvv}
                           onChange={(e) => setCardDetails({ ...cardDetails, cvv: e.target.value })}
+                          autoComplete="cc-csc"
                           placeholder="123"
                           className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors"
                         />

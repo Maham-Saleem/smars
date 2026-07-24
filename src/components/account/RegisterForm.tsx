@@ -38,6 +38,7 @@ export default function RegisterForm({ onSuccess, onLogin }: Props) {
           required
           value={name}
           onChange={(e) => setName(e.target.value)}
+          autoComplete="name"
           className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors"
           placeholder="John Doe"
         />
@@ -49,6 +50,7 @@ export default function RegisterForm({ onSuccess, onLogin }: Props) {
           required
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          autoComplete="email"
           className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors"
           placeholder="your@email.com"
         />
@@ -61,6 +63,7 @@ export default function RegisterForm({ onSuccess, onLogin }: Props) {
           minLength={6}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          autoComplete="new-password"
           className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors"
           placeholder="Min. 6 characters"
         />

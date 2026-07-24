@@ -126,6 +126,7 @@ export default function ContactUs() {
                     <input
                       type="text" required value={form.name}
                       onChange={(e) => setForm({ ...form, name: e.target.value })}
+                      autoComplete="name"
                       className="w-full px-4 py-3 border border-espresso/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors bg-cream"
                     />
                   </div>
@@ -134,6 +135,7 @@ export default function ContactUs() {
                     <input
                       type="email" required value={form.email}
                       onChange={(e) => setForm({ ...form, email: e.target.value })}
+                      autoComplete="email"
                       className="w-full px-4 py-3 border border-espresso/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors bg-cream"
                     />
                   </div>

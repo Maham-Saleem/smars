@@ -148,6 +148,7 @@ export default function AuthModal() {
                       required
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
+                      autoComplete="email"
                       className="w-full pb-2 bg-transparent border-b border-espresso/10 text-sm text-espresso outline-none focus:border-bronze transition-colors placeholder:text-espresso/20 font-light"
                       placeholder="your@email.com"
                     />
@@ -159,6 +160,7 @@ export default function AuthModal() {
                       required
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
+                      autoComplete="current-password"
                       className="w-full pb-2 bg-transparent border-b border-espresso/10 text-sm text-espresso outline-none focus:border-bronze transition-colors placeholder:text-espresso/20 font-light"
                       placeholder="••••••••"
                     />
@@ -189,6 +191,7 @@ export default function AuthModal() {
                       required
                       value={name}
                       onChange={(e) => setName(e.target.value)}
+                      autoComplete="name"
                       className="w-full pb-2 bg-transparent border-b border-espresso/10 text-sm text-espresso outline-none focus:border-bronze transition-colors placeholder:text-espresso/20 font-light"
                       placeholder="John Doe"
                     />
@@ -200,6 +203,7 @@ export default function AuthModal() {
                       required
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
+                      autoComplete="email"
                       className="w-full pb-2 bg-transparent border-b border-espresso/10 text-sm text-espresso outline-none focus:border-bronze transition-colors placeholder:text-espresso/20 font-light"
                       placeholder="your@email.com"
                     />
@@ -212,6 +216,7 @@ export default function AuthModal() {
                       minLength={6}
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
+                      autoComplete="new-password"
                       className="w-full pb-2 bg-transparent border-b border-espresso/10 text-sm text-espresso outline-none focus:border-bronze transition-colors placeholder:text-espresso/20 font-light"
                       placeholder="Min. 6 characters"
                     />

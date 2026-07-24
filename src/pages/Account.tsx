@@ -148,6 +148,7 @@ export default function Account() {
                           <input
                             type="text" value={profileForm.name}
                             onChange={(e) => setProfileForm({ ...profileForm, name: e.target.value })}
+                            autoComplete="name"
                             className="w-full bg-transparent border-b border-dark-brown/20 text-dark-brown outline-none py-0.5"
                           />
                         ) : (
@@ -170,6 +171,7 @@ export default function Account() {
                           <input
                             type="tel" value={profileForm.phone}
                             onChange={(e) => setProfileForm({ ...profileForm, phone: e.target.value })}
+                            autoComplete="tel"
                             className="w-full bg-transparent border-b border-dark-brown/20 text-dark-brown outline-none py-0.5"
                           />
                         ) : (
@@ -275,35 +277,35 @@ export default function Account() {
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div className="sm:col-span-2">
                           <label className="block text-xs tracking-wider uppercase text-dark-brown/50 mb-2">Full Name</label>
-                          <input type="text" value={addressForm.fullName} onChange={(e) => setAddressForm({ ...addressForm, fullName: e.target.value })} className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors" />
+                          <input type="text" value={addressForm.fullName} onChange={(e) => setAddressForm({ ...addressForm, fullName: e.target.value })} autoComplete="name" className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors" />
                         </div>
                         <div>
                           <label className="block text-xs tracking-wider uppercase text-dark-brown/50 mb-2">Phone</label>
-                          <input type="tel" value={addressForm.phone} onChange={(e) => setAddressForm({ ...addressForm, phone: e.target.value })} className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors" />
+                          <input type="tel" value={addressForm.phone} onChange={(e) => setAddressForm({ ...addressForm, phone: e.target.value })} autoComplete="tel" className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors" />
                         </div>
                         <div className="sm:col-span-2">
                           <label className="block text-xs tracking-wider uppercase text-dark-brown/50 mb-2">Street Address</label>
-                          <input type="text" value={addressForm.address} onChange={(e) => setAddressForm({ ...addressForm, address: e.target.value })} className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors" />
+                          <input type="text" value={addressForm.address} onChange={(e) => setAddressForm({ ...addressForm, address: e.target.value })} autoComplete="street-address" className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors" />
                         </div>
                         <div className="sm:col-span-2">
                           <label className="block text-xs tracking-wider uppercase text-dark-brown/50 mb-2">Apartment (optional)</label>
-                          <input type="text" value={addressForm.apartment} onChange={(e) => setAddressForm({ ...addressForm, apartment: e.target.value })} className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors" />
+                          <input type="text" value={addressForm.apartment} onChange={(e) => setAddressForm({ ...addressForm, apartment: e.target.value })} autoComplete="address-line2" className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors" />
                         </div>
                         <div>
                           <label className="block text-xs tracking-wider uppercase text-dark-brown/50 mb-2">City</label>
-                          <input type="text" value={addressForm.city} onChange={(e) => setAddressForm({ ...addressForm, city: e.target.value })} className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors" />
+                          <input type="text" value={addressForm.city} onChange={(e) => setAddressForm({ ...addressForm, city: e.target.value })} autoComplete="address-level2" className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors" />
                         </div>
                         <div>
                           <label className="block text-xs tracking-wider uppercase text-dark-brown/50 mb-2">State</label>
-                          <input type="text" value={addressForm.state} onChange={(e) => setAddressForm({ ...addressForm, state: e.target.value })} className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors" />
+                          <input type="text" value={addressForm.state} onChange={(e) => setAddressForm({ ...addressForm, state: e.target.value })} autoComplete="address-level1" className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors" />
                         </div>
                         <div>
                           <label className="block text-xs tracking-wider uppercase text-dark-brown/50 mb-2">Postal Code</label>
-                          <input type="text" value={addressForm.zip} onChange={(e) => setAddressForm({ ...addressForm, zip: e.target.value })} className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors" />
+                          <input type="text" value={addressForm.zip} onChange={(e) => setAddressForm({ ...addressForm, zip: e.target.value })} autoComplete="postal-code" className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors" />
                         </div>
                         <div>
                           <label className="block text-xs tracking-wider uppercase text-dark-brown/50 mb-2">Country</label>
-                          <input type="text" value={addressForm.country} onChange={(e) => setAddressForm({ ...addressForm, country: e.target.value })} className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors" />
+                          <input type="text" value={addressForm.country} onChange={(e) => setAddressForm({ ...addressForm, country: e.target.value })} autoComplete="country-name" className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors" />
                         </div>
                       </div>
                       <div className="flex gap-3 mt-6">

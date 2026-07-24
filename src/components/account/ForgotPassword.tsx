@@ -38,6 +38,7 @@ export default function ForgotPassword({ onBack }: Props) {
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              autoComplete="email"
               className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors"
               placeholder="your@email.com"
             />
