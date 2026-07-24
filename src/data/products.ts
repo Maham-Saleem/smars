@@ -50,6 +50,7 @@ const img = {
   atelierBg: 'https://images.pexels.com/photos/3059609/pexels-photo-3059609.jpeg?auto=compress&cs=tinysrgb&w=800',
   journalHero: 'https://images.pexels.com/photos/28486682/pexels-photo-28486682.jpeg?auto=compress&cs=tinysrgb&w=800',
   bottlesWood: 'https://images.pexels.com/photos/6693946/pexels-photo-6693946.jpeg?auto=compress&cs=tinysrgb&w=800',
+  nectarBottle: 'https://images.pexels.com/photos/6694146/pexels-photo-6694146.jpeg?auto=compress&cs=tinysrgb&w=800',
 };
 
 export const products: Product[] = [
@@ -305,7 +306,7 @@ export const products: Product[] = [
     reviews: [
       { id: 19, name: "Maya S.", rating: 5, date: "2026-06-28", comment: "Like liquid gold. Warm, sweet, and incredibly luxurious." },
     ],
-    images: [img.golden],
+    images: [img.nectarBottle],
     category: "Eau de Parfum",
     collection: "Signature",
     fragranceNotes: ["Mandarin", "Bergamot", "Orange Blossom", "Mimosa", "Beeswax", "Benzoin", "Amber"],
