@@ -18,6 +18,14 @@ export default function SearchModal() {
     }
   }, [isSearchOpen]);
 
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isSearchOpen) closeSearch();
+    };
+    window.addEventListener('keydown', handleKey);
+    return () => window.removeEventListener('keydown', handleKey);
+  }, [isSearchOpen, closeSearch]);
+
   const filtered = query
     ? products.filter(
         (p) =>
@@ -55,6 +63,7 @@ export default function SearchModal() {
                 </button>
               )}
             </div>
+            <p className="text-cream/20 text-xs mt-3 text-center">Press <span className="text-cream/40">ESC</span> to close</p>
             {query && (
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
