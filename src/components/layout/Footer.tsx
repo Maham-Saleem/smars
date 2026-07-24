@@ -59,14 +59,18 @@ export default function Footer() {
               Customer Care
             </h4>
             <ul className="space-y-3">
-              {['Shipping & Returns', 'Privacy Policy', 'Terms of Service'].map((item) => (
-                <li key={item}>
-                  <a
-                    href="#"
+              {[
+                { name: 'Shipping & Returns', path: '/shipping-returns' },
+                { name: 'Privacy Policy', path: '#' },
+                { name: 'Terms of Service', path: '#' },
+              ].map((item) => (
+                <li key={item.name}>
+                  <Link
+                    to={item.path}
                     className="text-sm text-cream/30 hover:text-champagne/70 transition-colors duration-500 font-light"
                   >
-                    {item}
-                  </a>
+                    {item.name}
+                  </Link>
                 </li>
               ))}
             </ul>
