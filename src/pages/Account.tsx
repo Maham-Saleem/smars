@@ -16,6 +16,7 @@ import RegisterForm from '../components/account/RegisterForm';
 import ForgotPassword from '../components/account/ForgotPassword';
 import { useOrderStore } from '../store/orderStore';
 import { useCartStore } from '../store/cartStore';
+import ConfirmDialog from '../components/ui/ConfirmDialog';
 import toast from 'react-hot-toast';
 
 type Tab = 'profile' | 'addresses' | 'orders' | 'wishlist' | 'security' | 'notifications' | 'preferences';
@@ -47,6 +48,7 @@ export default function Account() {
   const [promotions, setPromotions] = useState(false);
   const [preferredFamily, setPreferredFamily] = useState('floral');
   const [twoFA, setTwoFA] = useState(false);
+  const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
   const [language, setLanguage] = useState('English');
   const [currency, setCurrency] = useState('USD ($)');
   const [addressForm, setAddressForm] = useState({
@@ -174,7 +176,7 @@ export default function Account() {
             ))}
             <span className="w-[1px] h-6 bg-espresso/8 self-center mx-1" />
             <button
-              onClick={logout}
+              onClick={() => setShowLogoutConfirm(true)}
               className="flex items-center gap-2 px-4 py-2 rounded-full text-[10px] tracking-[0.2em] uppercase font-body text-red-400/50 hover:text-red-500 hover:bg-red-50/50 transition-all duration-500 whitespace-nowrap"
             >
               <HiOutlineLogout size={14} />
@@ -945,6 +947,15 @@ export default function Account() {
           )}
         </AnimatePresence>
       </div>
+
+      <ConfirmDialog
+        open={showLogoutConfirm}
+        title="Sign Out"
+        message="Are you sure you wish to sign out of your SMAR'S account?"
+        confirmLabel="Sign Out"
+        onConfirm={() => { logout(); setShowLogoutConfirm(false); toast.success('Signed out successfully'); }}
+        onCancel={() => setShowLogoutConfirm(false)}
+      />
     </div>
   );
 }
