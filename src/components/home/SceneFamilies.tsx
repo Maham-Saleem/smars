@@ -25,7 +25,7 @@ export default function SceneFamilies() {
     <section
       ref={ref}
       className="relative min-h-screen overflow-hidden"
-      style={{ background: 'linear-gradient(180deg, #2E1F14 0%, #1a130f 100%)' }}
+      style={{ contentVisibility: 'auto', contain: 'content' as const, background: 'linear-gradient(180deg, #2E1F14 0%, #1a130f 100%)' }}
     >
       {/* Section header */}
       <div className="relative z-10 pt-24 sm:pt-32 lg:pt-40 px-8 sm:px-12 lg:px-20">

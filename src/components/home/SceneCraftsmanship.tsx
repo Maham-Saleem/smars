@@ -11,7 +11,7 @@ export default function SceneCraftsmanship() {
   const textOpacity = useTransform(scrollYProgress, [0.2, 0.5], [0, 1]);
 
   return (
-    <section ref={ref} className="relative min-h-screen overflow-hidden">
+    <section ref={ref} className="relative min-h-screen overflow-hidden" style={{ contentVisibility: 'auto', contain: 'content' as const }}>
       {/* Full-bleed background image */}
       <motion.div
         style={{ scale: imageScale, opacity: imageOpacity }}

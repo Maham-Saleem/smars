@@ -26,7 +26,7 @@ const reasons = [
 
 export default function WhyChoose() {
   return (
-    <section className="py-20 lg:py-28 bg-warm-beige">
+    <section className="py-20 lg:py-28 bg-warm-beige" style={{ contentVisibility: 'auto', contain: 'content' as const }}>
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

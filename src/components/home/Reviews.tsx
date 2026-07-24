@@ -45,7 +45,7 @@ export default function Reviews() {
   const prev = () => setCurrent((c) => (c - 1 + total) % total);
 
   return (
-    <section className="py-20 lg:py-28 bg-cream overflow-hidden">
+    <section className="py-20 lg:py-28 bg-cream overflow-hidden" style={{ contentVisibility: 'auto', contain: 'content' as const }}>
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

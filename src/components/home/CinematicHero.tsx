@@ -10,7 +10,7 @@ export default function CinematicHero() {
   const y = useTransform(scrollYProgress, [0, 1], [0, 200]);
 
   return (
-    <motion.section ref={ref} style={{ opacity }} className="relative h-[110vh] min-h-[800px] flex items-center justify-center overflow-hidden bg-deep-coffee">
+    <motion.section ref={ref} style={{ contentVisibility: 'auto', contain: 'content' as const, opacity }} className="relative h-[110vh] min-h-[800px] flex items-center justify-center overflow-hidden bg-deep-coffee">
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_#4A3428_0%,_#2E221B_50%,_#1a130f_100%)]" />
         <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\' opacity=\'1\'/%3E%3C/svg%3E")' }} />

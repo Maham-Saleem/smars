@@ -13,7 +13,7 @@ export default function EditorialOud() {
   const textY = useTransform(scrollYProgress, [0.2, 0.5], [80, 0]);
 
   return (
-    <section ref={ref} className="relative h-[120vh] min-h-[800px] flex items-center overflow-hidden bg-deep-coffee">
+    <section ref={ref} className="relative h-[120vh] min-h-[800px] flex items-center overflow-hidden bg-deep-coffee" style={{ contentVisibility: 'auto', contain: 'content' as const }}>
       <motion.div className="absolute inset-0" style={{ y: bgY }}>
         <img
           src="https://images.pexels.com/photos/7850600/pexels-photo-7850600.jpeg?auto=compress&cs=tinysrgb&w=800"

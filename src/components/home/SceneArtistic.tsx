@@ -15,7 +15,7 @@ export default function SceneArtistic() {
     <section
       ref={ref}
       className="relative py-24 sm:py-32 lg:py-40 overflow-hidden"
-      style={{ background: 'linear-gradient(180deg, #FEFCF9 0%, #F5EFE6 50%, #FEFCF9 100%)' }}
+      style={{ contentVisibility: 'auto', contain: 'content' as const, background: 'linear-gradient(180deg, #FEFCF9 0%, #F5EFE6 50%, #FEFCF9 100%)' }}
     >
       {/* Section label */}
       <div className="px-8 sm:px-12 lg:px-20 mb-16 sm:mb-20 lg:mb-24">

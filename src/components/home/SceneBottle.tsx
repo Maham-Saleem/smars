@@ -15,7 +15,7 @@ export default function SceneBottle() {
     <section
       ref={ref}
       className="relative h-[100vh] min-h-[700px] overflow-hidden"
-      style={{ background: 'linear-gradient(165deg, #FEFCF9 0%, #F5EFE6 40%, #E8DDD0 100%)' }}
+      style={{ contentVisibility: 'auto', contain: 'content' as const, background: 'linear-gradient(165deg, #FEFCF9 0%, #F5EFE6 40%, #E8DDD0 100%)' }}
     >
       {/* Architectural lines */}
       <div className="absolute inset-0 pointer-events-none">

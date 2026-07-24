@@ -13,7 +13,7 @@ export default function ScenePhilosophy() {
     <section
       ref={ref}
       className="relative py-0 overflow-hidden"
-      style={{ background: 'linear-gradient(180deg, #E8DDD0 0%, #FEFCF9 100%)' }}
+      style={{ contentVisibility: 'auto', contain: 'content' as const, background: 'linear-gradient(180deg, #E8DDD0 0%, #FEFCF9 100%)' }}
     >
       <div className="max-w-[1600px] mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 min-h-screen">

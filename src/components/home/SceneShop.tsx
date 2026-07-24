@@ -38,7 +38,7 @@ export default function SceneShop() {
     <section
       ref={ref}
       className="relative py-24 sm:py-32 lg:py-40 overflow-hidden"
-      style={{ background: 'linear-gradient(180deg, #FEFCF9 0%, #F5EFE6 100%)' }}
+      style={{ contentVisibility: 'auto', contain: 'content' as const, background: 'linear-gradient(180deg, #FEFCF9 0%, #F5EFE6 100%)' }}
     >
       {/* Header */}
       <div className="px-8 sm:px-12 lg:px-20 mb-16 sm:mb-20">

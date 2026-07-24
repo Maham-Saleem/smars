@@ -41,7 +41,7 @@ export default function SceneIngredients() {
     <section
       ref={ref}
       className="relative py-24 sm:py-32 lg:py-40 overflow-hidden"
-      style={{ background: 'linear-gradient(180deg, #F5EFE6 0%, #E8DDD0 50%, #F5EFE6 100%)' }}
+      style={{ contentVisibility: 'auto', contain: 'content' as const, background: 'linear-gradient(180deg, #F5EFE6 0%, #E8DDD0 50%, #F5EFE6 100%)' }}
     >
       {/* Header */}
       <div className="px-8 sm:px-12 lg:px-20 mb-20 sm:mb-24 lg:mb-32">
