@@ -107,7 +107,7 @@ export default function Navbar() {
                 </button>
               )}
               <Link
-                to="/account"
+                to="/account?tab=wishlist"
                 className={`transition-colors duration-500 relative ${
                   isDark ? 'text-espresso/80 hover:text-espresso' : 'text-espresso/60 hover:text-espresso'
                 }`}

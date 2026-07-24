@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { HiOutlineUser, HiOutlineHeart, HiOutlineLocationMarker, HiOutlineLogout, HiOutlineClipboardList, HiOutlineMail, HiOutlinePhone } from 'react-icons/hi';
 import { useAuthStore } from '../store/authStore';
 import { products } from '../data/products';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import LoginForm from '../components/account/LoginForm';
 import RegisterForm from '../components/account/RegisterForm';
 import ForgotPassword from '../components/account/ForgotPassword';
@@ -14,7 +14,8 @@ type Tab = 'profile' | 'orders' | 'wishlist' | 'addresses';
 export default function Account() {
   const { isAuthenticated, user, logout, wishlist, savedAddress, updateProfile, saveAddress: persistAddress } = useAuthStore();
   const orders = useOrderStore((s) => s.orders);
-  const [activeTab, setActiveTab] = useState<Tab>('profile');
+  const [searchParams] = useSearchParams();
+  const [activeTab, setActiveTab] = useState<Tab>((searchParams.get('tab') as Tab) || 'profile');
   const [authView, setAuthView] = useState<'login' | 'register' | 'forgot'>('login');
   const [editingProfile, setEditingProfile] = useState(false);
   const [editingAddr, setEditingAddr] = useState(false);
