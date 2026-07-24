@@ -5,13 +5,15 @@ import { HiOutlineHeart, HiOutlineShoppingBag } from 'react-icons/hi';
 import { products } from '../../data/products';
 import { useAuthStore } from '../../store/authStore';
 import { useCartStore } from '../../store/cartStore';
+import { useUIStore } from '../../store/uiStore';
 import toast from 'react-hot-toast';
 
 export default function SceneShop() {
   const ref = useRef(null);
   const [filter, setFilter] = useState<string>('all');
-  const { toggleWishlist, isInWishlist, isAuthenticated, openAuth, setPendingProduct } = useAuthStore();
+  const { toggleWishlist, isInWishlist, isAuthenticated } = useAuthStore();
   const { addItem } = useCartStore();
+  const { openAuth, setPendingProduct } = useUIStore();
 
   const handleAddToCart = (product: (typeof products)[0]) => {
     if (isAuthenticated) {
