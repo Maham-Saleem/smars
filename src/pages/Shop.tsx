@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useSearchParams } from 'react-router-dom';
 import { products } from '../data/products';
@@ -32,6 +32,11 @@ export default function Shop() {
   const [page, setPage] = useState(1);
   const [quickView, setQuickView] = useState<number | null>(null);
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+
+  useEffect(() => {
+    setPage(1);
+    window.scrollTo(0, 0);
+  }, [filters]);
 
   const filtered = useMemo(() => {
     let result = [...products];
@@ -136,7 +141,7 @@ export default function Shop() {
               </div>
             )}
 
-            <Pagination current={page} total={totalPages} onPage={(p) => { setPage(p); window.scrollTo({ top: 0, behavior: 'smooth' }); }} />
+            <Pagination current={page} total={totalPages} onPage={(p) => { setPage(p); window.scrollTo(0, 0); }} />
           </div>
         </div>
       </div>
