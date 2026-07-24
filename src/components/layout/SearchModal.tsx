@@ -1,12 +1,14 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { HiOutlineSearch, HiX } from 'react-icons/hi';
+import { HiOutlineSearch, HiX, HiClock } from 'react-icons/hi';
 import { useUIStore } from '../../store/uiStore';
+import { useSearchStore } from '../../store/searchStore';
 import { products } from '../../data/products';
 import { Link } from 'react-router-dom';
 
 export default function SearchModal() {
   const { isSearchOpen, closeSearch } = useUIStore();
+  const { recentSearches, addRecentSearch, clearRecentSearches } = useSearchStore();
   const [query, setQuery] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -25,6 +27,15 @@ export default function SearchModal() {
     window.addEventListener('keydown', handleKey);
     return () => window.removeEventListener('keydown', handleKey);
   }, [isSearchOpen, closeSearch]);
+
+  const handleSearch = (term: string) => {
+    if (term.trim()) addRecentSearch(term);
+  };
+
+  const handleResultClick = (term: string) => {
+    handleSearch(term);
+    closeSearch();
+  };
 
   const filtered = query
     ? products.filter(
@@ -49,12 +60,13 @@ export default function SearchModal() {
           </button>
           <div onClick={(e) => e.stopPropagation()} className="w-full max-w-2xl">
             <div className="flex items-center border-b-2 border-champagne-gold/30 pb-3 transition-colors focus-within:border-champagne-gold">
-              <HiOutlineSearch className="text-champagne-gold/60" size={24} />
+              <HiOutlineSearch className="text-champagne-gold/60 shrink-0" size={24} />
               <input
                 ref={inputRef}
                 type="text"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
+                onKeyDown={(e) => e.key === 'Enter' && handleSearch(query)}
                 placeholder="Search fragrances, notes, collections..."
                 className="flex-1 bg-transparent text-cream text-xl lg:text-2xl font-body placeholder-cream/50 outline-none ml-3"
               />
@@ -65,6 +77,30 @@ export default function SearchModal() {
               )}
             </div>
             <p className="text-cream/20 text-xs mt-3 text-center">Press <span className="text-cream/40">ESC</span> to close</p>
+
+            {!query && recentSearches.length > 0 && (
+              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="mt-8">
+                <div className="flex items-center justify-between mb-4">
+                  <p className="text-cream/30 text-xs tracking-wider uppercase font-body">Recent Searches</p>
+                  <button onClick={clearRecentSearches} className="text-cream/20 text-[9px] tracking-wider uppercase font-body hover:text-cream/50 transition-colors">
+                    Clear
+                  </button>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {recentSearches.map((term) => (
+                    <button
+                      key={term}
+                      onClick={() => { setQuery(term); handleSearch(term); }}
+                      className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-cream/5 text-cream/60 hover:bg-cream/10 hover:text-cream/80 text-xs transition-all duration-300"
+                    >
+                      <HiClock size={12} />
+                      {term}
+                    </button>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+
             {query && (
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
@@ -83,7 +119,7 @@ export default function SearchModal() {
                       <Link
                         key={product.id}
                         to={`/product/${product.id}`}
-                        onClick={closeSearch}
+                        onClick={() => handleResultClick(query)}
                         className="flex items-center gap-4 p-3 rounded-xl hover:bg-cream/10 transition-all duration-300 group"
                       >
                         <img
