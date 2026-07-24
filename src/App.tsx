@@ -16,6 +16,7 @@ import Journal from './pages/Journal';
 import JournalDetail from './pages/JournalDetail';
 import About from './pages/About';
 import ShippingReturns from './pages/ShippingReturns';
+import OrderConfirmation from './pages/OrderConfirmation';
 
 export default function App() {
   return (
@@ -38,6 +39,7 @@ export default function App() {
             <Route path="/journal/:id" element={<JournalDetail />} />
             <Route path="/about" element={<About />} />
             <Route path="/shipping-returns" element={<ShippingReturns />} />
+            <Route path="/order-confirmation/:orderId" element={<OrderConfirmation />} />
           </Routes>
         </main>
         <Footer />
