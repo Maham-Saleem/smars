@@ -3,6 +3,7 @@ import { HiX, HiStar, HiOutlineHeart, HiOutlineShoppingBag } from 'react-icons/h
 import type { Product } from '../../data/products';
 import { useAuthStore } from '../../store/authStore';
 import { useCartStore } from '../../store/cartStore';
+import { useUIStore } from '../../store/uiStore';
 import { Link } from 'react-router-dom';
 import toast from 'react-hot-toast';
 
@@ -12,8 +13,9 @@ interface Props {
 }
 
 export default function QuickView({ product, onClose }: Props) {
-  const { toggleWishlist, isInWishlist } = useAuthStore();
+  const { toggleWishlist, isInWishlist, isAuthenticated } = useAuthStore();
   const addItem = useCartStore((s) => s.addItem);
+  const { openAuth, setPendingProduct } = useUIStore();
 
   if (!product) return null;
 
@@ -67,7 +69,16 @@ export default function QuickView({ product, onClose }: Props) {
 
                 <div className="flex gap-3 mt-8">
                   <button
-                    onClick={() => { addItem(product); toast.success(`${product.name} added to cart`); }}
+                    onClick={() => {
+                      if (isAuthenticated) {
+                        addItem(product);
+                        toast.success(`${product.name} added to cart`);
+                      } else {
+                        onClose();
+                        setPendingProduct(product);
+                        openAuth();
+                      }
+                    }}
                     className="flex-1 py-3 bg-dark-brown text-cream text-xs tracking-widest uppercase font-medium hover:bg-champagne-gold hover:text-deep-coffee active:bg-dark-brown/90 focus:outline-none focus:ring-2 focus:ring-dark-brown/20 transition-all duration-300 rounded-lg flex items-center justify-center gap-2"
                   >
                     <HiOutlineShoppingBag size={16} />
