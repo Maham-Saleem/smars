@@ -18,7 +18,7 @@ export default function Navbar() {
   const location = useLocation();
   const totalItems = useCartStore((s) => s.totalItems);
   const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
-  const { openCart, openSearch, isMobileMenuOpen, toggleMobileMenu, closeMobileMenu } = useUIStore();
+  const { openCart, openSearch, openAuth, isMobileMenuOpen, toggleMobileMenu, closeMobileMenu } = useUIStore();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 80);
@@ -86,14 +86,25 @@ export default function Navbar() {
               >
                 <HiOutlineSearch size={20} />
               </button>
-              <Link
-                to="/account"
-                className={`hidden sm:block transition-colors duration-500 ${
-                  isDark ? 'text-espresso/80 hover:text-espresso' : 'text-espresso/60 hover:text-espresso'
-                }`}
-              >
-                <HiOutlineUser size={20} />
-              </Link>
+              {isAuthenticated ? (
+                <Link
+                  to="/account"
+                  className={`hidden sm:block transition-colors duration-500 ${
+                    isDark ? 'text-espresso/80 hover:text-espresso' : 'text-espresso/60 hover:text-espresso'
+                  }`}
+                >
+                  <HiOutlineUser size={20} />
+                </Link>
+              ) : (
+                <button
+                  onClick={openAuth}
+                  className={`hidden sm:block transition-colors duration-500 ${
+                    isDark ? 'text-espresso/80 hover:text-espresso' : 'text-espresso/60 hover:text-espresso'
+                  }`}
+                >
+                  <HiOutlineUser size={20} />
+                </button>
+              )}
               <Link
                 to="/account"
                 className={`transition-colors duration-500 relative ${
@@ -179,13 +190,12 @@ export default function Navbar() {
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.4 }}
                   >
-                    <Link
-                      to="/account"
-                      onClick={closeMobileMenu}
-                      className="block w-full py-3 text-center text-[10px] tracking-editorial uppercase font-body border border-espresso/20 text-espresso/60 hover:border-bronze hover:text-bronze transition-all duration-500"
-                    >
-                      Sign In
-                    </Link>
+                  <button
+                    onClick={() => { closeMobileMenu(); openAuth(); }}
+                    className="block w-full py-3 text-center text-[10px] tracking-editorial uppercase font-body border border-espresso/20 text-espresso/60 hover:border-bronze hover:text-bronze transition-all duration-500"
+                  >
+                    Sign In
+                  </button>
                   </motion.div>
                 )}
               </div>
