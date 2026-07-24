@@ -40,14 +40,14 @@ export default function Shop() {
   const heroY = useTransform(scrollYProgress, [0, 1], [0, 100]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
+  const prevFiltersRef = useRef(filters);
   useEffect(() => {
-    setPage(1);
+    if (prevFiltersRef.current !== filters) {
+      setPage(1);
+      prevFiltersRef.current = filters;
+    }
     gridTopRef.current?.scrollIntoView({ block: 'start' });
-  }, [filters]);
-
-  useEffect(() => {
-    gridTopRef.current?.scrollIntoView({ block: 'start' });
-  }, [page]);
+  }, [filters, page]);
 
   const filtered = useMemo(() => {
     let result = [...products];
