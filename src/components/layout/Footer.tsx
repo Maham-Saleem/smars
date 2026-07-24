@@ -7,10 +7,10 @@ export default function Footer() {
     <footer className="relative overflow-hidden" style={{ background: 'linear-gradient(180deg, #2E1F14 0%, #1a130f 100%)' }}>
       {/* Main footer content */}
       <div className="max-w-[1600px] mx-auto px-8 sm:px-12 lg:px-20 py-20 sm:py-24 lg:py-32">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 md:gap-10 lg:gap-8">
           {/* Brand column */}
-          <div className="lg:col-span-5">
-            <img src="/logo.svg" alt="SMAR'S" className="h-16 sm:h-20 mb-8" />
+          <div className="md:col-span-2 lg:col-span-4">
+            <img src="/logo.svg" alt="SMAR'S" className="h-14 sm:h-20 mb-6 lg:mb-8" />
             <p className="text-sm text-cream/40 leading-relaxed font-light max-w-sm mb-8">
               Crafting exceptional fragrances since 2024. Every bottle tells 
               a story of passion, artistry, and timeless elegance.
@@ -29,8 +29,29 @@ export default function Footer() {
             </div>
           </div>
 
+          {/* Contact */}
+          <div className="md:col-span-2 lg:col-span-3 lg:col-start-5">
+            <h4 className="text-[10px] tracking-editorial uppercase text-champagne/40 font-body mb-6">
+              Contact
+            </h4>
+            <ul className="space-y-4">
+              <li className="flex items-start gap-3">
+                <HiOutlineLocationMarker className="mt-0.5 text-champagne/30 shrink-0" size={16} />
+                <span className="text-sm text-cream/30 font-light">123 Luxury Lane, Beverly Hills, CA 90210</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <HiOutlinePhone className="text-champagne/30 shrink-0" size={16} />
+                <span className="text-sm text-cream/30 font-light">+1 (800) 555-0199</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <HiOutlineMail className="text-champagne/30 shrink-0" size={16} />
+                <span className="text-sm text-cream/30 font-light">hello@smars.com</span>
+              </li>
+            </ul>
+          </div>
+
           {/* Navigation */}
-          <div className="lg:col-span-3 lg:col-start-7">
+          <div className="md:col-span-1 lg:col-span-2">
             <h4 className="text-[10px] tracking-editorial uppercase text-champagne/40 font-body mb-6">
               Navigate
             </h4>
@@ -54,7 +75,7 @@ export default function Footer() {
           </div>
 
           {/* Customer Care */}
-          <div className="lg:col-span-3">
+          <div className="md:col-span-1 lg:col-span-3">
             <h4 className="text-[10px] tracking-editorial uppercase text-champagne/40 font-body mb-6">
               Customer Care
             </h4>
@@ -73,27 +94,6 @@ export default function Footer() {
                   </Link>
                 </li>
               ))}
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div className="lg:col-span-4 lg:col-start-1">
-            <h4 className="text-[10px] tracking-editorial uppercase text-champagne/40 font-body mb-6">
-              Contact
-            </h4>
-            <ul className="space-y-4">
-              <li className="flex items-start gap-3">
-                <HiOutlineLocationMarker className="mt-0.5 text-champagne/30 shrink-0" size={16} />
-                <span className="text-sm text-cream/30 font-light">123 Luxury Lane, Beverly Hills, CA 90210</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <HiOutlinePhone className="text-champagne/30 shrink-0" size={16} />
-                <span className="text-sm text-cream/30 font-light">+1 (800) 555-0199</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <HiOutlineMail className="text-champagne/30 shrink-0" size={16} />
-                <span className="text-sm text-cream/30 font-light">hello@smars.com</span>
-              </li>
             </ul>
           </div>
         </div>
