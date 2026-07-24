@@ -80,9 +80,9 @@ export default function Shop() {
           transition={{ duration: 0.6 }}
           className="mb-10"
         >
-          <p className="text-champagne-gold text-sm tracking-[0.3em] uppercase font-body mb-2">Our Collection</p>
-          <h1 className="font-heading text-4xl lg:text-5xl text-dark-brown">Shop Fragrances</h1>
-          <p className="text-dark-brown/50 mt-3 text-sm">{filtered.length} fragrances found</p>
+          <p className="text-bronze text-[10px] tracking-[0.3em] uppercase font-body mb-3">Our Collection</p>
+          <h1 className="font-display text-4xl sm:text-5xl text-espresso leading-[0.95]">Shop Fragrances</h1>
+          <p className="text-espresso/30 text-xs tracking-[0.2em] uppercase mt-4 font-body">{filtered.length} fragrances found</p>
         </motion.div>
 
         <div className="flex gap-8">
@@ -98,9 +98,9 @@ export default function Shop() {
                 <select
                   value={filters.sort}
                   onChange={(e) => setFilters({ ...filters, sort: e.target.value })}
-                  className="px-4 py-2 bg-white border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold text-dark-brown"
+                  className="px-4 py-2 bg-transparent border border-espresso/10 text-xs tracking-[0.2em] uppercase font-body outline-none focus:border-bronze text-espresso/60 hover:text-espresso transition-colors"
                 >
-                  <option value="">Default Sorting</option>
+                  <option value="">Default</option>
                   <option value="price-asc">Price: Low to High</option>
                   <option value="price-desc">Price: High to Low</option>
                   <option value="rating">Highest Rated</option>
@@ -109,19 +109,19 @@ export default function Shop() {
               </div>
               <button
                 onClick={() => setMobileFiltersOpen(true)}
-                className="lg:hidden flex items-center gap-2 px-4 py-2 border border-dark-brown/20 rounded-lg text-sm text-dark-brown/60 hover:border-dark-brown transition-colors"
+                className="lg:hidden flex items-center gap-2 px-4 py-2 text-xs tracking-[0.2em] uppercase font-body text-espresso/50 hover:text-espresso transition-colors"
               >
-                <HiOutlineAdjustments size={18} />
+                <HiOutlineAdjustments size={16} />
                 Filters
               </button>
             </div>
 
             {paginated.length === 0 ? (
               <div className="text-center py-20">
-                <p className="text-dark-brown/50 text-lg">No fragrances match your criteria.</p>
+                <p className="text-espresso/50 text-sm font-light">No fragrances match your criteria.</p>
                 <button
                   onClick={() => setFilters({ collection: '', category: '', minPrice: '', maxPrice: '', search: '', sort: '' })}
-                  className="mt-4 px-6 py-2 border border-dark-brown text-dark-brown text-sm tracking-wider uppercase hover:bg-dark-brown hover:text-cream transition-all"
+                  className="mt-6 px-8 py-3 border border-espresso/20 text-espresso/40 text-[10px] tracking-[0.3em] uppercase font-body hover:border-espresso/50 hover:text-espresso/70 transition-all"
                 >
                   Clear Filters
                 </button>
@@ -155,9 +155,9 @@ export default function Shop() {
             className="absolute top-0 left-0 bottom-0 w-[85%] max-w-sm bg-cream p-6 overflow-y-auto"
           >
             <div className="flex items-center justify-between mb-6">
-              <h2 className="font-heading text-xl text-dark-brown">Filters</h2>
-              <button onClick={() => setMobileFiltersOpen(false)} className="text-dark-brown/50 hover:text-dark-brown">
-                <HiX size={24} />
+              <h2 className="text-[10px] tracking-[0.3em] uppercase font-body text-espresso">Filters</h2>
+              <button onClick={() => setMobileFiltersOpen(false)} className="text-espresso/30 hover:text-espresso transition-colors">
+                <HiX size={20} />
               </button>
             </div>
             <Sidebar filters={filters} setFilters={setFilters} />
