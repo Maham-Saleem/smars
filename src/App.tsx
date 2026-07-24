@@ -14,6 +14,7 @@ import Account from './pages/Account';
 import Journal from './pages/Journal';
 import JournalDetail from './pages/JournalDetail';
 import About from './pages/About';
+import ShippingReturns from './pages/ShippingReturns';
 
 export default function App() {
   return (
@@ -34,6 +35,7 @@ export default function App() {
             <Route path="/journal" element={<Journal />} />
             <Route path="/journal/:id" element={<JournalDetail />} />
             <Route path="/about" element={<About />} />
+            <Route path="/shipping-returns" element={<ShippingReturns />} />
           </Routes>
         </main>
         <Footer />
