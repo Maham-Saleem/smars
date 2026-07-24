@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { HiStar, HiOutlineHeart, HiOutlineShoppingBag, HiChevronLeft, HiMinus, HiPlus } from 'react-icons/hi';
@@ -14,7 +14,7 @@ export default function ProductDetail() {
   const { id } = useParams();
   const product = products.find((p) => p.id === Number(id));
   const { addRecentView } = useRecentStore();
-  if (product) addRecentView(product.id);
+  useEffect(() => { if (product) addRecentView(product.id); }, [product?.id]);
   const [quantity, setQuantity] = useState(1);
   const [activeTab, setActiveTab] = useState<'description' | 'notes' | 'reviews'>('description');
   const [reviewForm, setReviewForm] = useState({ rating: 5, comment: '' });
