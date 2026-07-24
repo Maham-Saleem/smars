@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { HiOutlineCheck, HiOutlineCreditCard, HiOutlineCash, HiOutlineGlobe, HiOutlineTruck, HiOutlineCube, HiOutlineLocationMarker } from 'react-icons/hi';
+import { HiOutlineCheck, HiOutlineCreditCard, HiOutlineCash, HiOutlineGlobe, HiOutlineTruck, HiOutlineCube, HiOutlineLocationMarker, HiOutlineShoppingBag } from 'react-icons/hi';
 import { useCartStore } from '../store/cartStore';
 import { useAuthStore } from '../store/authStore';
 import { useOrderStore, generateOrderId, estimateDeliveryDate } from '../store/orderStore';
@@ -59,16 +59,21 @@ export default function Checkout() {
   if (!isAuthenticated) {
     return (
       <div className="pt-24 lg:pt-28 pb-20 bg-cream min-h-screen flex items-center justify-center">
-        <div className="text-center max-w-md px-6">
-          <div className="w-16 h-16 rounded-full bg-dark-brown/5 flex items-center justify-center mx-auto mb-6">
-            <HiOutlineLocationMarker size={28} className="text-dark-brown/60" />
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-md px-6"
+        >
+          <div className="w-16 h-16 rounded-full bg-espresso/[0.04] flex items-center justify-center mx-auto mb-6">
+            <HiOutlineLocationMarker size={28} className="text-espresso/30" />
           </div>
-          <h1 className="font-heading text-3xl text-dark-brown mb-4">Authentication Required</h1>
-          <p className="text-dark-brown/60 mb-8 text-sm">Please sign in to your account to proceed with checkout.</p>
-          <button onClick={openAuth} className="px-8 py-3 bg-dark-brown text-cream text-sm tracking-widest uppercase font-medium hover:bg-champagne-gold hover:text-deep-coffee active:bg-dark-brown/90 focus:outline-none focus:ring-2 focus:ring-dark-brown/20 transition-all duration-300 rounded-lg">
+          <h1 className="font-heading text-3xl text-espresso mb-3">Sign In to Continue</h1>
+          <p className="text-espresso/40 text-sm font-light mb-8">Please sign in to your account to proceed with checkout.</p>
+          <button onClick={openAuth} className="px-10 py-3 bg-espresso text-cream text-[9px] tracking-[0.3em] uppercase font-body rounded-full hover:bg-bronze transition-all duration-500 shadow-sm">
             Sign In
           </button>
-        </div>
+        </motion.div>
       </div>
     );
   }
@@ -76,12 +81,20 @@ export default function Checkout() {
   if (items.length === 0 && step < 4) {
     return (
       <div className="pt-24 lg:pt-28 pb-20 bg-cream min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <p className="text-dark-brown/50 text-lg">Your cart is empty</p>
-          <button onClick={() => navigate('/shop')} className="mt-4 px-8 py-3 bg-dark-brown text-cream text-sm tracking-wider uppercase hover:bg-champagne-gold active:bg-dark-brown/90 focus:outline-none focus:ring-2 focus:ring-dark-brown/20 transition-all">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center"
+        >
+          <div className="w-16 h-16 rounded-full bg-espresso/[0.04] flex items-center justify-center mx-auto mb-6">
+            <HiOutlineShoppingBag size={28} className="text-espresso/30" />
+          </div>
+          <p className="text-espresso/40 text-sm font-light">Your cart is empty</p>
+          <button onClick={() => navigate('/shop')} className="mt-6 px-8 py-3 bg-espresso text-cream text-[9px] tracking-[0.3em] uppercase font-body rounded-full hover:bg-bronze transition-all duration-500 shadow-sm">
             Continue Shopping
           </button>
-        </div>
+        </motion.div>
       </div>
     );
   }
