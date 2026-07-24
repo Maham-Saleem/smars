@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
+/* ─── Fluid Typography ─── */
+:root {
+  --fluid-h1: clamp(2rem, 5vw + 0.5rem, 4.5rem);
+  --fluid-h2: clamp(1.5rem, 3.5vw + 0.5rem, 3.5rem);
+  --fluid-h3: clamp(1.25rem, 2.5vw + 0.25rem, 2.5rem);
+  --fluid-body: clamp(0.875rem, 1vw + 0.25rem, 1rem);
+  --fluid-sm: clamp(0.75rem, 0.8vw + 0.2rem, 0.875rem);
+}
+
 @theme {
   --color-warm-beige: #F5EFE6;
   --color-ivory: #FEFCF9;
@@ -98,6 +107,26 @@
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
+  }
+
+  /* Prevent iOS zoom on input focus (min 16px) */
+  input, textarea, select {
+    font-size: 16px !important;
+  }
+
+  /* Touch-friendly minimum tap target */
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Safe area padding for modern mobile devices */
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  .safe-top {
+    padding-top: env(safe-area-inset-top, 0px);
   }
 }
 
