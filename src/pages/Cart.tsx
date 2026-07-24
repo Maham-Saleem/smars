@@ -52,7 +52,7 @@ export default function Cart() {
                       <Link to={`/product/${item.product.id}`}>
                         <h3 className="font-heading text-lg text-dark-brown hover:text-champagne-gold transition-colors">{item.product.name}</h3>
                       </Link>
-                      <button onClick={() => removeItem(item.product.id)} className="text-dark-brown/30 hover:text-red-500 transition-colors shrink-0">
+                      <button onClick={() => removeItem(item.product.id)} aria-label="Remove item" className="text-dark-brown/30 hover:text-red-500 transition-colors shrink-0">
                         <HiOutlineTrash size={20} />
                       </button>
                     </div>
@@ -60,11 +60,11 @@ export default function Cart() {
                     <p className="font-heading text-xl text-dark-brown mt-3">${item.product.price}</p>
                     <div className="flex items-center gap-3 mt-4">
                       <div className="flex items-center border border-dark-brown/20 rounded-lg">
-                        <button onClick={() => item.quantity > 1 && updateQuantity(item.product.id, item.quantity - 1)} className="px-3 py-2 hover:bg-dark-brown/5 transition-colors">
+                        <button onClick={() => item.quantity > 1 && updateQuantity(item.product.id, item.quantity - 1)} aria-label="Decrease quantity" className="px-3 py-2 hover:bg-dark-brown/5 transition-colors">
                           <HiOutlineMinus size={14} />
                         </button>
                         <span className="px-3 py-2 text-sm min-w-[2.5rem] text-center">{item.quantity}</span>
-                        <button onClick={() => updateQuantity(item.product.id, item.quantity + 1)} className="px-3 py-2 hover:bg-dark-brown/5 transition-colors">
+                        <button onClick={() => updateQuantity(item.product.id, item.quantity + 1)} aria-label="Increase quantity" className="px-3 py-2 hover:bg-dark-brown/5 transition-colors">
                           <HiOutlinePlus size={14} />
                         </button>
                       </div>
