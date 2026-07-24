@@ -53,7 +53,7 @@ export default function SceneBottle() {
             <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-[60%] h-4 bg-espresso/5 rounded-full blur-xl" />
 
             {/* Bottle image */}
-            <div className="relative w-[280px] h-[400px] sm:w-[320px] sm:h-[460px] lg:w-[400px] lg:h-[560px]">
+            <div className="relative w-[220px] h-[320px] sm:w-[320px] sm:h-[460px] lg:w-[400px] lg:h-[560px]">
               <img
                 src="https://images.pexels.com/photos/7702669/pexels-photo-7702669.jpeg?auto=compress&cs=tinysrgb&w=800"
                 alt="SMAR'S Signature Fragrance"
@@ -103,12 +103,12 @@ export default function SceneBottle() {
           </p>
         </motion.div>
 
-        {/* Floating note indicators — top right */}
+        {/* Floating note indicators — top right (hidden on small mobile) */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.2, delay: 2 }}
-          className="absolute top-24 sm:top-32 right-8 sm:right-12 lg:right-20 space-y-6"
+          className="hidden sm:block absolute top-24 sm:top-32 right-8 sm:right-12 lg:right-20 space-y-6"
         >
           {['Bergamot', 'Oud', 'Amber'].map((note, i) => (
             <motion.div
