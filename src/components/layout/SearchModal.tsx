@@ -89,6 +89,7 @@ export default function SearchModal() {
                         <img
                           src={product.images[0]}
                           alt={product.name}
+                          loading="lazy"
                           className="w-16 h-20 object-cover rounded-lg shrink-0"
                         />
                         <div className="flex-1 min-w-0">
