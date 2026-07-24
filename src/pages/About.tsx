@@ -193,38 +193,92 @@ export default function About() {
       </section>
 
       {/* Craftsmanship — full bleed */}
-      <section ref={craftRef} className="relative h-[60vh] min-h-[400px] flex items-center overflow-hidden">
+      <section ref={craftRef} className="relative h-[80vh] min-h-[500px] flex items-center overflow-hidden">
         <motion.div style={{ y: craftY }} className="absolute inset-0">
           <img
-            src="https://images.pexels.com/photos/16722501/pexels-photo-16722501.jpeg?auto=compress&cs=tinysrgb&w=1400"
+            src="https://images.pexels.com/photos/3993447/pexels-photo-3993447.jpeg?auto=compress&cs=tinysrgb&w=1400"
             alt="Craftsmanship"
             className="w-full h-[120%] object-cover"
           />
-          <div className="absolute inset-0 bg-espresso/50" />
+          <div className="absolute inset-0 bg-gradient-to-r from-espresso/80 via-espresso/60 to-espresso/30" />
+          <div className="absolute inset-0 bg-gradient-to-t from-espresso/40 via-transparent to-transparent" />
         </motion.div>
 
-        <motion.div style={{ opacity: craftOpacity }} className="relative z-10 max-w-4xl mx-auto px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <p className="text-champagne-gold text-[10px] tracking-[0.35em] uppercase font-body mb-6">
-              The Process
-            </p>
-            <h2 className="font-display text-3xl sm:text-4xl lg:text-6xl text-cream leading-[1.05] mb-6">
-              Where patience meets
-              <span className="block italic text-champagne-gold">precision</span>
-            </h2>
-            <div className="w-16 h-[1px] bg-champagne-gold mx-auto mb-8" />
-            <p className="text-cream/60 leading-relaxed font-light text-base lg:text-lg max-w-2xl mx-auto">
-              A single composition may go through thirty iterations before it earns its place
-              in our collection. We blend in small batches, age in climate-controlled cellars,
-              and hand-fill each bottle. This is not efficiency — it is devotion.
-            </p>
-          </motion.div>
+        {/* Decorative gold line - left */}
+        <div className="absolute left-8 lg:left-16 top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-champagne-gold/20 to-transparent" />
+
+        <motion.div style={{ opacity: craftOpacity }} className="relative z-10 w-full">
+          <div className="max-w-[1400px] mx-auto px-8 lg:px-16">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+              {/* Left content */}
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="lg:col-span-6 lg:col-start-2"
+              >
+                <p className="text-champagne-gold text-[10px] tracking-[0.35em] uppercase font-body mb-6 flex items-center gap-4">
+                  <span className="w-8 h-[1px] bg-champagne-gold/60" />
+                  The Art of Perfumery
+                </p>
+                <h2 className="font-display text-4xl sm:text-5xl lg:text-7xl text-cream leading-[0.95] mb-8">
+                  Mastery in
+                  <span className="block italic text-champagne-gold">every drop</span>
+                </h2>
+                <div className="w-16 h-[1px] bg-champagne-gold/60 mb-8" />
+                <div className="space-y-5 text-cream/50 leading-relaxed font-light text-sm lg:text-base max-w-lg">
+                  <p>
+                    Each bottle is the culmination of months, often years, of patient refinement.
+                    Our master perfumers work in small batches, aging compositions in
+                    climate-controlled cellars where time becomes an ingredient unto itself.
+                  </p>
+                  <p>
+                    We source from the world's most revered ingredient houses — the bergamot
+                    groves of Calabria, the rose fields of Grasse, the Agarwood forests of
+                    Assam — building relationships that span generations, not transactions.
+                  </p>
+                  <p>
+                    Every bottle is hand-filled, hand-labeled, and hand-numbered. The foil seal
+                    is pressed with a brass die cut by an artisan who has been crafting them
+                    for over four decades. This is not efficiency. It is devotion.
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* Right stat cards */}
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="lg:col-span-4 flex flex-col gap-6"
+              >
+                {[
+                  { number: '30+', label: 'Iterations per composition', sub: 'Before final approval' },
+                  { number: '12', label: 'Months minimum aging', sub: 'In oak and glass cellars' },
+                  { number: '100%', label: 'Hand-filled & hand-sealed', sub: 'At our Beverly Hills atelier' },
+                ].map((stat, i) => (
+                  <motion.div
+                    key={stat.label}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.6 + i * 0.15 }}
+                    className="backdrop-blur-sm bg-cream/5 border border-cream/10 rounded-xl p-5 lg:p-6"
+                  >
+                    <p className="font-display text-2xl lg:text-3xl text-champagne-gold">{stat.number}</p>
+                    <p className="text-cream/70 text-sm font-medium mt-1">{stat.label}</p>
+                    <p className="text-cream/30 text-xs mt-0.5 font-light">{stat.sub}</p>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
+          </div>
         </motion.div>
+
+        {/* Bottom fade */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-cream to-transparent pointer-events-none" />
       </section>
 
       {/* CTA */}
