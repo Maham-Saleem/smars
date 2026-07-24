@@ -11,6 +11,7 @@ const navLinks = [
   { name: 'Collections', path: '/shop' },
   { name: 'Journal', path: '/journal' },
   { name: 'About', path: '/about' },
+  { name: 'Contact', path: '/contact' },
 ];
 
 export default function Navbar() {
