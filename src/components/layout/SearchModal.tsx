@@ -49,6 +49,11 @@ export default function SearchModal() {
                 placeholder="Search fragrances, notes, collections..."
                 className="flex-1 bg-transparent text-cream text-xl lg:text-2xl font-body placeholder-cream/50 outline-none ml-3"
               />
+              {query && (
+                <button onClick={() => setQuery('')} className="text-cream/30 hover:text-cream transition-colors p-1">
+                  <HiX size={20} />
+                </button>
+              )}
             </div>
             {query && (
               <motion.div
