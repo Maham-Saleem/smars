@@ -4,6 +4,7 @@ import { HiOutlineHeart, HiStar } from 'react-icons/hi';
 import type { Product } from '../../data/products';
 import { useAuthStore } from '../../store/authStore';
 import { useCartStore } from '../../store/cartStore';
+import { useUIStore } from '../../store/uiStore';
 import toast from 'react-hot-toast';
 
 interface Props {
@@ -12,8 +13,9 @@ interface Props {
 }
 
 export default function ProductCard({ product, index }: Props) {
-  const { toggleWishlist, isInWishlist } = useAuthStore();
+  const { toggleWishlist, isInWishlist, isAuthenticated } = useAuthStore();
   const addItem = useCartStore((s) => s.addItem);
+  const { openAuth, setPendingProduct } = useUIStore();
 
   return (
     <motion.div
@@ -51,7 +53,15 @@ export default function ProductCard({ product, index }: Props) {
         )}
         <div className="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-500">
           <button
-            onClick={() => { addItem(product); toast.success(`${product.name} added to cart`); }}
+            onClick={() => {
+              if (isAuthenticated) {
+                addItem(product);
+                toast.success('Added to your shopping bag.');
+              } else {
+                setPendingProduct(product);
+                openAuth();
+              }
+            }}
             className="w-full py-3 bg-dark-brown text-cream text-xs tracking-widest uppercase font-medium hover:bg-champagne-gold hover:text-deep-coffee transition-all duration-300 rounded-lg"
           >
             Add to Cart
