@@ -104,7 +104,7 @@ export default function ProductDetail() {
                     openAuth();
                   }
                 }}
-                className="flex-1 py-3 bg-dark-brown text-cream text-sm tracking-widest uppercase font-medium hover:bg-champagne-gold hover:text-deep-coffee transition-all duration-300 rounded-lg flex items-center justify-center gap-2"
+                className="flex-1 py-3 bg-dark-brown text-cream text-sm tracking-widest uppercase font-medium hover:bg-champagne-gold hover:text-deep-coffee active:bg-dark-brown/90 focus:outline-none focus:ring-2 focus:ring-dark-brown/20 transition-all duration-300 rounded-lg flex items-center justify-center gap-2"
               >
                 <HiOutlineShoppingBag size={18} />
                 Add to Cart — ${(product.price * quantity).toFixed(2)}
@@ -193,14 +193,34 @@ export default function ProductDetail() {
             </motion.div>
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
               {related.map((rp) => (
-                <Link key={rp.id} to={`/product/${rp.id}`} className="group">
-                  <div className="aspect-square rounded-xl overflow-hidden bg-white mb-3">
-                    <img src={rp.images[0]} alt={rp.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <div key={rp.id} className="group">
+                    <div className="relative aspect-square rounded-xl overflow-hidden bg-white mb-3">
+                      <Link to={`/product/${rp.id}`}>
+                        <img src={rp.images[0]} alt={rp.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                      </Link>
+                      <div className="absolute bottom-2 left-2 right-2 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-500">
+                        <button
+                          onClick={() => {
+                            if (isAuthenticated) {
+                              addItem(rp);
+                              toast.success('Added to your shopping bag.');
+                            } else {
+                              setPendingProduct(rp);
+                              openAuth();
+                            }
+                          }}
+                          className="w-full py-2 bg-dark-brown text-cream text-[10px] tracking-widest uppercase font-medium hover:bg-champagne-gold hover:text-deep-coffee active:bg-dark-brown/90 focus:outline-none focus:ring-2 focus:ring-dark-brown/20 transition-all duration-300 rounded-lg shadow-lg"
+                        >
+                          Add to Cart
+                        </button>
+                      </div>
+                    </div>
+                    <Link to={`/product/${rp.id}`}>
+                      <h3 className="font-heading text-sm text-dark-brown group-hover:text-champagne-gold transition-colors">{rp.name}</h3>
+                    </Link>
+                    <p className="font-body text-sm text-dark-brown">${rp.price}</p>
                   </div>
-                  <h3 className="font-heading text-sm text-dark-brown group-hover:text-champagne-gold transition-colors">{rp.name}</h3>
-                  <p className="font-body text-sm text-dark-brown">${rp.price}</p>
-                </Link>
-              ))}
+                ))}
             </div>
           </div>
         )}
