@@ -6,6 +6,7 @@ import { products } from '../data/products';
 import { useCartStore } from '../store/cartStore';
 import { useAuthStore } from '../store/authStore';
 import { useUIStore } from '../store/uiStore';
+import { useReviewStore } from '../store/reviewStore';
 import toast from 'react-hot-toast';
 
 export default function ProductDetail() {
@@ -13,9 +14,12 @@ export default function ProductDetail() {
   const product = products.find((p) => p.id === Number(id));
   const [quantity, setQuantity] = useState(1);
   const [activeTab, setActiveTab] = useState<'description' | 'notes' | 'reviews'>('description');
+  const [reviewForm, setReviewForm] = useState({ rating: 5, comment: '' });
+  const [submittingReview, setSubmittingReview] = useState(false);
   const { addItem } = useCartStore();
-  const { toggleWishlist, isInWishlist, isAuthenticated } = useAuthStore();
+  const { toggleWishlist, isInWishlist, isAuthenticated, user } = useAuthStore();
   const { openAuth, setPendingProduct } = useUIStore();
+  const { addReview, getProductReviews } = useReviewStore();
 
   if (!product) {
     return (
@@ -154,7 +158,46 @@ export default function ProductDetail() {
                 )}
                 {activeTab === 'reviews' && (
                   <div className="space-y-6">
-                    {product.reviews.map((review) => (
+                    {isAuthenticated && (
+                      <div className="bg-warm-beige/50 rounded-xl p-6 mb-6">
+                        <h4 className="font-heading text-dark-brown text-sm mb-3">Write a Review</h4>
+                        <div className="flex items-center gap-1 mb-3">
+                          {[1, 2, 3, 4, 5].map((star) => (
+                            <button key={star} onClick={() => setReviewForm({ ...reviewForm, rating: star })} type="button" aria-label={`Rate ${star} stars`}>
+                              <HiStar size={20} className={star <= reviewForm.rating ? 'text-champagne-gold' : 'text-dark-brown/20'} />
+                            </button>
+                          ))}
+                        </div>
+                        <textarea
+                          value={reviewForm.comment}
+                          onChange={(e) => setReviewForm({ ...reviewForm, comment: e.target.value })}
+                          placeholder="Share your experience with this fragrance..."
+                          rows={3}
+                          className="w-full px-4 py-3 bg-cream border border-dark-brown/10 rounded-lg text-sm text-dark-brown outline-none focus:border-champagne-gold transition-colors resize-none placeholder:text-dark-brown/30 font-light"
+                        />
+                        <button
+                          onClick={() => {
+                            if (!reviewForm.comment.trim()) { toast.error('Please write a review.'); return; }
+                            setSubmittingReview(true);
+                            addReview({ productId: product.id, name: user?.name || 'Guest', rating: reviewForm.rating, comment: reviewForm.comment.trim() });
+                            setReviewForm({ rating: 5, comment: '' });
+                            setSubmittingReview(false);
+                            toast.success('Review submitted. Thank you!');
+                          }}
+                          disabled={submittingReview}
+                          className="mt-3 px-6 py-2 bg-espresso text-cream text-[9px] tracking-[0.3em] uppercase font-body rounded-full hover:bg-bronze transition-all duration-500 shadow-sm disabled:opacity-40"
+                        >
+                          {submittingReview ? 'Submitting...' : 'Submit Review'}
+                        </button>
+                      </div>
+                    )}
+                    {getProductReviews(product.id).length > 0 && (
+                      <div className="mb-4">
+                        <p className="text-xs text-dark-brown/40 tracking-wider uppercase font-body">Your Reviews</p>
+                        <div className="h-[1px] bg-dark-brown/5 mt-2 mb-4" />
+                      </div>
+                    )}
+                    {[...product.reviews, ...getProductReviews(product.id)].map((review) => (
                       <div key={review.id} className="pb-6 border-b border-dark-brown/10 last:border-0">
                         <div className="flex items-center gap-3">
                           <div className="w-10 h-10 rounded-full bg-dark-brown/10 flex items-center justify-center text-sm font-medium text-dark-brown">
@@ -173,6 +216,9 @@ export default function ProductDetail() {
                         <p className="text-sm text-dark-brown/70 mt-3">{review.comment}</p>
                       </div>
                     ))}
+                    {product.reviews.length === 0 && getProductReviews(product.id).length === 0 && (
+                      <p className="text-dark-brown/40 text-sm font-light text-center py-8">No reviews yet. Be the first to review this fragrance.</p>
+                    )}
                   </div>
                 )}
               </div>
