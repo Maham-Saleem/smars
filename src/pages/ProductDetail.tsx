@@ -5,6 +5,7 @@ import { HiStar, HiOutlineHeart, HiOutlineShoppingBag, HiChevronLeft, HiMinus, H
 import { products } from '../data/products';
 import { useCartStore } from '../store/cartStore';
 import { useAuthStore } from '../store/authStore';
+import { useUIStore } from '../store/uiStore';
 import toast from 'react-hot-toast';
 
 export default function ProductDetail() {
@@ -13,7 +14,8 @@ export default function ProductDetail() {
   const [quantity, setQuantity] = useState(1);
   const [activeTab, setActiveTab] = useState<'description' | 'notes' | 'reviews'>('description');
   const { addItem } = useCartStore();
-  const { toggleWishlist, isInWishlist } = useAuthStore();
+  const { toggleWishlist, isInWishlist, isAuthenticated } = useAuthStore();
+  const { openAuth, setPendingProduct } = useUIStore();
 
   if (!product) {
     return (
@@ -93,7 +95,15 @@ export default function ProductDetail() {
                 </button>
               </div>
               <button
-                onClick={() => { addItem(product, quantity); toast.success(`${product.name} added to cart`); }}
+                onClick={() => {
+                  if (isAuthenticated) {
+                    addItem(product, quantity);
+                    toast.success('Added to your shopping bag.');
+                  } else {
+                    setPendingProduct(product);
+                    openAuth();
+                  }
+                }}
                 className="flex-1 py-3 bg-dark-brown text-cream text-sm tracking-widest uppercase font-medium hover:bg-champagne-gold hover:text-deep-coffee transition-all duration-300 rounded-lg flex items-center justify-center gap-2"
               >
                 <HiOutlineShoppingBag size={18} />
