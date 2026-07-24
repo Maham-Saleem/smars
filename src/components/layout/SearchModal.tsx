@@ -41,12 +41,13 @@ export default function SearchModal() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
+          onClick={closeSearch}
           className="fixed inset-0 z-[60] bg-deep-coffee/95 backdrop-blur-md flex flex-col items-center pt-24 lg:pt-32 px-4"
         >
-          <button onClick={closeSearch} className="absolute top-6 right-6 text-cream/60 hover:text-cream transition-colors">
+          <button onClick={closeSearch} className="absolute top-6 right-6 text-cream/60 hover:text-cream transition-colors z-10">
             <HiX size={28} />
           </button>
-          <div className="w-full max-w-2xl">
+          <div onClick={(e) => e.stopPropagation()} className="w-full max-w-2xl">
             <div className="flex items-center border-b-2 border-champagne-gold/30 pb-3 transition-colors focus-within:border-champagne-gold">
               <HiOutlineSearch className="text-champagne-gold/60" size={24} />
               <input
