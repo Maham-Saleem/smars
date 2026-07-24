@@ -62,7 +62,7 @@ export default function BestSellers() {
                 <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-500">
                   <button
                     onClick={() => { addItem(product); toast.success(`${product.name} added to cart`); }}
-                    className="w-full py-3 bg-dark-brown text-cream text-xs tracking-widest uppercase font-medium hover:bg-champagne-gold hover:text-deep-coffee transition-all duration-300 rounded-lg"
+                    className="w-full py-3 bg-dark-brown text-cream text-xs tracking-widest uppercase font-medium hover:bg-champagne-gold hover:text-deep-coffee active:bg-dark-brown/90 focus:outline-none focus:ring-2 focus:ring-dark-brown/20 transition-all duration-300 rounded-lg"
                   >
                     Add to Cart
                   </button>
@@ -102,7 +102,7 @@ export default function BestSellers() {
         >
           <Link
             to="/shop"
-            className="inline-block px-10 py-3 border border-dark-brown text-dark-brown text-sm tracking-[0.2em] uppercase font-medium hover:bg-dark-brown hover:text-cream transition-all duration-300"
+            className="inline-block px-10 py-3 border border-dark-brown text-dark-brown text-sm tracking-[0.2em] uppercase font-medium hover:bg-dark-brown hover:text-cream active:bg-dark-brown/90 focus:outline-none focus:ring-2 focus:ring-dark-brown/20 transition-all duration-300"
           >
             View All
           </Link>

@@ -193,7 +193,7 @@ export default function Account() {
                     <div className="text-center py-12 bg-white rounded-2xl">
                       <HiOutlineHeart size={40} className="mx-auto text-dark-brown/20" />
                       <p className="text-dark-brown/50 mt-4">Your wishlist is empty.</p>
-                      <Link to="/shop" className="inline-block mt-4 px-6 py-2 bg-dark-brown text-cream text-sm tracking-wider uppercase rounded-lg hover:bg-champagne-gold transition-all">
+                      <Link to="/shop" className="inline-block mt-4 px-6 py-2 bg-dark-brown text-cream text-sm tracking-wider uppercase rounded-lg hover:bg-champagne-gold active:bg-dark-brown/90 focus:outline-none focus:ring-2 focus:ring-dark-brown/20 transition-all">
                         Browse Fragrances
                       </Link>
                     </div>

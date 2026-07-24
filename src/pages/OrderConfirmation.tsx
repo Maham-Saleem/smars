@@ -12,7 +12,7 @@ export default function OrderConfirmation() {
       <div className="pt-24 lg:pt-28 pb-20 bg-cream min-h-screen flex items-center justify-center">
         <div className="text-center px-6">
           <p className="text-dark-brown/50 text-lg">Order not found.</p>
-          <Link to="/shop" className="inline-flex items-center gap-2 mt-4 px-8 py-3 bg-dark-brown text-cream text-sm tracking-wider uppercase hover:bg-champagne-gold transition-all">
+          <Link to="/shop" className="inline-flex items-center gap-2 mt-4 px-8 py-3 bg-dark-brown text-cream text-sm tracking-wider uppercase hover:bg-champagne-gold active:bg-dark-brown/90 focus:outline-none focus:ring-2 focus:ring-dark-brown/20 transition-all">
             <HiOutlineArrowLeft size={16} />
             Continue Shopping
           </Link>
@@ -80,7 +80,7 @@ export default function OrderConfirmation() {
           <div className="flex flex-col sm:flex-row gap-4 mt-10">
             <Link
               to="/shop"
-              className="flex-1 py-3 bg-dark-brown text-cream text-center text-sm tracking-widest uppercase font-medium hover:bg-champagne-gold hover:text-deep-coffee transition-all duration-300 rounded-lg"
+              className="flex-1 py-3 bg-dark-brown text-cream text-center text-sm tracking-widest uppercase font-medium hover:bg-champagne-gold hover:text-deep-coffee active:bg-dark-brown/90 focus:outline-none focus:ring-2 focus:ring-dark-brown/20 transition-all duration-300 rounded-lg"
             >
               Continue Shopping
             </Link>

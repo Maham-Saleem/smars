@@ -61,7 +61,7 @@ export default function LoginForm({ onSuccess, onRegister, onForgot }: Props) {
       <button
         type="submit"
         disabled={loading}
-        className="w-full py-3 bg-dark-brown text-cream text-sm tracking-widest uppercase font-medium hover:bg-champagne-gold hover:text-deep-coffee transition-all duration-300 rounded-lg disabled:opacity-50"
+        className="w-full py-3 bg-dark-brown text-cream text-sm tracking-widest uppercase font-medium hover:bg-champagne-gold hover:text-deep-coffee active:bg-dark-brown/90 focus:outline-none focus:ring-2 focus:ring-dark-brown/20 transition-all duration-300 rounded-lg disabled:opacity-50"
       >
         {loading ? 'Signing in...' : 'Sign In'}
       </button>

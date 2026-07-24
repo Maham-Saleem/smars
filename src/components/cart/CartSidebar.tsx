@@ -37,7 +37,7 @@ export default function CartSidebar() {
               {items.length === 0 ? (
                 <div className="text-center py-12">
                   <p className="text-dark-brown/50">Your bag is empty</p>
-                  <Link to="/shop" onClick={closeCart} className="inline-block mt-4 px-6 py-2 bg-dark-brown text-cream text-sm tracking-widest uppercase hover:bg-champagne-gold transition-colors">
+                  <Link to="/shop" onClick={closeCart} className="inline-block mt-4 px-6 py-2 bg-dark-brown text-cream text-sm tracking-widest uppercase hover:bg-champagne-gold active:bg-dark-brown/90 focus:outline-none focus:ring-2 focus:ring-dark-brown/20 transition-colors">
                     Shop Now
                   </Link>
                 </div>
@@ -89,7 +89,7 @@ export default function CartSidebar() {
                 <Link
                   to="/checkout"
                   onClick={closeCart}
-                  className="block w-full py-3 bg-dark-brown text-cream text-center text-sm tracking-widest uppercase hover:bg-champagne-gold transition-colors"
+                  className="block w-full py-3 bg-dark-brown text-cream text-center text-sm tracking-widest uppercase hover:bg-champagne-gold active:bg-dark-brown/90 focus:outline-none focus:ring-2 focus:ring-dark-brown/20 transition-colors"
                 >
                   Checkout
                 </Link>

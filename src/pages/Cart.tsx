@@ -28,7 +28,7 @@ export default function Cart() {
         {items.length === 0 ? (
           <div className="text-center py-20">
             <p className="text-dark-brown/50 text-lg">Your shopping bag is empty</p>
-            <Link to="/shop" className="inline-flex items-center gap-2 mt-4 px-8 py-3 bg-dark-brown text-cream text-sm tracking-wider uppercase hover:bg-champagne-gold hover:text-deep-coffee transition-all">
+            <Link to="/shop" className="inline-flex items-center gap-2 mt-4 px-8 py-3 bg-dark-brown text-cream text-sm tracking-wider uppercase hover:bg-champagne-gold hover:text-deep-coffee active:bg-dark-brown/90 focus:outline-none focus:ring-2 focus:ring-dark-brown/20 transition-all">
               <HiOutlineArrowLeft size={16} />
               Continue Shopping
             </Link>
@@ -110,7 +110,7 @@ export default function Cart() {
                     />
                     <button
                       onClick={() => { if (coupon) setCouponApplied(true); }}
-                      className="px-4 py-2 bg-dark-brown text-cream text-xs tracking-wider uppercase rounded-lg hover:bg-champagne-gold hover:text-deep-coffee transition-all"
+                      className="px-4 py-2 bg-dark-brown text-cream text-xs tracking-wider uppercase rounded-lg hover:bg-champagne-gold hover:text-deep-coffee active:bg-dark-brown/90 focus:outline-none focus:ring-2 focus:ring-dark-brown/20 transition-all"
                     >
                       Apply
                     </button>
@@ -119,7 +119,7 @@ export default function Cart() {
 
                 <Link
                   to="/checkout"
-                  className="block w-full py-3 mt-6 bg-dark-brown text-cream text-center text-sm tracking-widest uppercase font-medium hover:bg-champagne-gold hover:text-deep-coffee transition-all duration-300 rounded-lg"
+                  className="block w-full py-3 mt-6 bg-dark-brown text-cream text-center text-sm tracking-widest uppercase font-medium hover:bg-champagne-gold hover:text-deep-coffee active:bg-dark-brown/90 focus:outline-none focus:ring-2 focus:ring-dark-brown/20 transition-all duration-300 rounded-lg"
                 >
                   Checkout
                 </Link>

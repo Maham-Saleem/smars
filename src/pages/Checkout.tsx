@@ -64,7 +64,7 @@ export default function Checkout() {
           </div>
           <h1 className="font-heading text-3xl text-dark-brown mb-4">Authentication Required</h1>
           <p className="text-dark-brown/60 mb-8 text-sm">Please sign in to your account to proceed with checkout.</p>
-          <button onClick={openAuth} className="px-8 py-3 bg-dark-brown text-cream text-sm tracking-widest uppercase font-medium hover:bg-champagne-gold hover:text-deep-coffee transition-all duration-300 rounded-lg">
+          <button onClick={openAuth} className="px-8 py-3 bg-dark-brown text-cream text-sm tracking-widest uppercase font-medium hover:bg-champagne-gold hover:text-deep-coffee active:bg-dark-brown/90 focus:outline-none focus:ring-2 focus:ring-dark-brown/20 transition-all duration-300 rounded-lg">
             Sign In
           </button>
         </div>
@@ -77,7 +77,7 @@ export default function Checkout() {
       <div className="pt-24 lg:pt-28 pb-20 bg-cream min-h-screen flex items-center justify-center">
         <div className="text-center">
           <p className="text-dark-brown/50 text-lg">Your cart is empty</p>
-          <button onClick={() => navigate('/shop')} className="mt-4 px-8 py-3 bg-dark-brown text-cream text-sm tracking-wider uppercase hover:bg-champagne-gold transition-all">
+          <button onClick={() => navigate('/shop')} className="mt-4 px-8 py-3 bg-dark-brown text-cream text-sm tracking-wider uppercase hover:bg-champagne-gold active:bg-dark-brown/90 focus:outline-none focus:ring-2 focus:ring-dark-brown/20 transition-all">
             Continue Shopping
           </button>
         </div>
@@ -238,7 +238,7 @@ export default function Checkout() {
                   </label>
                 </div>
 
-                <button type="submit" className="mt-8 w-full py-3 bg-dark-brown text-cream text-sm tracking-widest uppercase font-medium hover:bg-champagne-gold hover:text-deep-coffee transition-all duration-300 rounded-lg">
+                <button type="submit" className="mt-8 w-full py-3 bg-dark-brown text-cream text-sm tracking-widest uppercase font-medium hover:bg-champagne-gold hover:text-deep-coffee active:bg-dark-brown/90 focus:outline-none focus:ring-2 focus:ring-dark-brown/20 transition-all duration-300 rounded-lg">
                   Continue to Delivery
                 </button>
               </form>
@@ -274,7 +274,7 @@ export default function Checkout() {
                   <button onClick={() => setStep(0)} className="flex-1 py-3 border border-dark-brown/20 text-dark-brown/60 text-sm tracking-wider uppercase hover:border-dark-brown hover:text-dark-brown transition-all rounded-lg">
                     Back
                   </button>
-                  <button onClick={() => { setStep(2); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="flex-1 py-3 bg-dark-brown text-cream text-sm tracking-widest uppercase font-medium hover:bg-champagne-gold hover:text-deep-coffee transition-all duration-300 rounded-lg">
+                  <button onClick={() => { setStep(2); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="flex-1 py-3 bg-dark-brown text-cream text-sm tracking-widest uppercase font-medium hover:bg-champagne-gold hover:text-deep-coffee active:bg-dark-brown/90 focus:outline-none focus:ring-2 focus:ring-dark-brown/20 transition-all duration-300 rounded-lg">
                     Continue to Payment
                   </button>
                 </div>
@@ -403,7 +403,7 @@ export default function Checkout() {
                   <button onClick={() => setStep(1)} className="flex-1 py-3 border border-dark-brown/20 text-dark-brown/60 text-sm tracking-wider uppercase hover:border-dark-brown hover:text-dark-brown transition-all rounded-lg">
                     Back
                   </button>
-                  <button onClick={() => { setStep(3); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="flex-1 py-3 bg-dark-brown text-cream text-sm tracking-widest uppercase font-medium hover:bg-champagne-gold hover:text-deep-coffee transition-all duration-300 rounded-lg">
+                  <button onClick={() => { setStep(3); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="flex-1 py-3 bg-dark-brown text-cream text-sm tracking-widest uppercase font-medium hover:bg-champagne-gold hover:text-deep-coffee active:bg-dark-brown/90 focus:outline-none focus:ring-2 focus:ring-dark-brown/20 transition-all duration-300 rounded-lg">
                     Review Order
                   </button>
                 </div>
@@ -474,7 +474,7 @@ export default function Checkout() {
                   <button
                     onClick={handlePlaceOrder}
                     disabled={submitting}
-                    className="flex-1 py-3 bg-dark-brown text-cream text-sm tracking-widest uppercase font-medium hover:bg-champagne-gold hover:text-deep-coffee transition-all duration-300 rounded-lg disabled:opacity-50 flex items-center justify-center gap-2"
+                    className="flex-1 py-3 bg-dark-brown text-cream text-sm tracking-widest uppercase font-medium hover:bg-champagne-gold hover:text-deep-coffee active:bg-dark-brown/90 focus:outline-none focus:ring-2 focus:ring-dark-brown/20 transition-all duration-300 rounded-lg disabled:opacity-50 flex items-center justify-center gap-2"
                   >
                     {submitting ? (
                       <>

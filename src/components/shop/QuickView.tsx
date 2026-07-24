@@ -68,7 +68,7 @@ export default function QuickView({ product, onClose }: Props) {
                 <div className="flex gap-3 mt-8">
                   <button
                     onClick={() => { addItem(product); toast.success(`${product.name} added to cart`); }}
-                    className="flex-1 py-3 bg-dark-brown text-cream text-xs tracking-widest uppercase font-medium hover:bg-champagne-gold hover:text-deep-coffee transition-all duration-300 rounded-lg flex items-center justify-center gap-2"
+                    className="flex-1 py-3 bg-dark-brown text-cream text-xs tracking-widest uppercase font-medium hover:bg-champagne-gold hover:text-deep-coffee active:bg-dark-brown/90 focus:outline-none focus:ring-2 focus:ring-dark-brown/20 transition-all duration-300 rounded-lg flex items-center justify-center gap-2"
                   >
                     <HiOutlineShoppingBag size={16} />
                     Add to Cart
