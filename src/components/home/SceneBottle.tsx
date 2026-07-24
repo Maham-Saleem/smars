@@ -9,32 +9,47 @@ export default function SceneBottle() {
   const bottleY = useTransform(scrollYProgress, [0, 1], [0, -120]);
   const textOpacity = useTransform(scrollYProgress, [0, 0.4], [1, 0]);
   const textY = useTransform(scrollYProgress, [0, 0.4], [0, -60]);
-  const bgScale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
 
   return (
     <section
       ref={ref}
       className="relative h-[100vh] min-h-[700px] overflow-hidden"
-      style={{ contentVisibility: 'auto', contain: 'content' as const, background: 'linear-gradient(165deg, #FEFCF9 0%, #F5EFE6 40%, #E8DDD0 100%)', willChange: 'transform' }}
+      style={{ contentVisibility: 'auto', contain: 'content' as const, willChange: 'transform' }}
     >
-      {/* Architectural lines */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-[15%] w-[1px] h-full bg-gradient-to-b from-transparent via-[#D4C5B2]/40 to-transparent" />
-        <div className="absolute top-0 right-[20%] w-[1px] h-full bg-gradient-to-b from-transparent via-[#D4C5B2]/30 to-transparent" />
-        <div className="absolute top-[30%] left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#D4C5B2]/20 to-transparent" />
-      </div>
-
-      {/* Ambient texture */}
-      <motion.div
-        style={{ scale: bgScale, willChange: 'transform' }}
-        className="absolute inset-0 opacity-[0.03]"
+      {/* Base warm gradient */}
+      <div
+        className="absolute inset-0"
+        style={{ background: 'linear-gradient(175deg, #FEFCF9 0%, #F8F3ED 35%, #F0E8DE 65%, #E8DDD0 100%)' }}
         aria-hidden
-      >
-        <div
-          className="w-full h-full"
-          style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%232E1F14' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")` }}
-        />
-      </motion.div>
+      />
+
+      {/* Subtle paper/linen texture overlay */}
+      <div
+        className="absolute inset-0 opacity-[0.025]"
+        aria-hidden
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E")`,
+          backgroundSize: '200px 200px',
+        }}
+      />
+
+      {/* Soft radial light behind bottle — natural focal glow */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        aria-hidden
+        style={{
+          background: 'radial-gradient(ellipse 50% 55% at 50% 48%, rgba(248,243,237,0.7) 0%, rgba(248,243,237,0.3) 40%, transparent 70%)',
+        }}
+      />
+
+      {/* Gentle vignette around edges */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        aria-hidden
+        style={{
+          background: 'radial-gradient(ellipse 80% 75% at 50% 50%, transparent 50%, rgba(46,31,20,0.04) 100%)',
+        }}
+      />
 
       {/* Center content */}
       <div className="relative z-10 h-full flex items-center justify-center">
