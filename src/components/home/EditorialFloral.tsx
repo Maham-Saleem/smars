@@ -72,6 +72,7 @@ export default function EditorialFloral() {
                   <img
                     src={floral[0]?.images[0] || '/perfume-placeholder.svg'}
                     alt="Floral Collection"
+                    loading="lazy"
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -79,6 +80,7 @@ export default function EditorialFloral() {
                   <img
                     src={floral[1]?.images[0] || '/perfume-placeholder.svg'}
                     alt=""
+                    loading="lazy"
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -88,6 +90,7 @@ export default function EditorialFloral() {
                   <img
                     src="https://images.pexels.com/photos/8624586/pexels-photo-8624586.jpeg?auto=compress&cs=tinysrgb&w=800"
                     alt=""
+                    loading="lazy"
                     className="w-full h-full object-cover"
                   />
                 </div>

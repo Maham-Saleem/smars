@@ -48,7 +48,7 @@ export default function EditorialLimited() {
                 {limited.map((p) => (
                   <Link key={p.id} to={`/product/${p.id}`} className="group flex items-center gap-4 p-4 rounded-2xl hover:bg-warm-beige transition-all duration-500">
                     <div className="w-16 h-16 rounded-full overflow-hidden shrink-0">
-                      <img src={p.images[0]} alt={p.name} className="w-full h-full object-cover" />
+                      <img src={p.images[0]} alt={p.name} loading="lazy" className="w-full h-full object-cover" />
                     </div>
                     <div className="flex-1 min-w-0">
                       <p className="font-heading text-dark-brown group-hover:text-champagne-gold transition-colors">{p.name}</p>
@@ -72,6 +72,7 @@ export default function EditorialLimited() {
                   <img
                     src={limited[0]?.images[0] || '/perfume-placeholder.svg'}
                     alt="Limited Edition"
+                    loading="lazy"
                     className="w-full h-full object-cover"
                   />
                 </motion.div>
@@ -86,6 +87,7 @@ export default function EditorialLimited() {
                   <img
                     src="https://images.pexels.com/photos/32817141/pexels-photo-32817141.jpeg?auto=compress&cs=tinysrgb&w=800"
                     alt=""
+                    loading="lazy"
                     className="w-full h-full object-cover"
                   />
                 </div>

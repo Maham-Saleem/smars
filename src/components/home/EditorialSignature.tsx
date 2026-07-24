@@ -30,6 +30,7 @@ export default function EditorialSignature() {
               <img
                 src={signature[0]?.images[0] || '/perfume-placeholder.svg'}
                 alt="Signature Collection"
+                loading="lazy"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-deep-coffee/30 via-transparent to-transparent" />
@@ -44,6 +45,7 @@ export default function EditorialSignature() {
               <img
                 src={signature[1]?.images[0] || '/perfume-placeholder.svg'}
                 alt=""
+                loading="lazy"
                 className="w-full h-full object-cover"
               />
             </motion.div>
