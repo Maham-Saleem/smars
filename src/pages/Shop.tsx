@@ -32,6 +32,7 @@ export default function Shop() {
   const [page, setPage] = useState(1);
   const [quickView, setQuickView] = useState<number | null>(null);
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+  const [filtersOpen, setFiltersOpen] = useState(false);
   const gridTopRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -96,15 +97,27 @@ export default function Shop() {
         </motion.div>
 
         <div className="flex gap-8">
-          <div className="hidden lg:block w-64 shrink-0">
-            <div className="sticky top-28">
+          <motion.div
+            animate={{ width: filtersOpen ? 256 : 0, opacity: filtersOpen ? 1 : 0 }}
+            className="hidden lg:block shrink-0 overflow-hidden"
+          >
+            <div className="sticky top-28 w-64">
               <Sidebar filters={filters} setFilters={setFilters} />
             </div>
-          </div>
+          </motion.div>
 
           <div className="flex-1 min-w-0">
             <div ref={gridTopRef} className="flex items-center justify-between mb-8">
-              <div className="hidden lg:flex items-center gap-2">
+              <div className="hidden lg:flex items-center gap-4">
+                <button
+                  onClick={() => setFiltersOpen(!filtersOpen)}
+                  className={`flex items-center gap-2 px-4 py-2 text-xs tracking-[0.2em] uppercase font-body transition-colors ${
+                    filtersOpen ? 'text-espresso' : 'text-espresso/50 hover:text-espresso'
+                  }`}
+                >
+                  <HiOutlineAdjustments size={16} />
+                  {filtersOpen ? 'Hide Filters' : 'Filters'}
+                </button>
                 <select
                   value={filters.sort}
                   onChange={(e) => setFilters({ ...filters, sort: e.target.value })}
