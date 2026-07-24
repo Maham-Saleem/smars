@@ -36,7 +36,7 @@ export default function QuickView({ product, onClose }: Props) {
           className="bg-cream rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto"
         >
           <div className="relative">
-            <button onClick={onClose} className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-white/80 flex items-center justify-center text-dark-brown hover:bg-white transition-all">
+            <button onClick={onClose} aria-label="Close quick view" className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-white/80 flex items-center justify-center text-dark-brown hover:bg-white transition-all">
               <HiX size={20} />
             </button>
             <div className="grid grid-cols-1 md:grid-cols-2">
@@ -86,6 +86,7 @@ export default function QuickView({ product, onClose }: Props) {
                   </button>
                   <button
                     onClick={() => { toggleWishlist(product.id); toast.success(isInWishlist(product.id) ? 'Added to wishlist' : 'Removed from wishlist'); }}
+                    aria-label={isInWishlist(product.id) ? 'Remove from wishlist' : 'Add to wishlist'}
                     className={`w-12 h-12 rounded-lg border transition-all flex items-center justify-center ${
                       isInWishlist(product.id) ? 'bg-champagne-gold border-champagne-gold text-deep-coffee' : 'border-dark-brown/20 text-dark-brown/50 hover:border-dark-brown'
                     }`}

@@ -44,7 +44,7 @@ export default function SearchModal() {
           onClick={closeSearch}
           className="fixed inset-0 z-[60] bg-deep-coffee/95 backdrop-blur-md flex flex-col items-center pt-24 lg:pt-32 px-4"
         >
-          <button onClick={closeSearch} className="absolute top-6 right-6 text-cream/60 hover:text-cream transition-colors z-10">
+          <button onClick={closeSearch} aria-label="Close search" className="absolute top-6 right-6 text-cream/60 hover:text-cream transition-colors z-10">
             <HiX size={28} />
           </button>
           <div onClick={(e) => e.stopPropagation()} className="w-full max-w-2xl">
@@ -59,7 +59,7 @@ export default function SearchModal() {
                 className="flex-1 bg-transparent text-cream text-xl lg:text-2xl font-body placeholder-cream/50 outline-none ml-3"
               />
               {query && (
-                <button onClick={() => setQuery('')} className="text-cream/30 hover:text-cream transition-colors p-1">
+                <button onClick={() => setQuery('')} aria-label="Clear search" className="text-cream/30 hover:text-cream transition-colors p-1">
                   <HiX size={20} />
                 </button>
               )}

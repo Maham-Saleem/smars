@@ -28,7 +28,7 @@ export default function CartSidebar() {
           >
             <div className="flex items-center justify-between p-6 border-b border-dark-brown/10">
               <h2 className="font-heading text-xl text-dark-brown">Shopping Bag ({items.length})</h2>
-              <button onClick={closeCart} className="text-dark-brown/50 hover:text-dark-brown transition-colors">
+              <button onClick={closeCart} aria-label="Close cart" className="text-dark-brown/50 hover:text-dark-brown transition-colors">
                 <HiX size={24} />
               </button>
             </div>
@@ -53,7 +53,7 @@ export default function CartSidebar() {
                     <div className="flex-1">
                       <div className="flex justify-between">
                         <h3 className="font-heading text-dark-brown">{item.product.name}</h3>
-                        <button onClick={() => removeItem(item.product.id)} className="text-dark-brown/30 hover:text-red-500 transition-colors">
+                        <button onClick={() => removeItem(item.product.id)} aria-label="Remove item" className="text-dark-brown/30 hover:text-red-500 transition-colors">
                           <HiOutlineTrash size={18} />
                         </button>
                       </div>
@@ -62,6 +62,7 @@ export default function CartSidebar() {
                       <div className="flex items-center gap-3 mt-2">
                         <button
                           onClick={() => item.quantity > 1 && updateQuantity(item.product.id, item.quantity - 1)}
+                          aria-label="Decrease quantity"
                           className="w-7 h-7 border border-dark-brown/20 rounded flex items-center justify-center hover:border-dark-brown transition-colors"
                         >
                           <HiOutlineMinus size={12} />
@@ -69,6 +70,7 @@ export default function CartSidebar() {
                         <span className="text-sm font-medium w-6 text-center">{item.quantity}</span>
                         <button
                           onClick={() => updateQuantity(item.product.id, item.quantity + 1)}
+                          aria-label="Increase quantity"
                           className="w-7 h-7 border border-dark-brown/20 rounded flex items-center justify-center hover:border-dark-brown transition-colors"
                         >
                           <HiOutlinePlus size={12} />

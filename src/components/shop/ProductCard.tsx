@@ -36,6 +36,7 @@ export default function ProductCard({ product, index }: Props) {
         </Link>
         <button
           onClick={() => { toggleWishlist(product.id); toast.success(isInWishlist(product.id) ? 'Removed from wishlist' : 'Added to wishlist'); }}
+          aria-label={isInWishlist(product.id) ? 'Remove from wishlist' : 'Add to wishlist'}
           className={`absolute top-3 right-3 w-9 h-9 rounded-full flex items-center justify-center transition-all ${
             isInWishlist(product.id) ? 'bg-champagne-gold text-deep-coffee' : 'bg-white/80 text-dark-brown/60 hover:bg-white'
           }`}

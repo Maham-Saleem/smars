@@ -82,6 +82,7 @@ export default function AuthModal() {
           >
             <button
               onClick={handleClose}
+              aria-label="Close"
               className="absolute top-5 right-5 text-espresso/30 hover:text-espresso transition-colors"
             >
               <HiX size={20} />

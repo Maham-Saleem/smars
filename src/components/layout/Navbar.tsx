@@ -81,6 +81,7 @@ export default function Navbar() {
             <div className="flex items-center gap-3 sm:gap-4 lg:gap-5 relative z-10">
               <button
                 onClick={openSearch}
+                aria-label="Search"
                 className={`transition-colors duration-500 ${
                   isDark ? 'text-espresso/80 hover:text-espresso' : 'text-espresso/60 hover:text-espresso'
                 }`}
@@ -90,6 +91,7 @@ export default function Navbar() {
               {isAuthenticated ? (
                 <Link
                   to="/account"
+                  aria-label="Account"
                   className={`hidden sm:block transition-colors duration-500 ${
                     isDark ? 'text-espresso/80 hover:text-espresso' : 'text-espresso/60 hover:text-espresso'
                   }`}
@@ -99,6 +101,7 @@ export default function Navbar() {
               ) : (
                 <button
                   onClick={openAuth}
+                  aria-label="Sign in"
                   className={`hidden sm:block transition-colors duration-500 ${
                     isDark ? 'text-espresso/80 hover:text-espresso' : 'text-espresso/60 hover:text-espresso'
                   }`}
@@ -108,6 +111,7 @@ export default function Navbar() {
               )}
               <Link
                 to="/account?tab=wishlist"
+                aria-label="Wishlist"
                 className={`transition-colors duration-500 relative ${
                   isDark ? 'text-espresso/80 hover:text-espresso' : 'text-espresso/60 hover:text-espresso'
                 }`}
@@ -116,6 +120,7 @@ export default function Navbar() {
               </Link>
               <button
                 onClick={openCart}
+                aria-label="Shopping bag"
                 className={`transition-colors duration-500 relative ${
                   isDark ? 'text-espresso/80 hover:text-espresso' : 'text-espresso/60 hover:text-espresso'
                 }`}
@@ -129,6 +134,7 @@ export default function Navbar() {
               </button>
               <button
                 onClick={toggleMobileMenu}
+                aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
                 className={`lg:hidden transition-colors duration-500 ml-1 ${
                   isDark ? 'text-espresso/80 hover:text-espresso' : 'text-espresso/60 hover:text-espresso'
                 }`}
@@ -161,6 +167,7 @@ export default function Navbar() {
               <div className="flex flex-col h-full px-8 py-20">
                 <button
                   onClick={closeMobileMenu}
+                  aria-label="Close menu"
                   className="absolute top-6 right-6 text-espresso/40 hover:text-espresso transition-colors"
                 >
                   <HiX size={24} />
