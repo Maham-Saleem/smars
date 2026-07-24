@@ -62,7 +62,7 @@ export default function Footer() {
               {[
                 { name: 'Shipping & Returns', path: '/shipping-returns' },
                 { name: 'Privacy Policy', path: '/privacy-policy' },
-                { name: 'Terms of Service', path: '#' },
+                { name: 'Terms of Service', path: '/terms' },
               ].map((item) => (
                 <li key={item.name}>
                   <Link
