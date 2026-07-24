@@ -25,20 +25,36 @@ export default function SceneBottle() {
 
       {/* Subtle paper/linen texture overlay */}
       <div
-        className="absolute inset-0 opacity-[0.025]"
+        className="absolute inset-0 opacity-[0.04]"
         aria-hidden
         style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E")`,
-          backgroundSize: '200px 200px',
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E")`,
+          backgroundSize: '256px 256px',
         }}
       />
+
+      {/* Soft architectural lines — faint editorial structure */}
+      <div className="absolute inset-0 pointer-events-none" aria-hidden>
+        <div className="absolute top-0 left-[18%] w-[1px] h-full bg-gradient-to-b from-transparent via-[#C9B99A]/[0.12] to-transparent" />
+        <div className="absolute top-0 right-[22%] w-[1px] h-full bg-gradient-to-b from-transparent via-[#C9B99A]/[0.09] to-transparent" />
+        <div className="absolute top-[35%] left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#C9B99A]/[0.07] to-transparent" />
+      </div>
 
       {/* Soft radial light behind bottle — natural focal glow */}
       <div
         className="absolute inset-0 pointer-events-none"
         aria-hidden
         style={{
-          background: 'radial-gradient(ellipse 50% 55% at 50% 48%, rgba(248,243,237,0.7) 0%, rgba(248,243,237,0.3) 40%, transparent 70%)',
+          background: 'radial-gradient(ellipse 55% 50% at 50% 46%, rgba(254,252,249,0.65) 0%, rgba(248,243,237,0.3) 45%, transparent 72%)',
+        }}
+      />
+
+      {/* Warm ambient glow — top left corner */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        aria-hidden
+        style={{
+          background: 'radial-gradient(ellipse 40% 40% at 15% 20%, rgba(199,163,107,0.04) 0%, transparent 70%)',
         }}
       />
 
@@ -47,7 +63,7 @@ export default function SceneBottle() {
         className="absolute inset-0 pointer-events-none"
         aria-hidden
         style={{
-          background: 'radial-gradient(ellipse 80% 75% at 50% 50%, transparent 50%, rgba(46,31,20,0.04) 100%)',
+          background: 'radial-gradient(ellipse 85% 80% at 50% 50%, transparent 45%, rgba(46,31,20,0.05) 100%)',
         }}
       />
 
