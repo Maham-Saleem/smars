@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useSearchParams } from 'react-router-dom';
 import { products } from '../data/products';
@@ -32,11 +32,16 @@ export default function Shop() {
   const [page, setPage] = useState(1);
   const [quickView, setQuickView] = useState<number | null>(null);
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+  const gridTopRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setPage(1);
-    window.scrollTo(0, 0);
+    gridTopRef.current?.scrollIntoView({ block: 'start' });
   }, [filters]);
+
+  useEffect(() => {
+    gridTopRef.current?.scrollIntoView({ block: 'start' });
+  }, [page]);
 
   const filtered = useMemo(() => {
     let result = [...products];
@@ -98,7 +103,7 @@ export default function Shop() {
           </div>
 
           <div className="flex-1 min-w-0">
-            <div className="flex items-center justify-between mb-8">
+            <div ref={gridTopRef} className="flex items-center justify-between mb-8">
               <div className="hidden lg:flex items-center gap-2">
                 <select
                   value={filters.sort}
@@ -141,7 +146,7 @@ export default function Shop() {
               </div>
             )}
 
-            <Pagination current={page} total={totalPages} onPage={(p) => { setPage(p); window.scrollTo(0, 0); }} />
+            <Pagination current={page} total={totalPages} onPage={(p) => { setPage(p); }} />
           </div>
         </div>
       </div>
