@@ -18,7 +18,6 @@ export default function AuthModal() {
   const { isAuthOpen, closeAuth, pendingProduct, setPendingProduct } = useUIStore();
   const login = useAuthStore((s) => s.login);
   const register = useAuthStore((s) => s.register);
-  const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
   const addItem = useCartStore((s) => s.addItem);
 
   const handleSuccess = () => {

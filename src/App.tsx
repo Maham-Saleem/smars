@@ -5,6 +5,7 @@ import Footer from './components/layout/Footer';
 import ScrollToTop from './components/layout/ScrollToTop';
 import CartSidebar from './components/cart/CartSidebar';
 import SearchModal from './components/layout/SearchModal';
+import AuthModal from './components/layout/AuthModal';
 import Home from './pages/Home';
 import Shop from './pages/Shop';
 import ProductDetail from './pages/ProductDetail';
@@ -24,6 +25,7 @@ export default function App() {
         <Navbar />
         <CartSidebar />
         <SearchModal />
+        <AuthModal />
         <main>
           <Routes>
             <Route path="/" element={<Home />} />
