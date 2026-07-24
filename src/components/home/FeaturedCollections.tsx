@@ -48,6 +48,7 @@ export default function FeaturedCollections() {
                 <img
                   src={collection.image}
                   alt={collection.name}
+                  loading="lazy"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-deep-coffee/80 via-transparent to-transparent" />

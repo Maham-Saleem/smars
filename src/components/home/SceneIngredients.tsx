@@ -123,6 +123,7 @@ function IngredientRow({
             style={{ y: imageY }}
             src={ingredient.image}
             alt={ingredient.name}
+            loading="lazy"
             className="w-full h-[115%] object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-espresso/10 via-transparent to-transparent" />
@@ -144,6 +145,7 @@ function IngredientRow({
           <img
             src={ingredient.accent}
             alt=""
+            loading="lazy"
             className="w-full h-full object-cover"
           />
         </motion.div>

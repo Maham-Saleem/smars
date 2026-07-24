@@ -76,6 +76,7 @@ export default function SceneFamilies() {
                   <motion.img
                     src={familyImages[col.id]}
                     alt={col.name}
+                    loading="lazy"
                     className="w-full h-full object-cover"
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
