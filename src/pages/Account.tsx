@@ -7,16 +7,13 @@ import { Link } from 'react-router-dom';
 import LoginForm from '../components/account/LoginForm';
 import RegisterForm from '../components/account/RegisterForm';
 import ForgotPassword from '../components/account/ForgotPassword';
+import { useOrderStore } from '../store/orderStore';
 
 type Tab = 'profile' | 'orders' | 'wishlist' | 'addresses';
 
-const orders = [
-  { id: 'SMARS-001', date: '2026-06-15', total: 420, status: 'Delivered', items: 1 },
-  { id: 'SMARS-002', date: '2026-07-01', total: 560, status: 'Shipped', items: 2 },
-];
-
 export default function Account() {
   const { isAuthenticated, user, logout, wishlist } = useAuthStore();
+  const orders = useOrderStore((s) => s.orders);
   const [activeTab, setActiveTab] = useState<Tab>('profile');
   const [authView, setAuthView] = useState<'login' | 'register' | 'forgot'>('login');
 
@@ -166,10 +163,10 @@ export default function Account() {
                           <div className="flex items-center justify-between">
                             <div>
                               <p className="font-heading text-dark-brown">{order.id}</p>
-                              <p className="text-xs text-dark-brown/50 mt-1">{order.date} · {order.items} {order.items === 1 ? 'item' : 'items'}</p>
+                              <p className="text-xs text-dark-brown/50 mt-1">{new Date(order.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })} · {order.items.reduce((sum, i) => sum + i.quantity, 0)} {order.items.reduce((sum, i) => sum + i.quantity, 0) === 1 ? 'item' : 'items'}</p>
                             </div>
                             <div className="text-right">
-                              <p className="font-heading text-lg text-dark-brown">${order.total}</p>
+                              <p className="font-heading text-lg text-dark-brown">${order.total.toFixed(2)}</p>
                               <span className={`text-xs px-2 py-0.5 rounded-full ${
                                 order.status === 'Delivered' ? 'bg-green-100 text-green-700' : 'bg-champagne-gold/20 text-champagne-gold'
                               }`}>
