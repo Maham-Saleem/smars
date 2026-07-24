@@ -6,12 +6,12 @@ export default function Footer() {
   return (
     <footer className="relative overflow-hidden" style={{ background: 'linear-gradient(180deg, #2E1F14 0%, #1a130f 100%)' }}>
       {/* Main footer content */}
-      <div className="max-w-[1600px] mx-auto px-8 sm:px-12 lg:px-20 py-20 sm:py-24 lg:py-32">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 md:gap-10 lg:gap-8">
+      <div className="max-w-[1600px] mx-auto px-6 sm:px-12 lg:px-20 py-16 sm:py-20 lg:py-32">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10 sm:gap-8 lg:gap-8">
           {/* Brand column */}
-          <div className="md:col-span-2 lg:col-span-4">
-            <img src="/logo.svg" alt="SMAR'S" className="h-14 sm:h-20 mb-6 lg:mb-8" />
-            <p className="text-sm text-cream/40 leading-relaxed font-light max-w-sm mb-8">
+          <div className="sm:col-span-2 lg:col-span-4">
+            <img src="/logo.svg" alt="SMAR'S" className="h-12 sm:h-16 lg:h-20 mb-5 lg:mb-8" />
+            <p className="text-sm text-cream/40 leading-relaxed font-light max-w-sm mb-6 lg:mb-8">
               Crafting exceptional fragrances since 2024. Every bottle tells 
               a story of passion, artistry, and timeless elegance.
             </p>
@@ -21,7 +21,7 @@ export default function Footer() {
                   key={label}
                   href="#"
                   aria-label={label}
-                  className="w-10 h-10 rounded-full flex items-center justify-center text-cream/30 hover:text-champagne hover:bg-cream/5 transition-all duration-500"
+                  className="w-10 h-10 sm:w-11 sm:h-11 rounded-full flex items-center justify-center text-cream/30 hover:text-champagne hover:bg-cream/5 transition-all duration-500"
                   style={{ border: '1px solid rgba(199, 163, 107, 0.15)' }}
                 >
                   <Icon size={14} />
@@ -31,11 +31,11 @@ export default function Footer() {
           </div>
 
           {/* Contact */}
-          <div className="md:col-span-2 lg:col-span-3 lg:col-start-5">
-            <h4 className="text-[10px] tracking-editorial uppercase text-champagne/40 font-body mb-6">
+          <div className="sm:col-span-1 lg:col-span-3 lg:col-start-5">
+            <h4 className="text-[10px] tracking-editorial uppercase text-champagne/40 font-body mb-5 lg:mb-6">
               Contact
             </h4>
-            <ul className="space-y-4">
+            <ul className="space-y-3 lg:space-y-4">
               <li className="flex items-start gap-3">
                 <HiOutlineLocationMarker className="mt-0.5 text-champagne/30 shrink-0" size={16} />
                 <span className="text-sm text-cream/30 font-light">123 Luxury Lane, Beverly Hills, CA 90210</span>
@@ -52,11 +52,11 @@ export default function Footer() {
           </div>
 
           {/* Navigation */}
-          <div className="md:col-span-1 lg:col-span-2">
-            <h4 className="text-[10px] tracking-editorial uppercase text-champagne/40 font-body mb-6">
+          <div className="sm:col-span-1 lg:col-span-2">
+            <h4 className="text-[10px] tracking-editorial uppercase text-champagne/40 font-body mb-5 lg:mb-6">
               Navigate
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-2.5 lg:space-y-3">
               {[
                 { name: 'Home', path: '/' },
                 { name: 'Collections', path: '/shop' },
@@ -76,11 +76,11 @@ export default function Footer() {
           </div>
 
           {/* Customer Care */}
-          <div className="md:col-span-1 lg:col-span-3">
-            <h4 className="text-[10px] tracking-editorial uppercase text-champagne/40 font-body mb-6">
+          <div className="sm:col-span-2 lg:col-span-3">
+            <h4 className="text-[10px] tracking-editorial uppercase text-champagne/40 font-body mb-5 lg:mb-6">
               Customer Care
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-2.5 lg:space-y-3">
               {[
                 { name: 'Shipping & Returns', path: '/shipping-returns' },
                 { name: 'Privacy Policy', path: '/privacy-policy' },
@@ -102,12 +102,12 @@ export default function Footer() {
 
       {/* Bottom bar */}
       <div className="border-t border-cream/[0.06]">
-        <div className="max-w-[1600px] mx-auto px-8 sm:px-12 lg:px-20 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-[10px] text-cream/20 font-body">
+        <div className="max-w-[1600px] mx-auto px-6 sm:px-12 lg:px-20 py-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="text-[10px] text-cream/20 font-body text-center sm:text-left">
             © 2026 SMAR'S. All rights reserved.
           </p>
           <p className="text-[10px] text-cream/20 font-body italic">
-            Scents that defines you.
+            Scents that define you.
           </p>
         </div>
       </div>
