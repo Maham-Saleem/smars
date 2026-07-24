@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { HiX } from 'react-icons/hi';
 import { useAuthStore } from '../../store/authStore';
@@ -14,11 +14,29 @@ export default function AuthModal() {
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
   const [loading, setLoading] = useState(false);
+  const emailRef = useRef<HTMLInputElement>(null);
 
   const { isAuthOpen, closeAuth, pendingProduct, setPendingProduct } = useUIStore();
   const login = useAuthStore((s) => s.login);
   const register = useAuthStore((s) => s.register);
   const addItem = useCartStore((s) => s.addItem);
+
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isAuthOpen) {
+        setPendingProduct(null);
+        setEmail('');
+        setPassword('');
+        setName('');
+        closeAuth();
+      }
+    };
+    if (isAuthOpen) {
+      window.addEventListener('keydown', handleKey);
+      setTimeout(() => emailRef.current?.focus(), 100);
+    }
+    return () => window.removeEventListener('keydown', handleKey);
+  }, [isAuthOpen]);
 
   const handleSuccess = () => {
     if (pendingProduct) {
@@ -145,6 +163,7 @@ export default function AuthModal() {
                   <div>
                     <label className="block text-[10px] tracking-[0.3em] uppercase text-espresso/40 mb-2 font-body">Email</label>
                     <input
+                      ref={emailRef}
                       type="email"
                       required
                       value={email}
