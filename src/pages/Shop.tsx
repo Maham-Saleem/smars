@@ -164,15 +164,23 @@ export default function Shop() {
             </div>
 
             {paginated.length === 0 ? (
-              <div className="text-center py-20">
-                <p className="text-espresso/50 text-sm font-light">No fragrances match your criteria.</p>
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="text-center py-20"
+              >
+                <div className="w-16 h-16 rounded-full bg-espresso/[0.03] flex items-center justify-center mx-auto mb-6">
+                  <HiOutlineAdjustments size={24} className="text-espresso/15" />
+                </div>
+                <p className="text-espresso/35 text-sm font-light">No fragrances match your criteria.</p>
+                <p className="text-espresso/20 text-xs font-light mt-2">Try adjusting your filters to discover your perfect scent.</p>
                 <button
                   onClick={() => setFilters({ collection: '', category: '', minPrice: '', maxPrice: '', search: '', sort: '' })}
-                  className="mt-6 px-8 py-3 border border-espresso/20 text-espresso/40 text-[10px] tracking-[0.3em] uppercase font-body hover:border-espresso/50 hover:text-espresso/70 transition-all"
+                  className="mt-8 px-8 py-3 bg-espresso text-cream text-[9px] tracking-[0.3em] uppercase font-body rounded-full hover:bg-bronze transition-all duration-500 shadow-sm"
                 >
-                  Clear Filters
+                  Clear All Filters
                 </button>
-              </div>
+              </motion.div>
             ) : (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {paginated.map((product, i) => (

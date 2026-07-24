@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { HiOutlineMinus, HiOutlinePlus, HiOutlineTrash, HiOutlineArrowLeft } from 'react-icons/hi';
+import { HiOutlineMinus, HiOutlinePlus, HiOutlineTrash, HiOutlineArrowLeft, HiOutlineShoppingBag } from 'react-icons/hi';
 import { useCartStore } from '../store/cartStore';
 
 export default function Cart() {
@@ -26,13 +26,21 @@ export default function Cart() {
         </motion.div>
 
         {items.length === 0 ? (
-          <div className="text-center py-20">
-            <p className="text-dark-brown/50 text-lg">Your shopping bag is empty</p>
-            <Link to="/shop" className="inline-flex items-center gap-2 mt-4 px-8 py-3 bg-dark-brown text-cream text-sm tracking-wider uppercase hover:bg-champagne-gold hover:text-deep-coffee active:bg-dark-brown/90 focus:outline-none focus:ring-2 focus:ring-dark-brown/20 transition-all">
-              <HiOutlineArrowLeft size={16} />
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="text-center py-20"
+          >
+            <div className="w-16 h-16 rounded-full bg-espresso/[0.03] flex items-center justify-center mx-auto mb-6">
+              <HiOutlineShoppingBag size={24} className="text-espresso/15" />
+            </div>
+            <p className="text-espresso/40 text-sm font-light">Your shopping bag is empty</p>
+            <p className="text-espresso/20 text-xs font-light mt-2">Discover fragrances that speak to you.</p>
+            <Link to="/shop" className="inline-flex items-center gap-2 mt-8 px-8 py-3 bg-espresso text-cream text-[9px] tracking-[0.3em] uppercase font-body rounded-full hover:bg-bronze transition-all duration-500 shadow-sm">
+              <HiOutlineArrowLeft size={14} />
               Continue Shopping
             </Link>
-          </div>
+          </motion.div>
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             <div className="lg:col-span-2 space-y-6">
