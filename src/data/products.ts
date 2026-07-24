@@ -63,7 +63,7 @@ export const products: Product[] = [
       { id: 2, name: "James R.", rating: 5, date: "2026-05-28", comment: "The most sophisticated scent I've ever worn. Worth every penny." },
       { id: 3, name: "Amara K.", rating: 4.5, date: "2026-05-10", comment: "Beautiful depth and complexity. The oud note is perfectly balanced." },
     ],
-    images: [img.amber, img.elegant, img.onTable],
+    images: [img.amber],
     category: "Eau de Parfum",
     collection: "Signature",
     fragranceNotes: ["Bergamot", "Black Pepper", "Saffron", "Rose", "Oud", "Leather", "Vanilla", "Amber"],
@@ -81,7 +81,7 @@ export const products: Product[] = [
       { id: 4, name: "Olivia M.", rating: 5, date: "2026-06-20", comment: "This is my signature scent now. So elegant and feminine." },
       { id: 5, name: "Emma W.", rating: 4.5, date: "2026-06-01", comment: "Beautiful floral that isn't overpowering. Sophisticated." },
     ],
-    images: [img.rose, img.pinkBg],
+    images: [img.rose],
     category: "Eau de Parfum",
     collection: "Floral",
     fragranceNotes: ["Pear", "White Freesia", "Jasmine", "Tuberose", "Sandalwood", "Musk"],
@@ -99,7 +99,7 @@ export const products: Product[] = [
       { id: 6, name: "Marcus D.", rating: 5, date: "2026-06-18", comment: "The finest oud fragrance I've encountered. Truly royal." },
       { id: 7, name: "Liam S.", rating: 5, date: "2026-05-30", comment: "Incredible longevity and projection. A masterpiece." },
     ],
-    images: [img.oud, img.minimalist],
+    images: [img.oud],
     category: "Extrait de Parfum",
     collection: "Oud",
     fragranceNotes: ["Cambodian Oud", "Birch", "Labdanum", "Frankincense", "Patchouli", "Musk"],
@@ -116,7 +116,7 @@ export const products: Product[] = [
     reviews: [
       { id: 8, name: "Isabella N.", rating: 5, date: "2026-06-12", comment: "So beautiful and unique. The lychee note is perfection." },
     ],
-    images: [img.janan, img.marble],
+    images: [img.janan],
     category: "Eau de Parfum",
     collection: "Signature",
     fragranceNotes: ["Pink Pepper", "Lychee", "Damask Rose", "Peony", "Ambrette", "Cashmere Wood"],
@@ -133,7 +133,7 @@ export const products: Product[] = [
     reviews: [
       { id: 9, name: "Nathan P.", rating: 5, date: "2026-06-08", comment: "Rich, warm, and incredibly alluring. Gets compliments every time." },
     ],
-    images: [img.shaheer, img.chain],
+    images: [img.shaheer],
     category: "Extrait de Parfum",
     collection: "Oud",
     fragranceNotes: ["Amber", "Oud", "Tobacco", "Vanilla", "Saffron", "Honey"],
@@ -150,7 +150,7 @@ export const products: Product[] = [
     reviews: [
       { id: 10, name: "Charlotte B.", rating: 4.5, date: "2026-05-20", comment: "Like a garden in full bloom. So fresh and elegant." },
     ],
-    images: [img.bless, img.collection],
+    images: [img.bless],
     category: "Eau de Parfum",
     collection: "Floral",
     fragranceNotes: ["Dewy Greens", "Gardenia", "Sandalwood", "White Musk", "Coconut Water"],
@@ -166,7 +166,7 @@ export const products: Product[] = [
     reviews: [
       { id: 11, name: "Alexander H.", rating: 5, date: "2026-06-22", comment: "Dark, mysterious, and absolutely captivating. A nighttime essential." },
     ],
-    images: [img.notorious, img.flatLay],
+    images: [img.notorious],
     category: "Extrait de Parfum",
     collection: "Oud",
     fragranceNotes: ["Black Truffle", "Dark Chocolate", "Incense", "Rose Absolute", "Patchouli", "Leather"],
@@ -184,7 +184,7 @@ export const products: Product[] = [
     reviews: [
       { id: 12, name: "Zoe T.", rating: 4.5, date: "2026-06-05", comment: "Perfect summer scent. Light, fresh, and sophisticated." },
     ],
-    images: [img.blissful, img.lifestyle],
+    images: [img.blissful],
     category: "Eau de Toilette",
     collection: "Limited Edition",
     fragranceNotes: ["Bergamot", "Sea Salt", "Fig Leaf", "Coconut Water", "Driftwood", "Amber"],
@@ -201,7 +201,7 @@ export const products: Product[] = [
     reviews: [
       { id: 13, name: "Grace F.", rating: 5, date: "2026-06-14", comment: "Rich, creamy, and utterly luxurious. Tuberose at its finest." },
     ],
-    images: [img.velvet, img.elegant],
+    images: [img.velvet],
     category: "Eau de Parfum",
     collection: "Floral",
     fragranceNotes: ["Tuberose", "Orange Blossom", "Cinnamon", "Benzoin", "Ylang-Ylang", "Musk"],
@@ -217,7 +217,7 @@ export const products: Product[] = [
     reviews: [
       { id: 14, name: "Oliver K.", rating: 5, date: "2026-06-10", comment: "The most unique sandalwood fragrance. Smoky, spicy, and sophisticated." },
     ],
-    images: [img.santal, img.minimalist],
+    images: [img.santal],
     category: "Eau de Parfum",
     collection: "Signature",
     fragranceNotes: ["Black Cardamom", "Cumin", "Sandalwood", "Suede", "Vetiver", "Musk"],
@@ -233,7 +233,7 @@ export const products: Product[] = [
     reviews: [
       { id: 15, name: "Victoria S.", rating: 5, date: "2026-06-25", comment: "Pure luxury in a bottle. The champagne note is divine." },
     ],
-    images: [img.golden, img.pinkBg],
+    images: [img.golden],
     category: "Extrait de Parfum",
     collection: "Limited Edition",
     fragranceNotes: ["Champagne", "Apricot", "Tuberose", "Narcissus", "Amber", "Vanilla"],
@@ -251,7 +251,7 @@ export const products: Product[] = [
     reviews: [
       { id: 16, name: "Aria N.", rating: 4.5, date: "2026-05-25", comment: "The perfect everyday scent. Clean, sophisticated, and subtle." },
     ],
-    images: [img.musk, img.onTable],
+    images: [img.musk],
     category: "Eau de Parfum",
     collection: "Signature",
     fragranceNotes: ["Bergamot", "Ambrette Seed", "Iris", "White Musk", "Cotton Blossom"],

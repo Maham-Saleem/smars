@@ -10,7 +10,6 @@ import toast from 'react-hot-toast';
 export default function ProductDetail() {
   const { id } = useParams();
   const product = products.find((p) => p.id === Number(id));
-  const [selectedImage, setSelectedImage] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const [activeTab, setActiveTab] = useState<'description' | 'notes' | 'reviews'>('description');
   const { addItem } = useCartStore();
@@ -45,26 +44,14 @@ export default function ProductDetail() {
           >
             <div className="relative aspect-square rounded-2xl overflow-hidden bg-white group">
               <img
-                src={product.images[selectedImage]}
+                src={product.images[0]}
                 alt={product.name}
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <button className="absolute inset-0 cursor-crosshair" />
               <div className="absolute inset-0 bg-gradient-to-t from-deep-coffee/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
             </div>
-            <div className="flex gap-3 mt-4">
-              {product.images.map((img, i) => (
-                <button
-                  key={i}
-                  onClick={() => setSelectedImage(i)}
-                  className={`w-20 h-20 rounded-lg overflow-hidden border-2 transition-all ${
-                    selectedImage === i ? 'border-champagne-gold' : 'border-transparent hover:border-dark-brown/20'
-                  }`}
-                >
-                  <img src={img} alt="" className="w-full h-full object-cover" />
-                </button>
-              ))}
-            </div>
+
           </motion.div>
 
           <motion.div
