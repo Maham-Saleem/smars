@@ -54,6 +54,12 @@ export default function OrderConfirmation() {
             <p className="font-heading text-lg text-dark-brown">{order.estimatedDelivery}</p>
           </div>
 
+          {order.giftMessage && (
+            <div className="mt-6 p-4 bg-champagne-gold/5 rounded-xl border border-champagne-gold/10">
+              <p className="text-xs tracking-wider uppercase text-champagne-gold/60 font-body mb-1">Gift Message</p>
+              <p className="text-sm text-dark-brown/70 italic font-light">"{order.giftMessage}"</p>
+            </div>
+          )}
           <div className="mt-6 text-left space-y-3">
             {order.items.map((item) => (
               <div key={item.product.id} className="flex gap-4 pb-3 border-b border-dark-brown/10">

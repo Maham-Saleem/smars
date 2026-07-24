@@ -33,6 +33,7 @@ export interface Order {
   status: string;
   date: string;
   estimatedDelivery: string;
+  giftMessage?: string;
 }
 
 interface OrderStore {

@@ -55,6 +55,8 @@ export default function Checkout() {
   });
   const [jazzcashPhone, setJazzcashPhone] = useState('');
   const [easypaisaPhone, setEasypaisaPhone] = useState('');
+  const [giftMessage, setGiftMessage] = useState('');
+  const [isGift, setIsGift] = useState(false);
 
   if (!isAuthenticated) {
     return (
@@ -142,6 +144,7 @@ export default function Checkout() {
       deliveryMethod: selectedDelivery.name,
       paymentMethod: selectedPayment.name,
       shippingDetails: { ...shipping },
+      giftMessage: isGift ? giftMessage : '',
       status: 'Confirmed',
       date: new Date().toISOString(),
       estimatedDelivery: estimateDeliveryDate(),
@@ -328,7 +331,34 @@ export default function Checkout() {
                     </button>
                   ))}
                 </div>
-                <div className="flex gap-4 mt-8">
+                <div className="mt-8 pt-6 border-t border-dark-brown/10">
+                  <label className="flex items-center gap-3 cursor-pointer">
+                    <input
+                      type="checkbox" checked={isGift}
+                      onChange={(e) => setIsGift(e.target.checked)}
+                      className="w-4 h-4 accent-dark-brown"
+                    />
+                    <span className="text-sm text-dark-brown/60">This is a gift</span>
+                  </label>
+                  {isGift && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      className="mt-4"
+                    >
+                      <label className="block text-xs tracking-wider uppercase text-dark-brown/50 mb-2">Gift Message</label>
+                      <textarea
+                        value={giftMessage}
+                        onChange={(e) => setGiftMessage(e.target.value)}
+                        placeholder="Write a personal message..."
+                        rows={3}
+                        className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors resize-none placeholder:text-dark-brown/30 font-light"
+                      />
+                      <p className="text-xs text-dark-brown/30 mt-1.5">Your message will be included with the order.</p>
+                    </motion.div>
+                  )}
+                </div>
+                <div className="flex gap-4 mt-6">
                   <button onClick={() => setStep(0)} className="flex-1 py-3 border border-dark-brown/20 text-dark-brown/60 text-sm tracking-wider uppercase hover:border-dark-brown hover:text-dark-brown transition-all rounded-lg">
                     Back
                   </button>
