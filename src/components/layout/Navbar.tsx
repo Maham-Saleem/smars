@@ -10,7 +10,7 @@ const navLinks = [
   { name: 'Atelier', path: '/' },
   { name: 'Collections', path: '/shop' },
   { name: 'Journal', path: '/journal' },
-  { name: 'About', path: '/about' },
+  { name: 'Craftmanship', path: '/about' },
   { name: 'Contact', path: '/contact' },
 ];
 
