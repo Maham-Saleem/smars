@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { HiX, HiOutlineMinus, HiOutlinePlus, HiOutlineTrash, HiOutlineClock } from 'react-icons/hi';
 import { Link } from 'react-router-dom';
@@ -10,6 +11,17 @@ export default function CartSidebar() {
   const { items, removeItem, updateQuantity, totalPrice } = useCartStore();
   const { getRecentProducts } = useRecentStore();
   const recentProducts = getRecentProducts();
+
+  useEffect(() => {
+    if (isCartOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isCartOpen]);
 
   return (
     <AnimatePresence>
@@ -31,7 +43,7 @@ export default function CartSidebar() {
           >
             <div className="flex items-center justify-between p-6 border-b border-dark-brown/10">
               <h2 className="font-heading text-xl text-dark-brown">Shopping Bag ({items.length})</h2>
-              <button onClick={closeCart} aria-label="Close cart" className="text-dark-brown/50 hover:text-dark-brown transition-colors">
+              <button onClick={closeCart} aria-label="Close cart" className="touch-target text-dark-brown/50 hover:text-dark-brown transition-colors">
                 <HiX size={24} />
               </button>
             </div>
@@ -40,7 +52,7 @@ export default function CartSidebar() {
               {items.length === 0 ? (
                 <div className="text-center py-8">
                   <p className="text-dark-brown/50 text-sm">Your bag is empty</p>
-                  <Link to="/shop" onClick={closeCart} className="inline-block mt-3 px-5 py-2 bg-dark-brown text-cream text-[10px] tracking-widest uppercase hover:bg-champagne-gold active:bg-dark-brown/90 focus:outline-none focus:ring-2 focus:ring-dark-brown/20 transition-colors rounded">
+                  <Link to="/shop" onClick={closeCart} className="inline-block mt-3 px-5 py-3 bg-dark-brown text-cream text-[10px] tracking-widest uppercase hover:bg-champagne-gold active:bg-dark-brown/90 focus:outline-none focus:ring-2 focus:ring-dark-brown/20 transition-colors rounded touch-target">
                     Shop Now
                   </Link>
                   {recentProducts.length > 0 && (
@@ -75,32 +87,32 @@ export default function CartSidebar() {
                       src={item.product.images[0]}
                       alt={item.product.name}
                       loading="lazy"
-                      className="w-20 h-24 object-cover rounded"
+                      className="w-20 h-24 object-cover rounded shrink-0"
                     />
-                    <div className="flex-1">
-                      <div className="flex justify-between">
-                        <h3 className="font-heading text-dark-brown">{item.product.name}</h3>
-                        <button onClick={() => removeItem(item.product.id)} aria-label="Remove item" className="text-dark-brown/30 hover:text-red-500 transition-colors">
+                    <div className="flex-1 min-w-0">
+                      <div className="flex justify-between items-start gap-2">
+                        <h3 className="font-heading text-dark-brown truncate line-clamp-1">{item.product.name}</h3>
+                        <button onClick={() => removeItem(item.product.id)} aria-label="Remove item" className="touch-target text-dark-brown/30 hover:text-red-500 transition-colors shrink-0">
                           <HiOutlineTrash size={18} />
                         </button>
                       </div>
-                      <p className="text-xs text-dark-brown/50 mt-1">{item.product.shortDescription}</p>
+                      <p className="text-xs text-dark-brown/50 mt-1 line-clamp-1">{item.product.shortDescription}</p>
                       <p className="font-body text-sm text-dark-brown mt-2">${item.product.price}</p>
                       <div className="flex items-center gap-3 mt-2">
                         <button
                           onClick={() => item.quantity > 1 && updateQuantity(item.product.id, item.quantity - 1)}
                           aria-label="Decrease quantity"
-                          className="w-7 h-7 border border-dark-brown/20 rounded flex items-center justify-center hover:border-dark-brown transition-colors"
+                          className="w-9 h-9 border border-dark-brown/20 rounded flex items-center justify-center hover:border-dark-brown transition-colors touch-target"
                         >
-                          <HiOutlineMinus size={12} />
+                          <HiOutlineMinus size={14} />
                         </button>
                         <span className="text-sm font-medium w-6 text-center">{item.quantity}</span>
                         <button
                           onClick={() => updateQuantity(item.product.id, item.quantity + 1)}
                           aria-label="Increase quantity"
-                          className="w-7 h-7 border border-dark-brown/20 rounded flex items-center justify-center hover:border-dark-brown transition-colors"
+                          className="w-9 h-9 border border-dark-brown/20 rounded flex items-center justify-center hover:border-dark-brown transition-colors touch-target"
                         >
-                          <HiOutlinePlus size={12} />
+                          <HiOutlinePlus size={14} />
                         </button>
                       </div>
                     </div>

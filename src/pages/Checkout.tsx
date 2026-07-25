@@ -157,14 +157,14 @@ export default function Checkout() {
   };
 
   return (
-    <div className="pt-24 lg:pt-28 pb-20 bg-cream min-h-screen">
-      <div className="max-w-4xl mx-auto px-6 lg:px-8">
+    <div className="pt-20 lg:pt-28 pb-20 bg-cream min-h-screen">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className="font-heading text-4xl lg:text-5xl text-dark-brown">Checkout</h1>
+          <h1 className="font-heading text-3xl sm:text-4xl lg:text-5xl text-dark-brown">Checkout</h1>
 
           <div className="flex items-center gap-2 mt-8 mb-10 overflow-x-auto pb-2">
             {steps.map((s, i) => (
@@ -194,11 +194,11 @@ export default function Checkout() {
                     <p className="text-sm text-dark-brown/70">{savedAddress.country}</p>
                     <p className="text-sm text-dark-brown/70 mt-2">{savedAddress.phone}</p>
                   </div>
-                  <div className="flex gap-4 mt-6">
-                    <button type="button" onClick={() => setEditingAddress(true)} className="flex-1 py-3 border border-dark-brown/20 text-dark-brown/60 text-sm tracking-wider uppercase hover:border-dark-brown hover:text-dark-brown transition-all rounded-lg">
+                  <div className="flex gap-3 sm:gap-4 mt-6">
+                    <button type="button" onClick={() => setEditingAddress(true)} className="flex-1 py-3.5 sm:py-3 border border-dark-brown/20 text-dark-brown/60 text-sm tracking-wider uppercase hover:border-dark-brown hover:text-dark-brown transition-all rounded-lg">
                       Change Address
                     </button>
-                    <button type="button" onClick={() => { setStep(1); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="flex-1 py-3 bg-dark-brown text-cream text-sm tracking-widest uppercase font-medium hover:bg-champagne-gold hover:text-deep-coffee active:bg-dark-brown/90 focus:outline-none focus:ring-2 focus:ring-dark-brown/20 transition-all duration-300 rounded-lg">
+                    <button type="button" onClick={() => { setStep(1); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="flex-1 py-3.5 sm:py-3 bg-dark-brown text-cream text-sm tracking-widest uppercase font-medium hover:bg-champagne-gold hover:text-deep-coffee active:bg-dark-brown/90 focus:outline-none focus:ring-2 focus:ring-dark-brown/20 transition-all duration-300 rounded-lg">
                       Continue to Delivery
                     </button>
                   </div>
@@ -223,19 +223,19 @@ export default function Checkout() {
                     <div>
                       <label className="block text-xs tracking-wider uppercase text-dark-brown/50 mb-2">Phone</label>
                       <input
-                        type="tel" required value={shipping.phone}
+                        type="tel" inputMode="tel" required value={shipping.phone}
                         onChange={(e) => setShipping({ ...shipping, phone: e.target.value })}
                         autoComplete="tel"
-                        className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors"
+                        className="w-full px-4 py-3.5 sm:py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors"
                       />
                     </div>
                     <div>
                       <label className="block text-xs tracking-wider uppercase text-dark-brown/50 mb-2">Email</label>
                       <input
-                        type="email" required value={shipping.email}
+                        type="email" inputMode="email" required value={shipping.email}
                         onChange={(e) => setShipping({ ...shipping, email: e.target.value })}
                         autoComplete="email"
-                        className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors"
+                        className="w-full px-4 py-3.5 sm:py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors"
                       />
                     </div>
                   </div>
@@ -281,10 +281,10 @@ export default function Checkout() {
                     <div>
                       <label className="block text-xs tracking-wider uppercase text-dark-brown/50 mb-2">Postal Code</label>
                       <input
-                        type="text" required value={shipping.zip}
+                        type="text" inputMode="numeric" required value={shipping.zip}
                         onChange={(e) => setShipping({ ...shipping, zip: e.target.value })}
                         autoComplete="postal-code"
-                        className="w-full px-4 py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors"
+                        className="w-full px-4 py-3.5 sm:py-3 border border-dark-brown/10 rounded-lg text-sm outline-none focus:border-champagne-gold transition-colors"
                       />
                     </div>
                   </div>

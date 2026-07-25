@@ -22,10 +22,21 @@ export default function Navbar() {
   const { openCart, openSearch, openAuth, isMobileMenuOpen, toggleMobileMenu, closeMobileMenu } = useUIStore();
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 80);
+    const handleScroll = () => setScrolled(window.scrollY > 60);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMobileMenuOpen]);
 
   useEffect(() => {
     closeMobileMenu();
@@ -193,13 +204,21 @@ export default function Navbar() {
                   transition={{ delay: 0.4 }}
                   className="space-y-3 pt-6 border-t border-espresso/[0.06]"
                 >
-                  {!isAuthenticated && (
+                  {!isAuthenticated ? (
                     <button
                       onClick={() => { closeMobileMenu(); openAuth(); }}
                       className="block w-full py-4 text-center text-[10px] tracking-editorial uppercase font-body border border-espresso/20 text-espresso/60 hover:border-bronze hover:text-bronze transition-all duration-500"
                     >
                       Sign In
                     </button>
+                  ) : (
+                    <Link
+                      to="/account"
+                      onClick={closeMobileMenu}
+                      className="block w-full py-4 text-center text-[10px] tracking-editorial uppercase font-body border border-espresso/20 text-espresso/60 hover:border-bronze hover:text-bronze transition-all duration-500"
+                    >
+                      My Account
+                    </Link>
                   )}
                   <Link
                     to="/account?tab=wishlist"

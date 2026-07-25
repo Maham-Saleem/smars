@@ -14,10 +14,15 @@ export default function SearchModal() {
 
   useEffect(() => {
     if (isSearchOpen) {
+      document.body.style.overflow = 'hidden';
       setTimeout(() => inputRef.current?.focus(), 100);
     } else {
+      document.body.style.overflow = '';
       setQuery('');
     }
+    return () => {
+      document.body.style.overflow = '';
+    };
   }, [isSearchOpen]);
 
   useEffect(() => {
@@ -63,9 +68,9 @@ export default function SearchModal() {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={closeSearch}
-          className="fixed inset-0 z-[60] bg-deep-coffee/95 backdrop-blur-md flex flex-col items-center pt-24 lg:pt-32 px-4"
+          className="fixed inset-0 z-[60] bg-deep-coffee/95 backdrop-blur-md flex flex-col items-center pt-16 sm:pt-20 lg:pt-32 px-4"
         >
-          <button onClick={closeSearch} aria-label="Close search" className="absolute top-6 right-6 text-cream/60 hover:text-cream transition-colors z-10">
+          <button onClick={closeSearch} aria-label="Close search" className="touch-target absolute top-4 right-4 text-cream/60 hover:text-cream transition-colors z-10">
             <HiX size={28} />
           </button>
           <div onClick={(e) => e.stopPropagation()} className="w-full max-w-2xl">
@@ -81,7 +86,7 @@ export default function SearchModal() {
                 className="flex-1 bg-transparent text-cream text-xl lg:text-2xl font-body placeholder-cream/50 outline-none ml-3"
               />
               {query && (
-                <button onClick={() => setQuery('')} aria-label="Clear search" className="text-cream/30 hover:text-cream transition-colors p-1">
+                <button onClick={() => setQuery('')} aria-label="Clear search" className="touch-target text-cream/30 hover:text-cream transition-colors p-1">
                   <HiX size={20} />
                 </button>
               )}
@@ -92,7 +97,7 @@ export default function SearchModal() {
               <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="mt-8">
                 <div className="flex items-center justify-between mb-4">
                   <p className="text-cream/30 text-xs tracking-wider uppercase font-body">Recent Searches</p>
-                  <button onClick={clearRecentSearches} className="text-cream/20 text-[9px] tracking-wider uppercase font-body hover:text-cream/50 transition-colors">
+                  <button onClick={clearRecentSearches} className="touch-target text-cream/20 text-[9px] tracking-wider uppercase font-body hover:text-cream/50 transition-colors">
                     Clear
                   </button>
                 </div>
@@ -101,7 +106,7 @@ export default function SearchModal() {
                     <button
                       key={term}
                       onClick={() => { setQuery(term); handleSearch(term); }}
-                      className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-cream/5 text-cream/60 hover:bg-cream/10 hover:text-cream/80 text-xs transition-all duration-300"
+                      className="touch-target flex items-center gap-1.5 px-4 py-2.5 rounded-full bg-cream/5 text-cream/60 hover:bg-cream/10 hover:text-cream/80 text-xs transition-all duration-300"
                     >
                       <HiClock size={12} />
                       {term}

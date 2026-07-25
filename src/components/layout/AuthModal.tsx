@@ -96,17 +96,17 @@ export default function AuthModal() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="relative w-full max-w-md bg-cream p-8 sm:p-10 shadow-2xl"
+            className="relative w-full max-w-md bg-cream p-6 sm:p-10 shadow-2xl max-h-[90vh] overflow-y-auto rounded-xl"
           >
             <button
               onClick={handleClose}
               aria-label="Close"
-              className="absolute top-5 right-5 text-espresso/30 hover:text-espresso transition-colors"
+              className="touch-target absolute top-3 right-3 text-espresso/30 hover:text-espresso transition-colors"
             >
               <HiX size={20} />
             </button>
 
-            <div className="text-center mb-8">
+            <div className="text-center mb-6 sm:mb-8">
               <div className="w-14 h-14 rounded-full bg-espresso/5 flex items-center justify-center mx-auto mb-4">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" className="w-7 h-7 text-espresso/50">
                   <path d="M12 2L2 7l10 5 10-5-10-5z" />
@@ -133,14 +133,14 @@ export default function AuthModal() {
               )}
             </div>
 
-            <div className="flex mb-8 border-b border-espresso/5">
+            <div className="flex mb-6 sm:mb-8 border-b border-espresso/5">
               {(['login', 'register'] as const).map((v) => (
                 <button
                   key={v}
                   onClick={() => switchView(v)}
-                  className={`flex-1 pb-3 text-[10px] tracking-[0.3em] uppercase font-body transition-all duration-500 ${
+                  className={`flex-1 py-3 text-[10px] tracking-[0.3em] uppercase font-body transition-all duration-500 touch-target ${
                     view === v
-                      ? 'text-espresso border-b border-bronze/60'
+                      ? 'text-espresso border-b-2 border-bronze/80 font-medium'
                       : 'text-espresso/30 hover:text-espresso/60'
                   }`}
                 >

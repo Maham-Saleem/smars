@@ -114,10 +114,36 @@
     font-size: 16px !important;
   }
 
+  /* Custom scrollbar thin */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(199, 163, 107, 0.3) transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: rgba(199, 163, 107, 0.3);
+    border-radius: 4px;
+  }
+
   /* Touch-friendly minimum tap target */
   .touch-target {
     min-height: 44px;
     min-width: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Touch device fallback for hover elements */
+  @media (hover: none) {
+    .touch-visible {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+      pointer-events: auto !important;
+    }
   }
 
   /* Safe area padding for modern mobile devices */

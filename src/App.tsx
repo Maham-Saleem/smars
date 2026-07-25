@@ -53,17 +53,18 @@ export default function App() {
         <Footer />
       </div>
       <Toaster
-        position="bottom-right"
+        position="bottom-center"
         toastOptions={{
           style: {
-            background: '#4A3428',
-            color: '#FFF9F2',
+            background: 'var(--color-espresso, #2E1F14)',
+            color: 'var(--color-cream, #FFF9F2)',
             borderRadius: '12px',
             fontSize: '14px',
             fontFamily: 'Poppins, sans-serif',
+            marginBottom: '1rem',
           },
           success: {
-            iconTheme: { primary: '#C7A36B', secondary: '#FFF9F2' },
+            iconTheme: { primary: 'var(--color-champagne-gold, #C7A36B)', secondary: 'var(--color-cream, #FFF9F2)' },
           },
         }}
       />

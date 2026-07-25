@@ -21,10 +21,10 @@ export default function Footer() {
                   key={label}
                   href="#"
                   aria-label={label}
-                  className="w-10 h-10 sm:w-11 sm:h-11 rounded-full flex items-center justify-center text-cream/30 hover:text-champagne hover:bg-cream/5 transition-all duration-500"
+                  className="w-11 h-11 rounded-full flex items-center justify-center text-cream/30 hover:text-champagne hover:bg-cream/5 transition-all duration-500"
                   style={{ border: '1px solid rgba(199, 163, 107, 0.15)' }}
                 >
-                  <Icon size={14} />
+                  <Icon size={16} />
                 </a>
               ))}
             </div>
@@ -56,7 +56,7 @@ export default function Footer() {
             <h4 className="text-[10px] tracking-editorial uppercase text-champagne/40 font-body mb-5 lg:mb-6">
               Navigate
             </h4>
-            <ul className="space-y-2.5 lg:space-y-3">
+            <ul className="space-y-1 lg:space-y-2">
               {[
                 { name: 'Home', path: '/' },
                 { name: 'Collections', path: '/shop' },
@@ -66,7 +66,7 @@ export default function Footer() {
                 <li key={item.name}>
                   <Link
                     to={item.path}
-                    className="text-sm text-cream/30 hover:text-champagne/70 transition-colors duration-500 font-light"
+                    className="inline-block py-1.5 text-sm text-cream/30 hover:text-champagne/70 transition-colors duration-500 font-light"
                   >
                     {item.name}
                   </Link>
@@ -80,7 +80,7 @@ export default function Footer() {
             <h4 className="text-[10px] tracking-editorial uppercase text-champagne/40 font-body mb-5 lg:mb-6">
               Customer Care
             </h4>
-            <ul className="space-y-2.5 lg:space-y-3">
+            <ul className="space-y-1 lg:space-y-2">
               {[
                 { name: 'Shipping & Returns', path: '/shipping-returns' },
                 { name: 'Privacy Policy', path: '/privacy-policy' },
@@ -89,7 +89,7 @@ export default function Footer() {
                 <li key={item.name}>
                   <Link
                     to={item.path}
-                    className="text-sm text-cream/30 hover:text-champagne/70 transition-colors duration-500 font-light"
+                    className="inline-block py-1.5 text-sm text-cream/30 hover:text-champagne/70 transition-colors duration-500 font-light"
                   >
                     {item.name}
                   </Link>
