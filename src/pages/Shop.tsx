@@ -100,7 +100,7 @@ export default function Shop() {
           <div className="absolute inset-0 bg-gradient-to-b from-cream/70 via-cream/30 to-cream" />
         </motion.div>
 
-        <motion.div style={{ opacity: heroOpacity, willChange: 'transform' }} className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full">
+        <motion.div style={{ opacity: heroOpacity, willChange: 'transform' }} className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
@@ -117,7 +117,7 @@ export default function Shop() {
       </section>
 
       {/* Products */}
-      <section className="max-w-7xl mx-auto px-6 lg:px-8 py-16 lg:py-24">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24">
         <p className="text-espresso/30 text-xs tracking-[0.2em] uppercase mb-10 font-body">{filtered.length} fragrances found</p>
 
         <div className="flex gap-8">

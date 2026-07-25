@@ -48,7 +48,7 @@ export default function CartSidebar() {
               </button>
             </div>
 
-            <div className="flex-1 overflow-y-auto p-6 space-y-4">
+            <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4">
               {items.length === 0 ? (
                 <div className="text-center py-8">
                   <p className="text-dark-brown/50 text-sm">Your bag is empty</p>
@@ -102,17 +102,17 @@ export default function CartSidebar() {
                         <button
                           onClick={() => item.quantity > 1 && updateQuantity(item.product.id, item.quantity - 1)}
                           aria-label="Decrease quantity"
-                          className="w-9 h-9 border border-dark-brown/20 rounded flex items-center justify-center hover:border-dark-brown transition-colors touch-target"
+                          className="touch-target w-8 h-8 sm:w-7 sm:h-7 border border-dark-brown/20 rounded flex items-center justify-center hover:border-dark-brown transition-colors"
                         >
-                          <HiOutlineMinus size={14} />
+                          <HiOutlineMinus size={12} />
                         </button>
-                        <span className="text-sm font-medium w-6 text-center">{item.quantity}</span>
+                        <span className="text-sm font-medium w-6 sm:w-6 text-center">{item.quantity}</span>
                         <button
                           onClick={() => updateQuantity(item.product.id, item.quantity + 1)}
                           aria-label="Increase quantity"
-                          className="w-9 h-9 border border-dark-brown/20 rounded flex items-center justify-center hover:border-dark-brown transition-colors touch-target"
+                          className="touch-target w-8 h-8 sm:w-7 sm:h-7 border border-dark-brown/20 rounded flex items-center justify-center hover:border-dark-brown transition-colors"
                         >
-                          <HiOutlinePlus size={14} />
+                          <HiOutlinePlus size={12} />
                         </button>
                       </div>
                     </div>
@@ -122,7 +122,7 @@ export default function CartSidebar() {
             </div>
 
             {items.length > 0 && (
-              <div className="border-t border-dark-brown/10 p-6 space-y-4">
+              <div className="border-t border-dark-brown/10 p-4 sm:p-6 space-y-3 sm:space-y-4">
                 <div className="flex justify-between text-dark-brown">
                   <span>Subtotal</span>
                   <span className="font-heading text-lg">${totalPrice().toFixed(2)}</span>

@@ -51,7 +51,7 @@ export default function About() {
           <div className="absolute inset-0 bg-gradient-to-b from-cream/70 via-cream/20 to-cream" />
         </motion.div>
 
-        <motion.div style={{ opacity: heroOpacity, willChange: 'transform' }} className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full">
+        <motion.div style={{ opacity: heroOpacity, willChange: 'transform' }} className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
@@ -68,8 +68,8 @@ export default function About() {
       </section>
 
       {/* Brand Story */}
-      <section ref={storyRef} className="py-24 sm:py-32 lg:py-40 overflow-hidden">
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+      <section ref={storyRef} className="py-16 sm:py-24 lg:py-40 overflow-hidden">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             {/* Image */}
             <motion.div

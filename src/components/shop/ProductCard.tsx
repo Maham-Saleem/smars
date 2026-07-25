@@ -37,7 +37,7 @@ export default function ProductCard({ product, index }: Props) {
         <button
           onClick={() => { toggleWishlist(product.id); toast.success(isInWishlist(product.id) ? 'Removed from wishlist' : 'Added to wishlist'); }}
           aria-label={isInWishlist(product.id) ? 'Remove from wishlist' : 'Add to wishlist'}
-          className={`absolute top-3 right-3 w-9 h-9 rounded-full flex items-center justify-center transition-all ${
+          className={`absolute top-3 right-3 w-10 h-10 sm:w-9 sm:h-9 rounded-full flex items-center justify-center transition-all ${
             isInWishlist(product.id) ? 'bg-champagne-gold text-deep-coffee' : 'bg-white/80 text-dark-brown/60 hover:bg-white'
           }`}
         >
@@ -64,7 +64,7 @@ export default function ProductCard({ product, index }: Props) {
                 openAuth();
               }
             }}
-            className="w-full py-3 bg-dark-brown text-cream text-xs tracking-widest uppercase font-medium hover:bg-champagne-gold hover:text-deep-coffee active:bg-dark-brown/90 focus:outline-none focus:ring-2 focus:ring-dark-brown/20 transition-all duration-300 rounded-lg shadow-lg"
+            className="w-full py-3.5 sm:py-3 bg-dark-brown text-cream text-xs tracking-widest uppercase font-medium hover:bg-champagne-gold hover:text-deep-coffee active:bg-dark-brown/90 focus:outline-none focus:ring-2 focus:ring-dark-brown/20 transition-all duration-300 rounded-lg shadow-lg"
           >
             Add to Cart
           </button>

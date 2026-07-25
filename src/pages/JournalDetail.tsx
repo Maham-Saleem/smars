@@ -39,7 +39,7 @@ export default function JournalDetail() {
           <div className="absolute inset-0 bg-gradient-to-t from-deep-coffee/90 via-deep-coffee/40 to-transparent" />
         </div>
 
-        <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-8 w-full pb-12">
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full pb-8 sm:pb-12">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -65,7 +65,7 @@ export default function JournalDetail() {
       </section>
 
       {/* Article content */}
-      <section className="max-w-3xl mx-auto px-6 lg:px-8 py-16 lg:py-24">
+      <section className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

@@ -26,7 +26,7 @@ export default function Journal() {
           />
         </motion.div>
 
-        <motion.div style={{ opacity: heroOpacity }} className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full">
+        <motion.div style={{ opacity: heroOpacity }} className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
@@ -43,7 +43,7 @@ export default function Journal() {
       </section>
 
       {/* Categories */}
-      <section className="max-w-7xl mx-auto px-6 lg:px-8 py-12">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         <div className="flex flex-wrap gap-4 justify-center">
           {categories.map((cat) => (
             <button
@@ -63,7 +63,7 @@ export default function Journal() {
 
       {/* Featured article */}
       {activeCategory === 'All' && (
-        <section className="max-w-7xl mx-auto px-6 lg:px-8 pb-20">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 sm:pb-20">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -106,7 +106,7 @@ export default function Journal() {
       )}
 
       {/* Article grid */}
-      <section className="max-w-7xl mx-auto px-6 lg:px-8 pb-24">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-24">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
           {(activeCategory === 'All' ? filteredArticles.slice(1) : filteredArticles).map((article, i) => (
             <motion.article
@@ -146,8 +146,8 @@ export default function Journal() {
       </section>
 
       {/* Newsletter */}
-      <section className="py-20 lg:py-28 bg-warm-beige">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
+      <section className="py-16 sm:py-20 lg:py-28 bg-warm-beige">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -160,13 +160,13 @@ export default function Journal() {
             <p className="text-dark-brown/50 text-sm leading-relaxed font-light mb-10">
               Receive stories of craft, ingredient spotlights, and exclusive previews of new collections.
             </p>
-            <div className="flex gap-4 max-w-md mx-auto">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 max-w-md mx-auto">
               <input
                 type="email"
                 placeholder="Your email"
-                className="flex-1 px-6 py-3 bg-transparent border border-dark-brown/15 text-dark-brown text-sm font-body placeholder:text-dark-brown/30 focus:outline-none focus:border-champagne-gold transition-colors duration-500"
+                className="flex-1 px-6 py-3.5 sm:py-3 bg-transparent border border-dark-brown/15 text-dark-brown text-sm font-body placeholder:text-dark-brown/30 focus:outline-none focus:border-champagne-gold transition-colors duration-500"
               />
-              <button className="px-8 py-3 bg-espresso text-cream text-[10px] tracking-[0.25em] uppercase font-body hover:bg-bronze transition-colors duration-500">
+              <button className="px-8 py-3.5 sm:py-3 bg-espresso text-cream text-[10px] tracking-[0.25em] uppercase font-body hover:bg-bronze transition-colors duration-500">
                 Subscribe
               </button>
             </div>

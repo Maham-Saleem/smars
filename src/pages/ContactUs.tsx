@@ -53,7 +53,7 @@ export default function ContactUs() {
           <div className="absolute inset-0 bg-gradient-to-b from-cream/70 via-cream/20 to-cream" />
         </motion.div>
 
-        <motion.div style={{ opacity: heroOpacity }} className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full">
+        <motion.div style={{ opacity: heroOpacity }} className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
@@ -70,8 +70,8 @@ export default function ContactUs() {
       </section>
 
       {/* Contact Info + Form */}
-      <section className="py-24 sm:py-32 lg:py-40">
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+      <section className="py-16 sm:py-24 lg:py-40">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
             {/* Info */}
             <motion.div
