@@ -112,7 +112,7 @@ export default function SceneCraftsmanship() {
               >
                 <a
                   href="/#atelier"
-                  className="group inline-flex items-center gap-4 text-[10px] sm:text-xs tracking-editorial uppercase text-champagne/80 hover:text-champagne transition-colors duration-700 font-body"
+                  className="group inline-flex items-center gap-4 text-[10px] sm:text-xs tracking-editorial uppercase text-champagne/80 hover:text-champagne transition-colors duration-700 font-body touch-target"
                 >
                   <span>Our Story</span>
                   <span className="w-6 h-[1px] bg-champagne/30 group-hover:w-10 transition-all duration-700" />

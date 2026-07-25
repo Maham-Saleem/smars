@@ -84,7 +84,31 @@ export default function SceneFamilies() {
                   {/* Overlay gradient */}
                   <div className="absolute inset-0 bg-gradient-to-t from-[#1a130f]/80 via-[#1a130f]/20 to-transparent" />
 
-                  {/* Hover reveal content */}
+                  {/* Overlay content — always visible on mobile, hover reveal on desktop */}
+                  <div className="absolute bottom-0 left-0 right-0 p-6 md:hidden">
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {(familyNotes[col.id] || []).slice(0, 3).map((note) => (
+                        <span
+                          key={note}
+                          className="px-3 py-1 text-[9px] tracking-wide-editorial uppercase font-body rounded-full"
+                          style={{
+                            background: 'rgba(199, 163, 107, 0.15)',
+                            color: 'rgba(199, 163, 107, 0.8)',
+                            border: '1px solid rgba(199, 163, 107, 0.2)',
+                          }}
+                        >
+                          {note}
+                        </span>
+                      ))}
+                    </div>
+                    <Link
+                      to={`/shop?collection=${col.id}`}
+                      className="inline-flex items-center gap-2 text-[10px] tracking-editorial uppercase text-champagne/70 font-body hover:text-champagne transition-colors touch-target"
+                    >
+                      <span>Explore</span>
+                      <span className="w-4 h-[1px] bg-champagne/40" />
+                    </Link>
+                  </div>
                   <AnimatePresence>
                     {isActive && (
                       <motion.div
@@ -92,7 +116,7 @@ export default function SceneFamilies() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 10 }}
                         transition={{ duration: 0.5 }}
-                        className="absolute bottom-0 left-0 right-0 p-6"
+                        className="absolute bottom-0 left-0 right-0 p-6 hidden md:block"
                       >
                         <div className="flex flex-wrap gap-2 mb-4">
                           {(familyNotes[col.id] || []).slice(0, 3).map((note) => (
@@ -111,7 +135,7 @@ export default function SceneFamilies() {
                         </div>
                         <Link
                           to={`/shop?collection=${col.id}`}
-                          className="inline-flex items-center gap-2 text-[10px] tracking-editorial uppercase text-champagne/70 font-body hover:text-champagne transition-colors"
+                          className="inline-flex items-center gap-2 text-[10px] tracking-editorial uppercase text-champagne/70 font-body hover:text-champagne transition-colors touch-target"
                         >
                           <span>Explore</span>
                           <span className="w-4 h-[1px] bg-champagne/40" />

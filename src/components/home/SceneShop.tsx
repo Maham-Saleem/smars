@@ -78,7 +78,7 @@ export default function SceneShop() {
               <button
                 key={f.id}
                 onClick={() => setFilter(f.id)}
-                className={`px-4 py-2 text-[10px] sm:text-xs tracking-editorial uppercase font-body transition-all duration-500 rounded-full ${
+                className={`px-4 py-2.5 sm:py-2 text-[10px] sm:text-xs tracking-editorial uppercase font-body transition-all duration-500 rounded-full touch-target ${
                   filter === f.id
                     ? 'bg-espresso text-cream'
                     : 'text-espresso/40 hover:text-espresso/70 hover:bg-espresso/5'
@@ -123,13 +123,14 @@ export default function SceneShop() {
                           : 'Added to wishlist'
                       );
                     }}
-                    className={`absolute top-3 right-3 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${
+                    className={`absolute top-3 right-3 w-10 sm:w-8 h-10 sm:h-8 rounded-full flex items-center justify-center transition-all duration-300 ${
                       isInWishlist(product.id)
                         ? 'bg-bronze text-cream'
-                        : 'bg-cream/80 text-espresso/40 opacity-0 group-hover:opacity-100'
+                        : 'bg-cream/80 text-espresso/40 sm:opacity-0 sm:group-hover:opacity-100'
                     }`}
                   >
-                    <HiOutlineHeart size={14} />
+                    <HiOutlineHeart size={16} className="sm:hidden" />
+                    <HiOutlineHeart size={14} className="hidden sm:block" />
                   </button>
                   {/* Sale badge */}
                   {product.originalPrice && (
@@ -162,9 +163,10 @@ export default function SceneShop() {
                 </div>
                 <button
                   onClick={() => handleAddToCart(product)}
-                  className="mt-3 w-full py-2.5 bg-espresso text-cream text-[9px] tracking-widest uppercase font-body rounded-full hover:bg-bronze active:bg-espresso/90 focus:outline-none focus:ring-2 focus:ring-espresso/20 transition-all duration-500 opacity-0 group-hover:opacity-100 translate-y-1 group-hover:translate-y-0 flex items-center justify-center gap-2"
+                  className="mt-3 w-full py-3 sm:py-2.5 bg-espresso text-cream text-[9px] sm:text-[9px] tracking-widest uppercase font-body rounded-full hover:bg-bronze active:bg-espresso/90 focus:outline-none focus:ring-2 focus:ring-espresso/20 transition-all duration-500 sm:opacity-0 sm:group-hover:opacity-100 sm:translate-y-1 sm:group-hover:translate-y-0 flex items-center justify-center gap-2"
                 >
-                  <HiOutlineShoppingBag size={14} />
+                  <HiOutlineShoppingBag size={16} className="sm:hidden" />
+                  <HiOutlineShoppingBag size={14} className="hidden sm:block" />
                   Add to Cart
                 </button>
               </div>
@@ -182,7 +184,7 @@ export default function SceneShop() {
         >
           <Link
             to="/shop"
-            className="group inline-flex items-center gap-4 text-xs tracking-editorial uppercase text-espresso/50 hover:text-bronze transition-colors duration-500 font-body"
+            className="group inline-flex items-center gap-4 text-xs tracking-editorial uppercase text-espresso/50 hover:text-bronze transition-colors duration-500 font-body touch-target"
           >
             <span className="w-8 h-[1px] bg-espresso/20 group-hover:w-12 group-hover:bg-bronze transition-all duration-500" />
             <span>Browse Full Collection</span>

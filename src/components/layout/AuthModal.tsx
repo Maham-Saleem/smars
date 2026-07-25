@@ -138,7 +138,7 @@ export default function AuthModal() {
                 <button
                   key={v}
                   onClick={() => switchView(v)}
-                  className={`flex-1 py-3 text-[10px] tracking-[0.3em] uppercase font-body transition-all duration-500 touch-target ${
+                  className={`flex-1 py-3.5 sm:py-3 text-[10px] tracking-[0.3em] uppercase font-body transition-all duration-500 touch-target ${
                     view === v
                       ? 'text-espresso border-b-2 border-bronze/80 font-medium'
                       : 'text-espresso/30 hover:text-espresso/60'

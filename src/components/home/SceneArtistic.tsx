@@ -184,7 +184,7 @@ export default function SceneArtistic() {
         >
           <Link
             to="/shop"
-            className="group inline-flex items-center gap-4 text-xs tracking-editorial uppercase text-espresso/50 hover:text-bronze transition-colors duration-500 font-body"
+            className="group inline-flex items-center gap-4 text-xs tracking-editorial uppercase text-espresso/50 hover:text-bronze transition-colors duration-500 font-body touch-target"
           >
             <span className="w-8 h-[1px] bg-espresso/20 group-hover:w-12 group-hover:bg-bronze transition-all duration-500" />
             <span>View All Fragrances</span>
