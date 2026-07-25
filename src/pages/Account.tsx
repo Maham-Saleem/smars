@@ -114,11 +114,11 @@ export default function Account() {
   return (
     <div className="min-h-screen bg-cream">
       {/* ─── Hero Header ─── */}
-      <section className="relative pt-24 lg:pt-28 overflow-hidden">
+      <section className="relative pt-20 lg:pt-28 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-warm-beige via-cream to-cream" />
         <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-champagne-gold/[0.03] to-transparent" />
         <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-champagne-gold/[0.02] blur-3xl" />
-        <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-16 lg:py-24">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 lg:py-24">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
@@ -157,9 +157,9 @@ export default function Account() {
       </section>
 
       {/* ─── Section Navigation ─── */}
-      <div className="sticky top-20 lg:top-24 z-30 bg-cream/95 backdrop-blur-xl border-b border-espresso/[0.04]">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 overflow-x-auto scrollbar-none">
-          <nav className="flex gap-1.5 py-4 min-w-max">
+      <div className="sticky top-16 sm:top-20 lg:top-24 z-30 bg-cream/95 backdrop-blur-xl border-b border-espresso/[0.04]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-x-auto scrollbar-none">
+          <nav className="flex gap-1.5 py-3 sm:py-4 min-w-max px-1">
             {sectionMeta.map((s) => (
               <button
                 key={s.key}
@@ -187,7 +187,7 @@ export default function Account() {
       </div>
 
       {/* ─── Section Content ─── */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12 lg:py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
         <AnimatePresence mode="wait">
           {activeTab === 'profile' && (
             <motion.div
@@ -197,16 +197,16 @@ export default function Account() {
               exit={{ opacity: 0, y: -16 }}
               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             >
-              <div className="flex items-center gap-4 mb-10">
-                <div className="w-10 h-[1px] bg-champagne-gold/40" />
+              <div className="flex items-center gap-4 mb-6 sm:mb-10">
+                <div className="w-8 sm:w-10 h-[1px] bg-champagne-gold/40" />
                 <div>
-                  <h2 className="font-heading text-2xl lg:text-3xl text-espresso tracking-tight">Personal Information</h2>
+                  <h2 className="font-heading text-xl sm:text-2xl lg:text-3xl text-espresso tracking-tight">Personal Information</h2>
                   <p className="text-xs text-espresso/35 font-light mt-1">Manage your profile details</p>
                 </div>
               </div>
 
-              <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 lg:p-10 border border-espresso/[0.03] shadow-sm">
-                <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-14">
+              <div className="bg-white/80 backdrop-blur-sm rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:p-10 border border-espresso/[0.03] shadow-sm">
+                <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 sm:gap-8 lg:gap-14">
                   <div className="lg:col-span-2">
                     <div className="flex flex-col items-center lg:items-start gap-5">
                       <div className="relative group">
